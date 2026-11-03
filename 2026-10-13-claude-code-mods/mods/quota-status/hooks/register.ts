@@ -1,0 +1,145 @@
+import type { EngineInterface, Register } from 'claude-code'
+
+import { formatCache, formatQuota, labelOf, newlyOver, shouldWarnCache, ttlOf, WARN_LEFT_MIN } from './quota'
+
+// ── 可配置项 ──
+// 多久刷新一次额度
+const REFRESH_MS = 60 * 1000
+// 刘海台读这里：~/.claude/notch/sessions/<对话id>.quota.json，每个对话一份，按 at 判断还活着没
+const feedDir = async ($: EngineInterface) => `${(await $.env.get('HOME')) ?? ''}/.claude/notch/sessions`
+
+// 已经弹过 90% 提醒的窗口；重新加载后清空，最多多提醒一次
+const warned = new Set<string>()
+
+// 缓存倒计时：主对话最后一次回复完成的时刻、是否正在干活、这段空闲是否已提醒过
+let lastAt: number | undefined
+let isWorking = false
+let cacheWarnedFor: number | undefined
+
+// 主对话最近一次调模型用的模型和档位：档位只有 turn.step 带，没发过话之前模型先用 /model 显示的
+let model: string | undefined
+let effort: string | number | undefined
+
+// 这个对话所在的终端标签页（如 /dev/ttys001），刘海台点对话时靠它跳回来；第一次刷新时查一次
+let terminal: { tty: string; app: string | null } | undefined
+let terminalLooked = false
+
+// 从 $.process.run 起的命令往上找祖先进程，第一个挂在终端上的就是 Claude Code 所在的标签页
+const TTY_SCRIPT = 'p=$PPID; while [ "$p" -gt 1 ]; do t=$(ps -o tty= -p $p | tr -d " "); case $t in ""|"?"*) p=$(ps -o ppid= -p $p | tr -d " ");; *) echo $t; exit;; esac; done'
+
+const findTerminal = async ($: EngineInterface) => {
+  const { stdout } = await $.process.run(['sh', '-c', TTY_SCRIPT])
+  const tty = stdout.trim()
+  if (!tty || tty.startsWith('?')) return undefined
+  return { tty: `/dev/${tty}`, app: (await $.env.get('TERM_PROGRAM')) ?? null }
+}
+
+const warnCache = ($: EngineInterface) => {
+  const text = `缓存 ${WARN_LEFT_MIN} 分钟内变凉，要走开的话先 /compact`
+  $.ui.toast(text, { timeoutMs: 15_000 })
+  // 人可能不在终端前，再弹一个系统横幅
+  void $.process
+    .run(['osascript', '-e', `display notification "${text}" with title "Claude Code 缓存" sound name "Submarine"`])
+    .catch(() => undefined)
+}
+
+const refresh = async ($: EngineInterface) => {
+  const usage = await $.session.usage()
+  const now = await $.clock.now()
+  const ttl = ttlOf(usage.rateLimits)
+  const cache = formatCache(now, lastAt, isWorking, ttl, usage.context.tokens)
+  const quota = formatQuota(usage.rateLimits, usage.cost?.usd)
+
+  $.ui.status(cache ? `${quota} · ${cache}` : quota)
+
+  if (!terminalLooked) {
+    terminalLooked = true
+    terminal = await findTerminal($).catch(() => undefined)
+  }
+
+  const id = await $.session.id()
+  const cwd = await $.session.cwd()
+  const shownModel = model ?? (await $.session.model().catch(() => undefined))
+  const feed = {
+    id,
+    cwd,
+    at: now,
+    working: isWorking,
+    quota,
+    cache: cache ?? null,
+    ttl,
+    model: shownModel ?? null,
+    effort: effort ?? null,
+    limits: usage.rateLimits,
+    ...terminal,
+  }
+  void $.fs.write(`${await feedDir($)}/${id}.quota.json`, JSON.stringify(feed)).catch(() => undefined)
+
+  for (const limit of newlyOver(usage.rateLimits, warned)) {
+    warned.add(limit.kind)
+    $.ui.toast(`${labelOf(limit.kind)}已用 ${Math.round(limit.percentUsed)}%`, { timeoutMs: 10_000 })
+  }
+
+  // 窗口重置、降回 90% 以下后，下次再越线还会提醒
+  for (const limit of usage.rateLimits) {
+    if (limit.percentUsed < 90) warned.delete(limit.kind)
+  }
+
+  if (shouldWarnCache(now, lastAt, isWorking, ttl) && cacheWarnedFor !== lastAt) {
+    cacheWarnedFor = lastAt
+    warnCache($)
+  }
+}
+
+export const register: Register = on => {
+  on('session.start', async ($, e, next) => {
+    void refresh($).catch(() => undefined)
+    $.clock.every(REFRESH_MS, () => refresh($).catch(() => undefined))
+
+    return next(e)
+  })
+
+  on('prompt.submit', async ($, e, next) => {
+    isWorking = true
+    lastAt = await $.clock.now()
+    void refresh($).catch(() => undefined)
+
+    return next(e)
+  })
+
+  // 记下主对话这一步用的模型和档位；中途 /model、/effort 换了就马上推给刘海台
+  on('turn.step', async function* ($, e, next) {
+    if (e.agentId === undefined && (e.model !== model || e.effort !== effort)) {
+      model = e.model
+      effort = e.effort
+      void refresh($).catch(() => undefined)
+    }
+
+    return yield* next(e)
+  })
+
+  // 只看主对话：子任务的回合不算
+  on('turn.complete', async ($, e, next) => {
+    if (e.agentId === undefined) {
+      isWorking = false
+      lastAt = await $.clock.now()
+      void refresh($).catch(() => undefined)
+    }
+
+    return next(e)
+  })
+
+  // 对话关掉时告诉刘海台这一行可以撤了
+  on('session.end', async ($, e, next) => {
+    const id = await $.session.id()
+    await $.fs.write(`${await feedDir($)}/${id}.quota.json`, JSON.stringify({ id, ended: true })).catch(() => undefined)
+
+    return next(e)
+  })
+
+  on('session.measure', async ($, e, next) => {
+    void refresh($).catch(() => undefined)
+
+    return next(e)
+  })
+}

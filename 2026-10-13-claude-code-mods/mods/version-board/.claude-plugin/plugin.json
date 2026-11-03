@@ -1,0 +1,1 @@
+{"name": "version-board", "version": "0.1.0", "description": "/banben side pane of preview servers started by headless claude -p runs (port, effort level, done or running), using local lsof/ps; blocks opening more than 3 at once; writes ~/.claude/notch/versions.json.", "author": {"name": "chenyuxiaojin"}, "types": "./types/index.d.ts"}

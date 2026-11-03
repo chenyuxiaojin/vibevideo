@@ -1,0 +1,1 @@
+{"name": "todo-pane", "version": "0.1.0", "description": "/daiban side pane listing the in-progress and wrap-up items of a Markdown to-do log (NOTCH_TODO_LOG); writes ~/.claude/notch/todo.json.", "author": {"name": "chenyuxiaojin"}}

@@ -1,0 +1,9 @@
+{
+  "name": "file-tree",
+  "version": "0.2.0",
+  "description": "VS Code 样式文件树面板：文件夹可折叠、按类型配图标、点文件预览；正在读/改的文件闪烁，改完保存的文件变绿",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Chen"
+  }
+}

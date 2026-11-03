@@ -1,0 +1,1 @@
+{ "name": "handoff", "version": "0.1.0", "description": "/clear 后输入框上方自动显示刚才在做什么，回「接」就接上；/handoff 另写交接稿给新对话接手", "author": { "name": "Chen" }, "types": "./types/index.d.ts" }

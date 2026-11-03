@@ -1,0 +1,1 @@
+{"name": "quota-status", "version": "0.1.0", "description": "Status line with 5-hour and weekly usage, reset day, session cost and prompt-cache countdown; toasts at 90% usage and 5 minutes before the cache goes cold; writes per-session JSON to ~/.claude/notch/sessions/.", "author": {"name": "chenyuxiaojin"}}

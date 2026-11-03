@@ -1,0 +1,9 @@
+{
+  "name": "polish",
+  "version": "0.1.0",
+  "description": "/polish：问 3 个问题，把一句简单需求写成详细提示词，可复制或直接运行",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Chen"
+  }
+}
