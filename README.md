@@ -7,54 +7,54 @@
 <!-- 新一期:在最上面加一个 <tr>,把「最新一期」挪给它 -->
 <table>
 <tr>
-<td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/"><img src="2026-10-13-workflow/cover.jpg" alt="视频制作流程全公开封面"></a></td>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/"><img src="2026-10-13-workflow/cover.jpg" alt="视频制作流程全公开封面"></a></td>
 <td>
 
 **最新一期** · 2026-10-13
 
-### [这是我用 AI 做了5个月的视频制作流程](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/)
+### [这是我用 AI 做了5个月的视频制作流程](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/)
 
 讲我怎么做视频的这条片，自己也是这么做出来的：8 段画面每段一个 claude -p 重做，整条改成 4:3，后期在达芬奇里由 AI 用脚本完成。每段重做前、-p 版、成片三版对照，附给 -p 的提示词。
 
 这条片 4 天做完：我发了 159 条消息，Claude Code 动手 1,898 次，claude -p 另跑 21 次、约 $142。
 
-[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/) · [文字版](2026-10-13-workflow/)
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/) · [文字版](2026-10-13-workflow/)
 
 </td>
 </tr>
 <tr>
-<td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/"><img src="2026-10-08-iq-inversion/cover.jpg" alt="思考档位智商倒挂封面"></a></td>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-08-iq-inversion/"><img src="2026-10-08-iq-inversion/cover.jpg" alt="思考档位智商倒挂封面"></a></td>
 <td>
 
 2026-10-08
 
-### [如何选择正确的模型档位？](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/)
+### [如何选择正确的模型档位？](https://chenyuxiaojin.github.io/vibevideo/2026-10-08-iq-inversion/)
 
 片子里的特效开的哪一档？12 段全是 Opus 5.5 用 claude -p 写代码做的：9 段 high、2 段 medium、1 段 xhigh，没有一段开 max。逐段公开档位、耗时、花费。
 
-[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/) · [文字版](2026-10-08-iq-inversion/)
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-08-iq-inversion/) · [文字版](2026-10-08-iq-inversion/)
 
 </td>
 </tr>
 <tr>
-<td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/"><img src="2026-09-30-opus55/cover.jpg" alt="Opus 5.5 思考档位盲测封面"></a></td>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-09-30-opus55/"><img src="2026-09-30-opus55/cover.jpg" alt="Opus 5.5 思考档位盲测封面"></a></td>
 <td>
 
 2026-09-30
 
-### [Opus 5.5 想得越久，画面越有艺术感吗？](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/)
+### [Opus 5.5 想得越久，画面越有艺术感吗？](https://chenyuxiaojin.github.io/vibevideo/2026-09-30-opus55/)
 
 同一个提示词，四个思考档位各做一遍，打乱盲看。max 比 medium 多花约 7 倍时间，却分不出来；真正让画面变样的是换旁白。
 
 这条片 6 天做完：我发了 251 条消息，Claude Code 动手 2,352 次。
 
-[看这期是怎么做的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/) · [文字版](2026-09-30-opus55/) · [博客长文](https://blog.xiaochens.com/blog/opus55-effort-blind-test/)
+[看这期是怎么做的 →](https://chenyuxiaojin.github.io/vibevideo/2026-09-30-opus55/) · [文字版](2026-09-30-opus55/) · [博客长文](https://blog.xiaochens.com/blog/opus55-effort-blind-test/)
 
 </td>
 </tr>
 </table>
 
-全部期数的网页版：<https://chenyuxiaojin.github.io/cyxj-videos/>
+全部期数的网页版：<https://chenyuxiaojin.github.io/vibevideo/>
 
 ## 配套 Skill 下载
 
@@ -89,8 +89,8 @@
 
 **AI video production, behind the scenes.** How a non-programmer makes every video with Claude Code, Remotion and DaVinci Resolve — the prompts, the model runs, the costs, and who did what (human vs. AI). A vibe video making-of archive by 陈与小金 (chenyuxiaojin).
 
-- 作者页与全部视频目录：<https://chenyuxiaojin.github.io/cyxj-videos/>
-- 给 AI 读的索引：[llms.txt](https://chenyuxiaojin.github.io/cyxj-videos/llms.txt)
+- 作者页与全部视频目录：<https://chenyuxiaojin.github.io/vibevideo/>
+- 给 AI 读的索引：[llms.txt](https://chenyuxiaojin.github.io/vibevideo/llms.txt)
 - 项目清单：<https://blog.xiaochens.com/projects/>
 
 关键词：AI 视频制作 · Claude Code 做视频 · Remotion · DaVinci Resolve · 达芬奇 · AI 剪辑 · video production · making-of · vibe video

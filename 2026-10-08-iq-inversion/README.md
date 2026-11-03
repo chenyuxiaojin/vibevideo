@@ -4,18 +4,18 @@ video: 如何选择正确的模型档位？思考档位开到 max，反输 xhigh
 author: 陈与小金（chenyuxiaojin）
 author_url: https://xiaochens.com/
 published: 2026-10-08
-page: https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/
+page: https://chenyuxiaojin.github.io/vibevideo/2026-10-08-iq-inversion/
 -->
 
 # 特效开的哪一档：思考档位智商倒挂幕后
 
-<a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/"><img src="cover.jpg" width="640" alt="思考档位智商倒挂封面"></a>
+<a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-08-iq-inversion/"><img src="cover.jpg" width="640" alt="思考档位智商倒挂封面"></a>
 
 视频《如何选择正确的模型档位？》，9 分 52 秒，抖音 2026-10-08 首发。
 
 评论区问：「这个视频的特效是开的 max 做的还是 high？」「特效、画面转场是 Opus 5.5 做的吗？」「这视频是怎么做的？」
 
-**[看网页版 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/)** 有分工、全流程、每段特效的循环小片段和成片画廊。
+**[看网页版 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-08-iq-inversion/)** 有分工、全流程、每段特效的循环小片段和成片画廊。
 
 ## 答案
 
@@ -85,4 +85,4 @@ xhigh 比 high 平均多花约一半的时间，贵约 77%。
 
 ---
 
-[← 全部幕后](https://chenyuxiaojin.github.io/cyxj-videos/) · **陈与小金**（chenyuxiaojin）· 非程序员，用 Claude Code 做一切 · [个人网站](https://xiaochens.com/) · [博客](https://blog.xiaochens.com/) · [GitHub](https://github.com/chenyuxiaojin) · [YouTube](https://www.youtube.com/@cyxj_ai) · [B 站](https://space.bilibili.com/505358756) · [抖音](https://v.douyin.com/A1qVQrOgPjY/) · [X](https://x.com/cyxjya)
+[← 全部幕后](https://chenyuxiaojin.github.io/vibevideo/) · **陈与小金**（chenyuxiaojin）· 非程序员，用 Claude Code 做一切 · [个人网站](https://xiaochens.com/) · [博客](https://blog.xiaochens.com/) · [GitHub](https://github.com/chenyuxiaojin) · [YouTube](https://www.youtube.com/@cyxj_ai) · [B 站](https://space.bilibili.com/505358756) · [抖音](https://v.douyin.com/A1qVQrOgPjY/) · [X](https://x.com/cyxjya)

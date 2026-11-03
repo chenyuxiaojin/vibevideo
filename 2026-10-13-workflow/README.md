@@ -4,16 +4,16 @@ video: 这是我用 AI 做了5个月的视频制作流程
 author: 陈与小金（chenyuxiaojin）
 author_url: https://xiaochens.com/
 published: 2026-10-13
-page: https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/
+page: https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/
 -->
 
 # 视频制作流程全公开幕后：讲流程的这条片，也是这么做出来的
 
-<a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/"><img src="cover.jpg" width="640" alt="视频制作流程全公开封面"></a>
+<a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/"><img src="cover.jpg" width="640" alt="视频制作流程全公开封面"></a>
 
 视频《这是我用 AI 做了5个月的视频制作流程》，5 分 47 秒，4:3。片子里讲的那条流程，就是做这条片时走的流程。
 
-**[看网页版 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/)** 有每段的循环小片段、重做前 / -p 版 / 成片三版对照、4:3 版式图、成片时间线和后期实测数据。
+**[看网页版 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/)** 有每段的循环小片段、重做前 / -p 版 / 成片三版对照、4:3 版式图、成片时间线和后期实测数据。
 
 ## 片子讲的七步
 
@@ -141,4 +141,4 @@ Claude Code 的 1,898 次：跑命令 1,194、操作达芬奇 247、读文件 24
 
 ---
 
-[← 全部幕后](https://chenyuxiaojin.github.io/cyxj-videos/) · **陈与小金**（chenyuxiaojin）· 非程序员，用 Claude Code 做一切 · [个人网站](https://xiaochens.com/) · [博客](https://blog.xiaochens.com/) · [GitHub](https://github.com/chenyuxiaojin) · [YouTube](https://www.youtube.com/@cyxj_ai) · [B 站](https://space.bilibili.com/505358756) · [抖音](https://v.douyin.com/A1qVQrOgPjY/) · [X](https://x.com/cyxjya)
+[← 全部幕后](https://chenyuxiaojin.github.io/vibevideo/) · **陈与小金**（chenyuxiaojin）· 非程序员，用 Claude Code 做一切 · [个人网站](https://xiaochens.com/) · [博客](https://blog.xiaochens.com/) · [GitHub](https://github.com/chenyuxiaojin) · [YouTube](https://www.youtube.com/@cyxj_ai) · [B 站](https://space.bilibili.com/505358756) · [抖音](https://v.douyin.com/A1qVQrOgPjY/) · [X](https://x.com/cyxjya)

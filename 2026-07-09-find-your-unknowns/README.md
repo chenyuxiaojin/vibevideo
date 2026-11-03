@@ -20,9 +20,9 @@
 Skill 就是一个带 `SKILL.md` 的文件夹，放进 Claude Code 的 skills 目录即可。
 
 ```bash
-git clone https://github.com/chenyuxiaojin/cyxj-videos.git
-cp -R cyxj-videos/2026-07-09-find-your-unknowns/盲区扫描 \
-      cyxj-videos/2026-07-09-find-your-unknowns/测验验收 \
+git clone https://github.com/chenyuxiaojin/vibevideo.git
+cp -R vibevideo/2026-07-09-find-your-unknowns/盲区扫描 \
+      vibevideo/2026-07-09-find-your-unknowns/测验验收 \
       ~/.claude/skills/
 ```
 
