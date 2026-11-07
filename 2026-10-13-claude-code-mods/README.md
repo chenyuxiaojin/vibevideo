@@ -1,5 +1,7 @@
 # Claude Code Mods：我自己在用的 8 个 mod
 
+> 网页版幕后:这条片是怎么做出来的(AI 当场做 mod、9 个子 agent 做 19 段画面)→ [chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/)
+
 视频里讲到的 mod 都放在 [`mods/`](mods/) 里，免费拿去用：状态栏额度（quota-status）、文件树（file-tree）、提示词优化（polish）、后台面板（version-board）、清空后接上（handoff）。刘海上那块面板是另一个原生 App，在 [cyxj-notch](https://github.com/chenyuxiaojin/cyxj-notch) 仓库；它显示的进度、待办、发片节奏来自另外 3 个 mod（task-progress、todo-pane、publish-pulse），也一起放在这里，一共 8 个。
 
 | mod | 做什么 | 要不要配置 |

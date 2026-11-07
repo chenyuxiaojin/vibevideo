@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>模型如何看视频幕后：一条没有人脸的片，画面全是 AI 写代码画的 · 陈与小金</title>
+<meta name="description" content="《模型是如何看视频的？》6 分 58 秒，4:3。全片没有人脸，画面由 AI 自己写的 WebGL 渲染器逐帧画出。5 天里我发了 114 条消息；AI 一共动手 9,792 次，派出 85 个子 agent 和 15 个 claude -p，打开自己渲的图检查 2,620 次。">
+<meta name="author" content="陈与小金">
+<link rel="author" href="https://xiaochens.com/">
+<link rel="canonical" href="https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/">
+<link rel="alternate" type="text/markdown" href="https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/README.md" title="文字版">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="陈与小金 · 视频幕后">
+<meta property="og:title" content="模型如何看视频幕后：一条没有人脸的片，画面全是 AI 写代码画的">
+<meta property="og:description" content="《模型是如何看视频的？》的幕后：开头被否三轮后，AI 一夜同时做 5 个方向；10 段画面 11 个 agent 并行开做；凌晨一条消息，AI 自己质检到天亮。附第一版和成片的同一时刻对照。">
+<meta property="og:url" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/">
+<meta property="og:image" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/cover.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="article:published_time" content="2026-10-15">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="模型如何看视频幕后：一条没有人脸的片，画面全是 AI 写代码画的">
+<meta name="twitter:description" content="开头被否三轮后，AI 一夜同时做 5 个方向；10 段画面 11 个 agent 并行开做；凌晨一条消息，AI 自己质检到天亮。">
+<meta name="twitter:image" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/cover.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://xiaochens.com/#person", "name": "陈与小金", "alternateName": ["chenyuxiaojin", "CYXJ"], "jobTitle": "Forward Deployed Engineer（FDE）· AI 落地", "description": "非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。", "url": "https://xiaochens.com/", "knowsAbout": ["AI 内容生产", "AI 视频工作流", "Claude Code", "Codex", "Remotion", "Agent Skills", "MCP Server", "DaVinci Resolve", "剪映", "非技术背景 AI 实操"], "sameAs": ["https://blog.xiaochens.com/", "https://github.com/chenyuxiaojin", "https://www.youtube.com/@cyxj_ai", "https://space.bilibili.com/505358756", "https://v.douyin.com/A1qVQrOgPjY/", "https://x.com/cyxjya", "https://chenyuxiaojin.github.io/vibevideo/"]}, {"@type": "VideoObject", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/#video", "name": "模型是如何看视频的？你发的视频 AI 默认 1 秒只看一帧", "description": "一段 10 秒的 1080p 视频进到多模态模型里，要经过四道工序：每秒只留 1 帧、16×16 切块变成 Token、打上行列坐标和秒数、注意力矩阵算出一句话。全片没有人脸，画面由 AI 写代码逐帧画出。", "thumbnailUrl": ["https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/cover.jpg"], "uploadDate": "2026-10-15", "duration": "PT6M58S", "inLanguage": "zh-CN", "creator": {"@id": "https://xiaochens.com/#person"}, "keywords": "多模态, 模型如何看视频, Transformer, Visual Token, 抽帧, Gemini, Claude Code, Remotion, WebGL, claude -p, AI 做视频"}, {"@type": "TechArticle", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/#article", "headline": "模型如何看视频幕后：一条没有人脸的片，画面全是 AI 写代码画的", "description": "《模型是如何看视频的？》6 分 58 秒，4:3，全片没有人脸。开头被否三轮后，AI 一夜同时做 5 个方向；10 段画面 11 个 agent 并行开做；凌晨一条消息，AI 自己质检到天亮。5 天里我发了 114 条消息，AI 一共动手 9,792 次。", "image": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/cover.jpg", "datePublished": "2026-10-15", "dateModified": "2026-11-07", "inLanguage": "zh-CN", "author": {"@id": "https://xiaochens.com/#person"}, "publisher": {"@id": "https://xiaochens.com/#person"}, "mainEntityOfPage": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/", "about": [{"@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/#video"}, {"@type": "SoftwareApplication", "name": "Claude Code"}, {"@type": "SoftwareApplication", "name": "Remotion"}, {"@type": "SoftwareApplication", "name": "DaVinci Resolve"}]}, {"@type": "FAQPage", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/#faq", "mainEntity": [{"@type": "Question", "name": "这条视频的画面是怎么做的？", "acceptedAnswer": {"@type": "Answer", "text": "全片没有人脸，也没有素材库。Claude Code 在 Remotion 工程里自己写了一个 WebGL2 渲染器，片子里那段红车夜街视频也是代码生成的，每一帧都按帧号算出来。工程最后有约 15,850 行代码，其中着色器约 1,811 行。"}}, {"@type": "Question", "name": "这条视频里，人做了什么，AI 做了什么？", "acceptedAnswer": {"@type": "Answer", "text": "陈与小金录口播、在达芬奇里剪气口、看片挑毛病、拍板，最后自己写抖音标题简介、点发布，5 天里发了 114 条消息。其余是 AI：Claude Code 在 6 段对话里动手 1,588 次；它派出 85 个子 agent，动手 7,314 次；另跑了 15 个 claude -p，动手 890 次，约 $89。"}}, {"@type": "Question", "name": "片子里的声音都是本人吗？", "acceptedAnswer": {"@type": "Answer", "text": "大部分是本人原声。录音时英文词先念成「单词」占位、读错的短句没重录，AI 用本人声音的零样本克隆补了 18 处，合计约 2 分钟，再按原声变调、补 EQ、垫房间底噪，让它和原声接得上。配乐和音效全部由 Lyria 生成，没用素材包。"}}, {"@type": "Question", "name": "开头为什么做了这么多轮？", "acceptedAnswer": {"@type": "Answer", "text": "前三轮（三个档位各一版、一个 3D 版、参考其他博主的两版和融合版）都被否。第四次 Claude Code 一夜同时做了 5 个完全不同的方向，三个 AI 评委打分，再选底版做两版对比、修四路问题、合并、质检，第二天上午才交出来，作者一看就认可了。"}}, {"@type": "Question", "name": "一共花了多少钱？", "acceptedAnswer": {"@type": "Answer", "text": "15 个 claude -p 按 API 价格折算约 $88.77。子 agent 和 Claude Code 主会话的花费没有记录，无法统计。"}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "陈与小金 · 视频幕后", "item": "https://chenyuxiaojin.github.io/vibevideo/"}, {"@type": "ListItem", "position": 2, "name": "模型如何看视频幕后", "item": "https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/"}]}]}</script>
+<style>
+/* 版式沿用上期:浅灰底 + 白卡片,系统字体,蓝色只给链接、主按钮和「AI」标记;成片是 4:3,配图一律 4:3 */
+:root {
+  --bg: #F2F2F4;
+  --panel: #FFFFFF;
+  --panel-2: #F0F1F4;
+  --line: #E2E2E6;
+  --ink: #1D1D1F;
+  --ink-2: #55555A;
+  --ink-3: #8A8A8F;
+  --accent: #0A66D6;
+  --p: #8FB8F2;      /* claude -p */
+  --sub: #5B8DEF;    /* 子 agent */
+  --track: #C9CED6;
+  --clone: #E8A33D;  /* 克隆音 */
+  --fix: #6D5BD0;    /* 后来改的画面 */
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .05);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.3; font-weight: 700; }
+h3 { font-size: 20px; line-height: 1.4; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 13px; color: var(--ink-3); }
+.lead { color: var(--ink-2); max-width: 38em; }
+.muted { color: var(--ink-3); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 96px; }
+
+/* 顶部导航 */
+.chapters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.chapters .inner { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); display: flex; overflow-x: auto; scrollbar-width: none; }
+.chapters a { flex: 1 0 auto; color: var(--ink-3); font-size: 12px; padding: 10px 12px; border-bottom: 2px solid transparent; white-space: nowrap; text-align: center; }
+.chapters a:hover, .chapters a.on { color: var(--ink); border-bottom-color: var(--accent); text-decoration: none; }
+
+section { padding-top: 88px; scroll-margin-top: 48px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
+
+/* 开场 */
+.hero { padding-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 44px); line-height: 1.22; font-weight: 700; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 18px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.stat { background: var(--panel); padding: 14px 14px 12px; min-width: 0; }
+.stat b { display: block; font-size: 24px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat b small { font-size: 13px; font-weight: 400; color: var(--ink-2); margin-left: 3px; }
+.stat span { font-size: 12px; color: var(--ink-3); }
+.stats.in { margin: 0 0 28px; }
+
+/* 片子讲的流程:点一步看那一刻的画面 */
+.pipe { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 14px; display: grid; gap: 12px; }
+.pipe-shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #0B1220; }
+.pipe-cap { font-size: 13px; color: var(--ink-2); min-height: 3.2em; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.steps button { width: 100%; height: 100%; font: 500 12px/1.35 var(--font); color: var(--ink-2); background: var(--panel-2); border: 1px solid transparent; border-radius: 8px; padding: 7px 4px 6px; cursor: pointer; display: grid; gap: 3px; justify-items: center; text-align: center; }
+.steps button:hover { color: var(--ink); }
+.steps button[aria-pressed="true"] { background: var(--panel); border-color: var(--accent); color: var(--ink); }
+.steps .k { font: 600 10px/1 var(--font); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.who { display: inline-grid; place-items: center; min-width: 22px; height: 18px; padding: 0 5px; border-radius: 999px; font: 600 10px/1 var(--font); }
+.who.me { background: var(--ink); color: var(--bg); }
+.who.ai { background: var(--accent); color: #fff; }
+.who.sub { background: var(--sub); color: #fff; }
+.who.p { background: var(--p); color: #0A1A33; }
+
+/* 分工:一格 = 10 次 */
+.share { display: grid; gap: 22px; border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 22px clamp(14px, 2.6vw, 28px); }
+.sh-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: start; }
+.sh-lab { display: grid; gap: 2px; }
+.sh-lab .nm { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.sh-lab b { font-size: 30px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.sh-lab b small { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 4px; }
+.sh-lab span.d { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+.units { display: flex; flex-wrap: wrap; gap: 3px; padding-top: 6px; }
+.units i { width: 10px; height: 10px; border-radius: 2px; }
+.sh-break { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--ink-2); }
+.sh-break b { font-weight: 600; color: var(--ink); margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+/* 五天 */
+.days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.day { background: var(--panel); border-radius: 14px; box-shadow: var(--shadow); padding: 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.day .dt { font-size: 13px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.day h3 { font-size: 16px; }
+.day ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.day img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+
+/* 图表通用 */
+.chart { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
+.chart-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.chart-h h3 { font-size: 18px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 8px; border-radius: 2px; display: inline-block; }
+
+/* 成片时间线 */
+.tl-scroll { overflow-x: auto; }
+.tl { min-width: 820px; display: grid; grid-template-columns: 104px minmax(0, 1fr); row-gap: 8px; column-gap: 12px; }
+.tl-lab { font-size: 12.5px; color: var(--ink-2); align-self: center; line-height: 1.35; }
+.tl-lab small { display: block; color: var(--ink-3); font-size: 11px; }
+.tl-track { position: relative; height: 30px; background: var(--bg); border-radius: 4px; }
+.tl-b { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; overflow: hidden; font-size: 11px; line-height: 24px; padding: 0 4px; white-space: nowrap; cursor: default; }
+.tl-b.s { background: var(--p); color: #0A1A33; text-align: center; font-weight: 600; border-right: 2px solid var(--bg); border-radius: 0; }
+.tl-b.s:nth-child(even) { background: #B8D0F5; }
+.tl-b.t { background: var(--track); }
+.tl-b.c { background: var(--clone); }
+.tl-b.f { background: var(--fix); color: #fff; }
+.tl-axis { position: relative; height: 18px; }
+.tl-axis span { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tl-axis span:first-child { transform: none; }
+
+figure { margin: 0; min-width: 0; }
+figure img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+figcaption { font-size: 13px; color: var(--ink-3); margin-top: 6px; line-height: 1.55; }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* 阶段章节 */
+.stage { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 30px 0; border-top: 1px solid var(--line); }
+.stage:last-child { border-bottom: 1px solid var(--line); }
+.stage > .n { font-weight: 700; font-size: 40px; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.stage > .n small { display: block; font-size: 12px; font-weight: 600; color: var(--accent); margin-top: 8px; letter-spacing: 0; }
+.stage-b { display: grid; gap: 14px; min-width: 0; }
+.stage-b h3 { font-size: 22px; }
+.stage-b > p { color: var(--ink-2); max-width: 46em; }
+.stage-b .stats.in { margin: 0; }
+
+/* 跑片表 */
+.runs { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--panel); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.runs th, .runs td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.runs th { background: var(--panel-2); font-size: 12px; font-weight: 500; color: var(--ink-3); }
+.runs td.num, .runs th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.runs td:first-child { color: var(--ink); white-space: nowrap; }
+.runs td { color: var(--ink-2); }
+.runs tr:last-child td { border-bottom: 0; }
+.runs .no { color: var(--ink-3); }
+.runs .ok { color: var(--accent); font-weight: 600; }
+.tbl-scroll { overflow-x: auto; border-radius: 12px; }
+.tbl-scroll .runs { min-width: 560px; }
+
+/* workflow 甘特 */
+.gantt { display: grid; gap: 6px; }
+.g-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; align-items: center; font-size: 12.5px; color: var(--ink-2); }
+.g-row .bar { position: relative; height: 22px; background: var(--bg); border-radius: 4px; }
+.g-row .bar i { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; background: var(--sub); }
+.g-row .bar i.j { background: #9AA8C3; }
+.g-row .bar i.me { background: var(--ink); width: 3px !important; top: -2px; bottom: -2px; border-radius: 1px; }
+.g-axis { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; }
+.g-axis div { position: relative; height: 16px; }
+.g-axis span { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.dirs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.dirs > div { background: var(--panel); padding: 12px; display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-2); align-content: start; min-width: 0; }
+.dirs b { font-size: 14px; color: var(--ink); }
+.dirs .pick { box-shadow: inset 0 0 0 2px var(--accent); }
+.dirs .tag { font-size: 11px; color: var(--accent); font-weight: 600; }
+
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.principles > div { background: var(--panel); padding: 18px 20px; display: grid; gap: 6px; min-width: 0; align-content: start; }
+.principles b { font-size: 15px; font-weight: 600; }
+.principles p { font-size: 14px; color: var(--ink-2); }
+
+/* 画面墙 */
+.segs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 14px; }
+.seg { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.seg .v { position: relative; }
+.seg .v video, .seg .v img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+.seg .n { position: absolute; left: 6px; top: 6px; font: 600 11px/1 var(--font); padding: 4px 6px; border-radius: 4px; background: rgba(255, 255, 255, .92); color: var(--ink); }
+.seg h4 { margin: 0; font-size: 14px; line-height: 1.45; font-weight: 700; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.seg h4 span { font-size: 11.5px; font-weight: 400; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.seg p { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+
+/* 对照 */
+.evo { display: grid; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); background: var(--panel); }
+.evo-row { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 20px; padding: 20px; border-top: 1px solid var(--line); }
+.evo-row:first-child { border-top: 0; }
+.evo-lab { display: grid; gap: 6px; align-content: start; }
+.evo-lab h3 { font-size: 17px; }
+.evo-lab .m { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.evo-lab q { font-size: 13.5px; color: var(--ink); quotes: "「" "」"; }
+.evo-lab p { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.evo-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+.evo-imgs figcaption { font-size: 12px; }
+.gal-h { margin: 44px 0 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.gal-h h3 { font-size: 18px; }
+.strip img { aspect-ratio: auto; border-radius: 8px; }
+
+/* 原话时间线 */
+.said { display: grid; border-top: 1px solid var(--line); }
+.said > div { display: grid; grid-template-columns: 92px minmax(0, 1fr) minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.said .t { color: var(--ink-3); font-size: 12.5px; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.said q { color: var(--ink); quotes: "「" "」"; }
+.said .a { color: var(--ink-2); }
+
+.takeaways { display: grid; }
+.tk { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.tk:last-child { border-bottom: 1px solid var(--line); }
+.tk .n { font-weight: 700; font-size: 40px; line-height: 1; color: var(--ink-3); }
+.tk h3 { font-size: 22px; margin-bottom: 8px; }
+.tk p { color: var(--ink-2); max-width: 46em; }
+
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq > div { padding: 20px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.faq h3 { font-size: 18px; }
+.faq p { color: var(--ink-2); max-width: 46em; }
+footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(--ink-3); max-width: 60em; }
+
+#tip { position: fixed; z-index: 20; pointer-events: none; background: #1D1D1F; color: #fff; font-size: 12.5px; line-height: 1.5; padding: 7px 10px; border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); max-width: 280px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .segs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dirs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .evo-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sh-row { grid-template-columns: 1fr; gap: 8px; }
+  .units i { width: 8px; height: 8px; }
+  .units { gap: 2px; }
+  .days, .principles, .dirs { grid-template-columns: 1fr; }
+  .segs { gap: 18px 10px; }
+  .stage { grid-template-columns: 1fr; gap: 8px; }
+  .stage > .n { font-size: 28px; }
+  .stage > .n small { display: inline; margin: 0 0 0 8px; }
+  .g-row, .g-axis { grid-template-columns: 96px minmax(0, 1fr); gap: 8px; }
+  .g-row { font-size: 11.5px; }
+  .tk { grid-template-columns: 1fr; gap: 8px; }
+  .said > div { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<nav class="chapters" aria-label="章节">
+  <div class="inner">
+    <a href="#top">开场</a>
+    <a href="#share">分工</a>
+    <a href="#days">五天</a>
+    <a href="#film">全片</a>
+    <a href="#stages">七个阶段</a>
+    <a href="#wall">画面墙</a>
+    <a href="#evo">前后对照</a>
+    <a href="#said">我说过的话</a>
+    <a href="#lesson">收获</a>
+    <a href="#faq">问答</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<header class="hero" id="top">
+  <div>
+    <div class="eyebrow"><a href="../" style="color:inherit">陈与小金 · 视频幕后</a> · 2026.10.11 – 10.15</div>
+    <h1>这条片没有一帧是拍的，<em>画面全是 AI 写代码画出来的</em></h1>
+    <p class="lead">成片《模型是如何看视频的？》，6 分 58 秒，4:3，全片没有人脸。我录口播、剪气口、看片挑毛病、拍板；画面、配乐、音效、克隆音、字幕、导出，都是 AI 动的手。它自己写了一个 3D 渲染器，片子里那段红车夜街视频也是它用代码画的。</p>
+    <div class="stats">
+      <div class="stat"><b>5<small>天</small></b><span>录音到发布</span></div>
+      <div class="stat"><b>114<small>条</small></b><span>我发的消息</span></div>
+      <div class="stat"><b>9,792<small>次</small></b><span>AI 动手</span></div>
+      <div class="stat"><b>2,620<small>次</small></b><span>AI 打开自己渲的图检查</span></div>
+    </div>
+  </div>
+  <div class="pipe" id="pipe">
+    <div class="pipe-shot"><img id="pipe-img" src="img/s1.jpg" alt="" width="960" height="720"></div>
+    <p class="pipe-cap" id="pipe-cap"></p>
+    <ol class="steps" id="steps" aria-label="片子讲的内容,点一步看那一刻的画面"></ol>
+  </div>
+</header>
+
+<section id="share">
+  <div class="sec-head">
+    <div class="eyebrow">分工</div>
+    <h2>我动嘴，三层 AI 动手</h2>
+    <p class="lead">我亲手做的：录口播、在达芬奇里剪气口、最后在抖音写标题简介、点发布。其余按这 5 天的对话记录数出来，都是 AI 做的。和上期不一样的是多了中间一层：Claude Code 自己开工作流，一次派出一批子 agent 同时干活。</p>
+  </div>
+  <div class="share">
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who me">我</i>我</span><b>114<small>条消息</small></b><span class="d">录口播、剪气口、看片说要不要、说哪里不对、拍板、写抖音标题简介、点发布</span></div>
+      <div class="units" data-n="114" data-c="var(--ink)"></div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who ai">CC</i>Claude Code（主对话）</span><b>1,588<small>次操作</small></b><span class="d">导音频、克隆音、混音、补误删、派活、合并、渲染、自己看片、导出、发抖音</span></div>
+      <div>
+        <div class="units" data-n="1588" data-c="var(--accent)"></div>
+        <div class="sh-break"><span>跑命令<b>1,158</b></span><span>读文件<b>216</b></span><span>操作达芬奇<b>88</b></span><span>操作浏览器<b>54</b></span><span>派活和收活<b>31</b></span><span>写和改文件<b>12</b></span><span>其他<b>29</b></span></div>
+      </div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who sub">子</i>子 agent（工作流里批量派）</span><b>7,314<small>次操作</small></b><span class="d">85 个：12 个工作流里 82 个，单独派 3 个。做方向、做段落、当评委、做配乐音效、质检</span></div>
+      <div>
+        <div class="units" data-n="7314" data-c="var(--sub)"></div>
+        <div class="sh-break"><span>跑命令<b>4,940</b></span><span>读文件<b>2,157</b></span><span>写和改文件<b>123</b></span><span>其他<b>94</b></span></div>
+      </div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who p">-p</i>claude -p（独立沙盒）</span><b>890<small>次操作</small></b><span class="d">15 个沙盒、23 次调用（含续跑），约 $88.77：开头前三轮、现实锚点三档、第五轮 4 处、接缝排查</span></div>
+      <div>
+        <div class="units" data-n="890" data-c="var(--p)"></div>
+        <div class="sh-break"><span>跑命令<b>518</b></span><span>读文件<b>303</b></span><span>写和改文件<b>64</b></span><span>其他<b>5</b></span></div>
+      </div>
+    </div>
+    <p class="muted">一格 = 10 次。统计范围：10-11 18:21 到 10-15 15:26 做这条片的 6 段对话，加上它们派出去的 85 个子 agent 和 15 个 claude -p。不含：10-11 晚对稿子做受众模拟和事实核查的 13 个子 agent（内容侧）、做封面和标题的那段对话、发布后的对话，以及做这个幕后页的对话。一次「操作」指 AI 用一次工具，比如跑一条命令、读一个文件、看一张图。主对话里 10-11 那段用的是 Fable 5.1，其余主对话、全部子 agent 和 claude -p 都是 Opus 5.5。</p>
+  </div>
+</section>
+
+<section id="days">
+  <div class="sec-head">
+    <div class="eyebrow">五天</div>
+    <h2>10-11 录音，10-15 发出</h2>
+    <p class="lead">按对话记录和工程的提交记录排出来。中间两天，AI 大部分时间在我睡觉或者没看的时候跑。</p>
+  </div>
+  <div class="days">
+    <article class="day">
+      <span class="dt">10-11</span>
+      <h3>录口播、补克隆音</h3>
+      <img src="img/s2.jpg" alt="光盘:几十 MB 的压缩文件" loading="lazy" width="960" height="720">
+      <ul>
+        <li>我用大疆麦录了一条 13 分钟的原始口播</li>
+        <li>英文词我先念成「单词」占位，读错的短句没重录；AI 用我的声音零样本克隆补了 18 处</li>
+        <li>人声套我定的 B6 混音链</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-12</span>
+      <h3>剪气口、开头第一轮</h3>
+      <img src="img/s3.jpg" alt="300 帧铺成的光海,1.86 GB" loading="lazy" width="960" height="720">
+      <ul>
+        <li>我在达芬奇里剪气口，8:01 剪到 6:45</li>
+        <li>AI 把剪前剪后逐段比对，找出 14 处误删，最长一整句 9.7 秒，补回并染成橙色</li>
+        <li>开头 39 秒派 4 个 claude -p 各做一版，我说「都不太行」</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-13</span>
+      <h3>推倒重来，一夜五个方向</h3>
+      <img src="img/s1.jpg" alt="开头:红车夜街视频拖进对话框" loading="lazy" width="960" height="720">
+      <ul>
+        <li>参考其他博主的动效再做 2 版 + 融合 1 版，还是不行</li>
+        <li>18:10 我说重做。Claude Code 开工作流：5 个方向同时做，3 个评委打分</li>
+        <li>选底版、做两版对比、修四路问题，跑到第二天上午</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-14</span>
+      <h3>开头过、10 段齐开</h3>
+      <img src="img/s4.jpg" alt="显卡上的显存崩溃" loading="lazy" width="960" height="720">
+      <ul>
+        <li>10:54 开头我一看就认可</li>
+        <li>11 个 agent 58 分钟把后面 10 段和全片配乐一起做出来，再一轮 11 个修</li>
+        <li>我说缺「现实锚点」：三档 claude -p 试，挑中的那版又改 4 轮，显存崩溃变成一张真显卡</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-15</span>
+      <h3>凌晨质检、发抖音</h3>
+      <img src="img/s10.jpg" alt="跨时序注意力" loading="lazy" width="960" height="720">
+      <ul>
+        <li>01:34 我睡前发一条消息，AI 派 18 个 agent 质检修改到 04:51</li>
+        <li>上午克隆音贴原声、修字体、对齐字幕字号、补一句漏掉的字幕</li>
+        <li>Remotion 直出 H.265；15:08 抖音发出，发布键我点</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="film">
+  <div class="sec-head">
+    <div class="eyebrow">全片</div>
+    <h2>6 分 58 秒拆开看</h2>
+    <p class="lead">口播前有 1.5 秒开场。开头 40 秒单独做、单独定稿；后面切成 10 段，每段一个 agent 画，段与段之间靠一张「接力画面」交棒，前后两段在这几帧画的是同一张图，逐像素一致。</p>
+  </div>
+  <div class="chart">
+    <div class="chart-h"><h3>成片时间线</h3><div class="legend" id="tl-legend"></div></div>
+    <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+    <p class="muted" style="margin-top:10px">悬停或聚焦色块可以看名字和时间。克隆音位置取自克隆音贴原声脚本里的位置表；「后来改的画面」是段落做完以后，按我的意见单独重做再盖上去的三处。</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head">
+    <div class="eyebrow">七个阶段</div>
+    <h2>从一条录音到一条片</h2>
+    <p class="lead">每个阶段写 AI 做了什么、做了多少，以及我在哪一步说了话。</p>
+  </div>
+
+  <div class="stage">
+    <div class="n">01<small>10-11 – 10-12</small></div>
+    <div class="stage-b">
+      <h3>声音：克隆音补词，剪完再查漏</h3>
+      <p>录音里的英文词我先念成「单词」占位，有几句读错也没重录。AI 用这段录音当参考，零样本克隆我的声音，只补那几个词所在的句子，18 处合计约 2 分钟；我耳听 18 条，全部通过。我剪完气口，AI 把剪前剪后逐段比对：删了 68 处、52 秒，大部分是气口，但有 14 处带字，最长一整句 9.7 秒（「然而，进入注意力层之前……排列不变性」）。我确认是误删，它全部补回、染成橙色，重出混音和句子时间表。</p>
+      <div class="stats in">
+        <div class="stat"><b>18<small>处</small></b><span>克隆音，约 2 分钟</span></div>
+        <div class="stat"><b>68<small>处</small></b><span>我剪掉的地方</span></div>
+        <div class="stat"><b>14<small>处</small></b><span>AI 查出的误删</span></div>
+        <div class="stat"><b>-15.0</b><span>LUFS，B6 链混音后</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="n">02<small>10-12 – 10-13</small></div>
+    <div class="stage-b">
+      <h3>开头 39 秒，前三轮都被否</h3>
+      <p>每一轮都是 Claude Code 复制几份独立工程、同时派几个 claude -p 各做一版，做完自己抽帧看过再给我。10-12 三个档位各一版，我挑了一版说改成 3D，再加一个 high 的 3D 版，看完「都不太行」。10-13 我让它参考其他科普博主的动效，又跑 high、xhigh 两版和一版融合，我还是说不行，重做。</p>
+      <div class="tbl-scroll"><table class="runs">
+        <thead><tr><th>轮</th><th>版本</th><th class="num">用时</th><th class="num">花费</th><th class="num">看图</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>10-12</td><td>medium（后续跑改 3D）</td><td class="num">21.0 + 11.4 分</td><td class="num">$5.42</td><td class="num">14</td><td class="no">不行</td></tr>
+          <tr><td>10-12</td><td>high</td><td class="num">27.4 分</td><td class="num">$4.38</td><td class="num">15</td><td class="no">不行</td></tr>
+          <tr><td>10-12</td><td>xhigh</td><td class="num">45.5 分</td><td class="num">$10.86</td><td class="num">29</td><td class="no">不行</td></tr>
+          <tr><td>10-12</td><td>high · 3D 版</td><td class="num">26.2 分</td><td class="num">$7.15</td><td class="num">21</td><td class="no">都不太行</td></tr>
+          <tr><td>10-13</td><td>high · 参考版</td><td class="num">16.9 分</td><td class="num">$4.36</td><td class="num">33</td><td class="no">—</td></tr>
+          <tr><td>10-13</td><td>xhigh · 参考版</td><td class="num">37.7 分</td><td class="num">$9.87</td><td class="num">33</td><td class="no">—</td></tr>
+          <tr><td>10-13</td><td>high · 两版融合</td><td class="num">16.3 分</td><td class="num">$4.80</td><td class="num">12</td><td class="no">不行，重新做</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted">7 个 claude -p 合计 $46.84。「看图」= 它打开自己渲出来的静帧和接触表检查的次数。用时、花费取自每次运行的结果记录；10-12 那四个沙盒已删，数字是当时 Claude Code 读出来的。续跑记录的是累计花费。</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="n">03<small>10-13 夜</small></div>
+    <div class="stage-b">
+      <h3>一夜：5 个方向同时做，评委打分，再修四路</h3>
+      <p>我说重做之后，Claude Code 不再一版一版试，而是开了一个工作流：5 个 agent 各做一个完全不同的方向，做完 3 个评委 agent 分别按「震不震撼 / 看不看得懂 / 做工」打分。评委把「一根光线」排第一、「光的宇宙」第二；Claude Code 自己再看两版的静帧，选了「光的宇宙」当底版。接着两个 agent 在同一底版上做两种「解开」的爆法，三个评委二选一；赢的那版再拆成 α β γ δ 四路同时修，合并、两个质检 agent 只查不改、最后打磨。配乐同时在做：调用 Lyria 48 次，成功 43 条，从里面剪出三段拼起来。</p>
+      <div class="dirs">
+        <div><b>A · 光的宇宙</b><span>视频就是光：吸成一张光盘，炸成画面球，点燃 300 帧光海</span><span class="tag">评委第二 · 被选为底版</span></div>
+        <div><b>B · 冷酷的机器</b><span>视频是一罐胶片，拧开每格放大成巨幕，铺到地平线</span></div>
+        <div><b>C · 小红车的 10 秒</b><span>一辆有脾气的小红车骑着自己的 300 帧冲出来</span></div>
+        <div><b>D · 时空晶体</b><span>视频是一块晶体，压成钻石，解开炸出 1.86 GB 巨柱</span></div>
+        <div><b>E · 一根光线</b><span>一笔画出视频，卷成线圈，崩成光弹簧铺开帧海</span><span class="tag">评委第一</span></div>
+      </div>
+      <div class="chart">
+        <div class="chart-h"><h3>这一夜的三个工作流</h3><div class="legend"><span><i class="sw" style="background:var(--sub)"></i>做东西的 agent</span><span><i class="sw" style="background:#9AA8C3"></i>评委 / 质检 agent</span><span><i class="sw" style="background:var(--ink)"></i>我发消息</span></div></div>
+        <div class="gantt" id="gantt"></div>
+      </div>
+      <div class="stats in">
+        <div class="stat"><b>23<small>个</small></b><span>agent</span></div>
+        <div class="stat"><b>3,798<small>次</small></b><span>操作</span></div>
+        <div class="stat"><b>1,328<small>次</small></b><span>打开自己渲的图</span></div>
+        <div class="stat"><b>8 / 8 / 7.5</b><span>评委给终版：震撼 / 好懂 / 做工</span></div>
+      </div>
+      <p class="muted">第二天 10:54 我看完：「我完全认可，太厉害了。」开头 40 秒定稿，这套「光的宇宙」写进工程说明，后面 10 段都在这个世界里接着演。</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="n">04<small>10-14 上午</small></div>
+    <div class="stage-b">
+      <h3>后面 10 段：11 个 agent 一起开工</h3>
+      <p>开头认可后，Claude Code 把剩下 6 分多钟按句子之间的停顿切成 10 段，写好每段从哪张接力画面进、到哪张出，然后 10 个 agent 各画一段、1 个 agent 做全片配乐，同时开跑，58 分钟全部交回。合成整片自己看完，再派一轮：10 个 agent 各修自己那段、1 个 agent 铺全片音效，又是 58 分钟。开跑前我说开头蓝紫色有点多，它连换配色一起派了一批；2 分钟后我说「还是之前那个颜色吧」，它停掉这批、按原色重跑。</p>
+      <div class="stats in">
+        <div class="stat"><b>11<small>个</small></b><span>agent 同时画</span></div>
+        <div class="stat"><b>58<small>分钟</small></b><span>10 段 + 配乐首版</span></div>
+        <div class="stat"><b>58<small>分钟</small></b><span>10 段各修一轮 + 音效</span></div>
+        <div class="stat"><b>1,798<small>次</small></b><span>两轮操作合计</span></div>
+      </div>
+      <p>下午我看完说「知识可视化不够」，它又开一个工作流重做第 2 段、第 8 段（另派一个 agent 备真实数据），每段一个评委审过、按意见再修，才给我。我看了说「还不如上一版」，它退回上一版。</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="n">05<small>10-14 晚</small></div>
+    <div class="stage-b">
+      <h3>现实锚点：6.22 亿这个数，得让人看见</h3>
+      <p>我说现在的画面缺一个「现实锚点」。Claude Code 派了三个档位的 claude -p 各出一个方向，我挑了 high 那版；它判断最好的锚点就是观众已经认识的那段红车视频本身：Token 是从它身上切下来的块，6.22 亿就是它的 300 帧铺满一面墙。挑中后这个 -p 续跑两轮修；之后我提「从 1 分 17 秒那里直接穿出去，是一张正在运作的显卡，然后显存爆炸」，它先和我对齐，再续跑两轮。半夜我再列了几处看不懂的地方，它开 4 个 claude -p 各改一处，再派一个只查不改的去排查全片哪里「接得割裂」。</p>
+      <div class="tbl-scroll"><table class="runs">
+        <thead><tr><th>沙盒</th><th>做什么</th><th class="num">调用</th><th class="num">花费</th><th class="num">看图</th></tr></thead>
+        <tbody>
+          <tr><td>锚点 · medium</td><td>出一个方向</td><td class="num">1</td><td class="num">$1.53</td><td class="num">4</td></tr>
+          <tr><td>锚点 · high <span class="ok">挑中</span></td><td>出方向 → 两轮修 → 拉出去是一张显卡 → 显卡要实、崩溃要大</td><td class="num">5</td><td class="num">$15.54</td><td class="num">45</td></tr>
+          <tr><td>锚点 · xhigh</td><td>出一个方向</td><td class="num">1</td><td class="num">$3.27</td><td class="num">7</td></tr>
+          <tr><td>第五轮 · 对话框</td><td>开头「拖进对话框」</td><td class="num">1</td><td class="num">$2.88</td><td class="num">13</td></tr>
+          <tr><td>第五轮 · 流水线</td><td>工业流水线：传送带上的视频砖</td><td class="num">2</td><td class="num">$6.42</td><td class="num">24</td></tr>
+          <tr><td>第五轮 · 速率</td><td>1.49 Gbps：把「一秒」演出来</td><td class="num">2</td><td class="num">$4.32</td><td class="num">16</td></tr>
+          <tr><td>第五轮 · 语言模型</td><td>「并不能直接输入语言模型」</td><td class="num">2</td><td class="num">$5.08</td><td class="num">19</td></tr>
+          <tr><td>接缝排查</td><td>只查不改：全片哪里接得割裂</td><td class="num">1</td><td class="num">$2.89</td><td class="num">11</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted">8 个 claude -p，15 次调用（含续跑），合计 $41.93。排查结论：10 个段界逐像素无缝，割裂全在后来盖上去的地方，而且配乐没跟着画面改。</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="n">06<small>10-15 凌晨</small></div>
+    <div class="stage-b">
+      <h3>睡前一条消息，AI 质检到天亮</h3>
+      <p>01:34 我发了一条：对整条片做质检和优化，看观众能不能懂、画面精不精美、音效配乐合不合适，限时 6 小时。Claude Code 先渲一版整片（r0），请 Gemini 3.1 Pro 当普通观众和混音师各看一遍、逐段打分；再派 agent 分头查画面、评人声、修 QKV 那段、重做配乐和音效；改完再渲 r1、r2、r3，逐帧比对前后两版有没有引入新的跳帧，最后 3 个 agent 分三截复查全片画面、1 个复查声音。04:51 收工。</p>
+      <div class="chart">
+        <div class="chart-h"><h3>01:34 – 04:51 的五个工作流</h3><div class="legend"><span><i class="sw" style="background:var(--sub)"></i>修改的 agent</span><span><i class="sw" style="background:#9AA8C3"></i>质检 agent</span><span><i class="sw" style="background:var(--ink)"></i>我发消息</span></div></div>
+        <div class="gantt" id="gantt2"></div>
+      </div>
+      <div class="stats in">
+        <div class="stat"><b>18<small>个</small></b><span>agent</span></div>
+        <div class="stat"><b>962<small>次</small></b><span>agent 操作</span></div>
+        <div class="stat"><b>5<small>版</small></b><span>整片 r0 → r3</span></div>
+        <div class="stat"><b>8<small>份</small></b><span>Gemini 整片评审</span></div>
+      </div>
+      <p>质检抓到的一处必修：结尾那句「一辆红色汽车向右行驶」往下掉，穿过字幕带，和字幕叠成乱码。见下面「前后对照」最后一组。</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="n">07<small>10-15 白天</small></div>
+    <div class="stage-b">
+      <h3>收尾：克隆音、字幕、导出、发布</h3>
+      <p>我听出克隆音「有点发蒙」。AI 把克隆的那些段和旁边的原声对比：音高差 0.6 个半音以上的变调、按频谱补 EQ、响度对齐、垫上原声的房间底噪，原声一个采样没动；配乐音效只在克隆段按新人声重算避让。我说字体不对，它查出画面里几处刻字渲染时没等普惠体加载完、退回了衬线体，修好；字幕字号对照我以前达芬奇成片，改成字高 = 画高 5%；我核文案时发现 3:37 那句「258 个 Visual Token」没上字幕，补上。Remotion 直出 H.265 2880×2160，399 MB，-14.8 LUFS。AI 用系统文件对话框塞进视频和横封面；标题、简介、话题和竖封面是我自己改的，发布键我点。</p>
+      <div class="stats in">
+        <div class="stat"><b>15,850<small>行</small></b><span>画面代码（含着色器 1,811）</span></div>
+        <div class="stat"><b>379<small>次</small></b><span>跑 Remotion 渲视频</span></div>
+        <div class="stat"><b>177<small>次</small></b><span>跑 Remotion 渲静帧</span></div>
+        <div class="stat"><b>15:08</b><span>10-15 抖音发出</span></div>
+      </div>
+      <p class="muted">渲染次数按三层 AI 跑过的命令条数数，含低清预览和分段渲染。代码行数是成片工程 src/ 下 76 个文件之和。</p>
+    </div>
+  </div>
+</section>
+
+<section id="wall">
+  <div class="sec-head">
+    <div class="eyebrow">画面墙</div>
+    <h2>每段 4 秒</h2>
+    <p class="lead">从成片里每段截一小截，循环播放、静音。全部是代码逐帧画的，没有一张素材图。</p>
+  </div>
+  <div class="segs" id="segwall"></div>
+</section>
+
+<section id="evo">
+  <div class="sec-head">
+    <div class="eyebrow">前后对照</div>
+    <h2>同一秒：第一版整片 vs 成片</h2>
+    <p class="lead">左边是 10-14 中午 10 段第一次拼成整片时的低清预览（576×432），右边是成片同一时刻。中间隔着的，是我说的那几句话和后面三个阶段。</p>
+  </div>
+  <div class="evo" id="evolist"></div>
+  <div class="gal-h"><h3>全片每 6 秒一帧</h3><span class="muted">70 格，从左上往右读</span></div>
+  <figure class="strip"><img src="img/strip.jpg" alt="成片每 6 秒截一帧拼成的 10×7 格大图" loading="lazy" width="2880" height="1512"></figure>
+</section>
+
+<section id="said">
+  <div class="sec-head">
+    <div class="eyebrow">我说过的话</div>
+    <h2>挑毛病的那几句</h2>
+    <p class="lead">114 条消息里，很多是「做吧」「咋样」「好了叫我」。真正改变了片子的是下面这些。</p>
+  </div>
+  <div class="said">
+    <div><span class="t">10-12</span><q>这些都是误删，全部补回去，然后补回去之后，把这些片段全部进行染色。</q><span class="a">14 处补回、染橙，重出混音 v4。</span></div>
+    <div><span class="t">10-12</span><q>都不太行，都不太行。</q><span class="a">开头第一轮 4 版全否，只留工程底版。</span></div>
+    <div><span class="t">10-13</span><q>我觉得不行，重新做吧。</q><span class="a">不再一版版试，一夜开 5 个方向。</span></div>
+    <div><span class="t">10-14</span><q>我完全认可，太厉害了。</q><span class="a">开头 40 秒定稿。</span></div>
+    <div><span class="t">10-14</span><q>动画的知识可视化不够……从平面到背后的原理的状态，对应的可视化应该是什么样子的呢？</q><span class="a">第 2、8 段又开工作流重做一版，我看完觉得不如上一版，退回。</span></div>
+    <div><span class="t">10-14</span><q>我感觉还不如上一版呢……你恢复到上一版吧。</q><span class="a">按 git 记录退回。</span></div>
+    <div><span class="t">10-14</span><q>我觉得现在画面是缺少一个锚点，让观众对里面的内容有一个现实锚点。</q><span class="a">三档 -p 出方向：拿红车视频本身当尺子。</span></div>
+    <div><span class="t">10-14</span><q>直接从那里一下子穿梭到一张显卡的外面，展示它是一张正在运作的显卡……然后显存爆炸。你先和我对齐啊，和我讨论，不要直接做。</q><span class="a">对齐后续跑三轮，显存崩溃变成一张真显卡。</span></div>
+    <div><span class="t">10-15</span><q>虽然各个分段都没问题，但单独去细改某一段的时候，和上下经常融合得很差。</q><span class="a">派一个只查不改的 -p 排查全片接缝，配乐按新画面重排。</span></div>
+    <div><span class="t">10-15</span><q>我感觉克隆音的问题是，有点发蒙。</q><span class="a">克隆段贴原声：变调、补 EQ、垫底噪。</span></div>
+    <div><span class="t">10-15</span><q>这字体有点不对啊，你用的是黑体吗？</q><span class="a">画面刻字等普惠体加载完再画；字幕字号对齐以前的成片。</span></div>
+    <div><span class="t">10-15</span><q>「最终生成约 258 个 Visual Token」，这个没有……这个加上去然后重新导出。其他的别动。</q><span class="a">补 3 条字幕，只动这一处。</span></div>
+  </div>
+</section>
+
+<section id="lesson">
+  <div class="sec-head">
+    <div class="eyebrow">收获</div>
+    <h2>做完这条，我记住了三件事</h2>
+  </div>
+  <div class="takeaways">
+    <div class="tk"><div class="n">1</div><div><h3>一版一版试不行，就让它一次开五个方向</h3><p>前三轮 7 个 claude -p 都在同一个思路里打转。换成一夜 5 个方向并排做、评委先筛一遍，第二天早上我只用看一版，一看就认可。</p></div></div>
+    <div class="tk"><div class="n">2</div><div><h3>每段都好，不等于接起来好</h3><p>10 段分开做时，Claude Code 一开始就让每两段在交接处画同一张图，段界逐像素无缝。可后来单独改某一段、盖上去的地方，还是和上下接得割裂，声音尤其明显。最后专门派一个只查不改的去量接缝，配乐跟着新画面重排。</p></div></div>
+    <div class="tk"><div class="n">3</div><div><h3>大数字要有一个看得见的东西去比</h3><p>6.22 亿、3.87×10¹⁷，念出来没感觉。拿观众已经认识的那段红车视频当尺子，再落到一张会炸的显卡上，这个数才有了重量。</p></div></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="sec-head">
+    <div class="eyebrow">问答</div>
+    <h2>常见问题</h2>
+  </div>
+  <div class="faq">
+    <div><h3>这条视频的画面是怎么做的？</h3><p>全片没有人脸，也没有素材库。Claude Code 在 Remotion 工程里自己写了一个 WebGL2 渲染器（带泛光和色调映射），片子里那段红车夜街视频也是代码生成的，300 帧里任意一帧的任意一个像素都能算出来。每一帧只由帧号决定，同一帧渲两遍完全一样。工程最后约 15,850 行代码，其中着色器约 1,811 行。</p></div>
+    <div><h3>这条视频里，人做了什么，AI 做了什么？</h3><p>我录口播、在达芬奇里剪气口、看片挑毛病、拍板，最后自己写抖音标题简介、点发布，5 天里发了 114 条消息。其余是 AI：Claude Code 在 6 段对话里动手 1,588 次；它派出 85 个子 agent，动手 7,314 次；另跑了 15 个 claude -p，动手 890 次。</p></div>
+    <div><h3>片子里的声音都是你本人吗？</h3><p>大部分是。录音时英文词我先念成「单词」占位、读错的短句没重录，AI 用我声音的零样本克隆补了 18 处，合计约 2 分钟，再按原声变调、补 EQ、垫房间底噪，让它和原声接得上。配乐和音效全部由 Lyria 生成，没用素材包。</p></div>
+    <div><h3>开头为什么做了这么多轮？</h3><p>前三轮（三个档位各一版、一个 3D 版、参考其他博主的两版和融合版）我都说不行。第四次 Claude Code 一夜同时做 5 个方向，评委打分，它再选底版、做两版对比、四路修、合并、质检，第二天上午交出来，我一看就认可了。</p></div>
+    <div><h3>Gemini 在这里干什么？</h3><p>凌晨质检时，Claude Code 把整片发给 Gemini 3.1 Pro，让它扮普通观众和混音师各看一遍、逐段打分挑刺，一共 8 份报告。它反复提到的问题，比如 QKV 那段看不懂、音效该有却没有，后面都派了 agent 去改。</p></div>
+    <div><h3>一共花了多少钱？</h3><p>15 个 claude -p 按 API 价格折算约 $88.77：开头前三轮 $46.84，现实锚点和第五轮 $39.04，接缝排查 $2.89。85 个子 agent 和 Claude Code 主对话的花费没有记录，算不出来。</p></div>
+  </div>
+
+  <footer>
+    <p>消息条数和操作次数来自 10-11 到 10-15 的 6 段对话记录、它们派出的 85 个子 agent 和 15 个 claude -p 的记录；工作流的分工和起止时间来自工作流日志。claude -p 的用时、花费取自每次运行的结果记录，按 API 价格折算；续跑记录的是累计数，取最后一次。「看图」= 打开 png / jpg 的次数。克隆音、误删、混音、导出的数字来自当时的工程文件和对话记录。「前后对照」左图是 10-14 12:41 渲的整片预览，右图和画面墙都从成片截取。「我说过的话」摘自对话记录原文。</p>
+    <p>陈与小金 · 用 Claude Code、Remotion、DaVinci Resolve 制作 · <a href="https://github.com/chenyuxiaojin/vibevideo/tree/main/2026-10-11-model-watch-video">文字版</a> · <a href="https://github.com/chenyuxiaojin/vibevideo">GitHub 仓库</a> · <a href="../">全部幕后</a></p>
+  </footer>
+</section>
+
+</main>
+<div id="tip" hidden></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = 12548 / 30;
+  var fmtT = function (s) { var m = Math.floor(s / 60), r = Math.floor(s - m * 60); return m + ':' + (r < 10 ? '0' : '') + r; };
+
+  // ── 片子讲的内容:点一步看那一刻 ──
+  var STEPS = [
+    ['拖进对话框', 6, '一段 10 秒的全高清视频拖进对话框，敲下回车。这段红车夜街视频本身也是 AI 用代码画的。'],
+    ['几十 MB', 12, '回车的瞬间，你交给它的不是一段影像，只是一个几十 MB 的压缩文件：画面被拧成一张光盘。'],
+    ['1.86 GB', 18, '解开之后是 300 张画面、1.86 GB 的原始像素，铺成一片光海。'],
+    ['显存崩溃', 104, '要是每个像素都当 Token，一次注意力要两两比对 3.87×10¹⁷ 次，显存当场崩溃。'],
+    ['每秒 1 帧', 132, '第一道工序：解封装、丢帧。常见的默认做法是每秒只留 1 帧，300 帧丢掉 290 帧。'],
+    ['16×16 切块', 192, '第二道工序：每帧切成 16×16 像素的小块，一块 768 个数，压成一个向量。'],
+    ['排列不变性', 258, '这些 Token 打乱顺序，算出来的结果一样：模型分不清左上右下、前一秒后一秒。'],
+    ['音频 Token', 300, '声音经过傅里叶变换变成时频谱图，切成 Audio Token，像拉链一样插进画面 Token 之间。'],
+    ['注意力', 330, '最后一道工序：Token 排成一条长阵列，进注意力矩阵。'],
+    ['输出一句话', 378, '同一秒里算轮廓，跨秒算位移，最后输出一行字：「一辆红色汽车向右行驶」。']
+  ];
+  var steps = $('steps'), pimg = $('pipe-img'), pcap = $('pipe-cap');
+  steps.innerHTML = STEPS.map(function (s, i) {
+    return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><span class="k">' + fmtT(s[1]) + '</span>' + s[0] + '</button></li>';
+  }).join('');
+  var pick = function (i) {
+    var s = STEPS[i];
+    pimg.src = 'img/s' + (i + 1) + '.jpg'; pimg.alt = s[0] + ' 那一刻的画面';
+    pcap.textContent = fmtT(s[1]) + ' ' + s[0] + '：' + s[2];
+    steps.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === i)); });
+  };
+  steps.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(0);
+  STEPS.forEach(function (s, i) { var im = new Image(); im.src = 'img/s' + (i + 1) + '.jpg'; });
+
+  // ── 段落:[名字, 起, 止(秒), 片段起点, 一句话, 谁画的] ──
+  var SEG = [
+    ['开头 · 拆容器', 0, 1218 / 30, 15.8, '回车把画面拧成光盘，「解开」时炸成画面球、砸地点燃 300 帧光海，再拆成灯、缠成 MP4 唱片、逐行写回 RGB。', '一夜 5 个方向里选出的「光的宇宙」'],
+    ['S01 像素的账', 1218 / 30, 2009 / 30, 46, '2,073,600 像素、RGB 各 8 bit、一帧 6.22 MB、一秒 1.49 Gbps。', '第 1 批 agent；速率那句第五轮重做'],
+    ['S02 Transformer 吃不下', 2009 / 30, 3490 / 30, 101, '拿红车视频当尺子数出 6.22 亿个 Token，最后落到一张显卡上，显存崩溃。', '现实锚点 -p 改了 5 轮'],
+    ['S03 工序一 · 抽帧', 3490 / 30, 4823 / 30, 128, '解封装、每秒只留 1 帧：300 帧里丢掉 290 帧，丢弃率 96.7%。', '第 1 批 agent'],
+    ['S04 工序二 · 切块', 4823 / 30, 5830 / 30, 180, '留下的 10 帧被光栅切成 16×16 的小方块。', '第 1 批 agent'],
+    ['S05 变成 Token', 5830 / 30, 6948 / 30, 202, '一块 768 个数展平、线性投影，凝成一枚发光胶囊：2580 个 Visual Token。', '凌晨质检时又修过'],
+    ['S06 排列不变性 · 坐标', 6948 / 30, 8519 / 30, 245, '胶囊被打乱也一样；于是每枚刻上行列号和秒数。', '第 1 批 agent'],
+    ['S07 音频拉链', 8519 / 30, 9757 / 30, 302, '声波变成时频谱图，切成 Audio Token，拉链一样插进画面 Token。', '第 1 批 agent'],
+    ['S08 工序四 · 注意力', 9757 / 30, 10650 / 30, 329, 'Token 投影成 Query、Key、Value 三面墙，开始两两算注意力。', '凌晨质检时重做两次'],
+    ['S09 输出一句话', 10650 / 30, 11645 / 30, 362, '跨秒的连线画出红车向右的轨迹，Softmax 吐出一行字。', '第 1 批 agent'],
+    ['S10 结尾', 11645 / 30, T, 400, '丢掉 96.7% 的连续性之后，模型玩的是一场概率拼图。', '凌晨质检时修过']
+  ];
+  $('segwall').innerHTML = SEG.map(function (s, i) {
+    var n = (i < 10 ? '0' : '') + i;
+    return '<figure class="seg"><div class="v"><video src="clips/c' + n + '.mp4" poster="clips/c' + n + '.jpg" muted loop playsinline preload="none" aria-label="' + s[0] + '" width="640" height="480"></video><span class="n">' + fmtT(s[3]) + '</span></div>' +
+      '<h4>' + s[0] + '<span>' + fmtT(s[1]) + '–' + fmtT(s[2]) + '</span></h4><p>' + s[4] + '</p><span class="muted">' + s[5] + '</span></figure>';
+  }).join('');
+
+  // ── 前后对照 ──
+  var EVO = [
+    [64, '1.49 Gbps', '速率 = 量 ÷ 时间，旧版只有量、下半屏全空。新版把「一秒」演出来：一秒一个格子，10 格装满 10 秒。', '这个画面现在只有上半部分，下半部分完全是空的。', '第五轮 · 速率'],
+    [80, '每个像素都当 Token', '旧版是一串抽象光点。新版拿观众认识的那段红车视频当尺子：Token 就是从它身上切下来的块。', '我觉得现在画面是缺少一个锚点。', '现实锚点 · high'],
+    [98, '6.22 亿个 Token', '旧版是一束光线。新版是 300 帧铺满的一整面墙，一眼看出有多少。', '让观众对里面的内容有一个现实锚点。', '现实锚点 · high'],
+    [104, '显存崩溃', '旧版整屏烧白。新版从一张正在干活的显卡上看显存一块块裂开。', '直接从那里一下子穿梭到一张显卡的外面……然后显存爆炸。', '现实锚点 · 第 4、5 轮'],
+    [112, '工业流水线', '旧版三个工位加工的是一条看不出是什么的光带。新版是传送带上一块由 300 帧叠成的「视频砖」，三台机器各做一件看得见的事。', '', '第五轮 · 流水线'],
+    [330, 'Query / Key / Value', '旧版是一串光点。新版是三面墙，Gemini 当观众时说这段最看不懂，凌晨质检又重做了两次。', '', '凌晨质检 · QKV']
+  ];
+  var ev = EVO.map(function (e, i) {
+    var n = i + 1;
+    return '<div class="evo-row"><div class="evo-lab"><h3>' + e[1] + '</h3><span class="m">' + fmtT(e[0]) + ' · ' + e[4] + '</span>' +
+      (e[3] ? '<q>' + e[3] + '</q>' : '') + '<p>' + e[2] + '</p></div>' +
+      '<div class="evo-imgs"><figure><img src="img/v' + n + '-old.jpg" alt="10-14 第一版整片 ' + fmtT(e[0]) + '" loading="lazy" width="576" height="432"><figcaption><b>10-14 第一版</b></figcaption></figure>' +
+      '<figure><img src="img/v' + n + '-new.jpg" alt="成片 ' + fmtT(e[0]) + '" loading="lazy" width="960" height="720"><figcaption><b>成片</b></figcaption></figure></div></div>';
+  });
+  ev.push('<div class="evo-row"><div class="evo-lab"><h3>质检抓到的穿帮</h3><span class="m">6:30 · 凌晨质检 r0</span><p>结尾那句「一辆红色汽车向右行驶」往下掉，穿过字幕带，和字幕叠成一团。质检 agent 把这几帧渲成全分辨率静帧亲眼确认，标成「必修」，改完再逐帧复查。</p></div>' +
+    '<div class="evo-imgs"><figure><img src="img/qa-r0.jpg" alt="质检前:大字和字幕叠在一起" loading="lazy" width="720" height="540"><figcaption><b>10-15 01:41 质检前</b></figcaption></figure>' +
+    '<figure><img src="img/qa-final.jpg" alt="成片:只剩字幕" loading="lazy" width="960" height="720"><figcaption><b>成片（带字幕版）</b></figcaption></figure></div></div>');
+  $('evolist').innerHTML = ev.join('');
+
+  // ── 成片时间线 ──
+  var pos = function (a, b) { return 'left:' + (a / T * 100) + '%;width:' + ((b - a) / T * 100) + '%'; };
+  var CLONE = [[11.93, 20.148], [27.567, 32.997], [65.74, 71.06], [71.40, 76.16], [114.533, 117.663], [169.333, 175.523], [181.673, 186.693], [210.31, 215.53], [215.53, 224.645], [224.645, 230.213], [237.767, 242.657], [287.267, 296.797], [297.133, 300.823], [327.30, 336.79], [376.767, 385.70], [385.70, 391.765], [391.765, 398.0], [398.0, 413.76]].map(function (r) { return [r[0] + 1.5, r[1] + 1.5]; });
+  var FIX = [[1830 / 30, 2005 / 30, '速率：把「一秒」演出来（第五轮）'], [2310 / 30, 3171 / 30, '现实锚点：视频当尺子 → 显卡显存崩溃'], [3159 / 30, 3487 / 30, '工业流水线：视频砖上传送带（第五轮）']];
+  var t = '<div class="tl-lab">段落<small>开头 + 10 段</small></div><div class="tl-track">';
+  SEG.forEach(function (s, i) { t += '<div class="tl-b s fit" style="' + pos(s[1], s[2]) + '" data-tip="' + s[0] + '：' + fmtT(s[1]) + ' – ' + fmtT(s[2]) + '">' + (i === 0 ? '开头' : 'S' + i) + '</div>'; });
+  t += '</div><div class="tl-lab">后来改的画面<small>单独重做再盖上</small></div><div class="tl-track">' + FIX.map(function (f) { return '<div class="tl-b f" style="' + pos(f[0], f[1]) + '" data-tip="' + f[2] + '：' + fmtT(f[0]) + ' – ' + fmtT(f[1]) + '"></div>'; }).join('');
+  t += '</div><div class="tl-lab">口播<small>原声 + 克隆音</small></div><div class="tl-track"><div class="tl-b t" style="' + pos(1.5, 415.3) + '" data-tip="口播：0:01 起，6:53.8"></div>' + CLONE.map(function (c) { return '<div class="tl-b c" style="' + pos(c[0], c[1]) + '" data-tip="克隆音：' + fmtT(c[0]) + ' – ' + fmtT(c[1]) + '"></div>'; }).join('');
+  t += '</div><div class="tl-lab">配乐 + 音效<small>全部 Lyria 生成</small></div><div class="tl-track"><div class="tl-b t" style="' + pos(0, T) + '" data-tip="配乐和音效：两条整长的轨，从第 0 帧铺"></div></div><div></div><div class="tl-axis">';
+  for (var m = 0; m <= 6; m++) t += '<span style="left:' + (m * 60 / T * 100) + '%">' + m + ':00</span>';
+  $('tl').innerHTML = t + '</div>';
+  $('tl-legend').innerHTML = '<span><i class="sw" style="background:var(--p)"></i>段落</span><span><i class="sw" style="background:var(--fix)"></i>后来改的画面</span><span><i class="sw" style="background:var(--track)"></i>原声 / 配乐</span><span><i class="sw" style="background:var(--clone)"></i>克隆音</span>';
+  var fit = function () {
+    document.querySelectorAll('.tl-b.fit').forEach(function (el) { el.style.color = ''; if (el.scrollWidth > el.clientWidth + 1) el.style.color = 'transparent'; });
+  };
+  window.addEventListener('load', fit); window.addEventListener('resize', fit); fit();
+
+  // ── 工作流甘特:[名字, 起(时:分), 止, 评委?] ──
+  var gantt = function (el, start, end, rows, me) {
+    var toM = function (s) { var p = s.split(':'); var h = +p[0]; if (h < start[1]) h += 24; return h * 60 + +p[1]; };
+    var a = start[0] * 60, b = end * 60, W = b - a;
+    var x = function (s) { return ((toM(s) - a) / W * 100); };
+    var h = rows.map(function (r) {
+      return '<div class="g-row"><span>' + r[0] + '</span><div class="bar"><i class="' + (r[3] ? 'j' : '') + '" style="left:' + x(r[1]) + '%;width:' + Math.max(0.6, x(r[2]) - x(r[1])) + '%" data-tip="' + r[0] + '：' + r[1] + ' – ' + r[2] + (r[4] ? '，' + r[4] : '') + '"></i>' +
+        (me || []).map(function (m) { return '<i class="me" style="left:' + x(m[0]) + '%" data-tip="我：' + m[1] + '"></i>'; }).join('') + '</div></div>';
+    }).join('');
+    var ax = '<div class="g-axis"><i></i><div>';
+    for (var k = start[0]; k <= end; k += start[2]) { var hh = k % 24; ax += '<span style="left:' + ((k * 60 - a) / W * 100) + '%">' + (hh < 10 ? '0' : '') + hh + ':00</span>'; }
+    el.innerHTML = h + ax + '</div></div>';
+  };
+  gantt($('gantt'), [18, 12, 2], 34.9, [
+    ['5 个方向 + 3 评委', '18:23', '21:54', 0, '8 个 agent，1,349 次操作'],
+    ['两种爆法 + 配乐 + 3 评委', '22:04', '00:37', 0, '6 个 agent，980 次操作'],
+    ['四路修 + 合并 + 质检', '00:51', '10:45', 0, '9 个 agent，1,469 次操作']
+  ], [['18:10', '「我觉得不行，重新做吧。」'], ['10:54', '「我完全认可，太厉害了。」']]);
+  gantt($('gantt2'), [1, 0, 1], 5, [
+    ['画面 / 人声 / 配乐 / 音效', '01:57', '02:35', 0, '6 个 agent：修 QKV、修展平、画面质检、人声评估、配乐、音效'],
+    ['三处打磨 + 复审', '02:42', '03:30', 0, '6 个 agent'],
+    ['QKV 第二修', '02:50', '03:07', 0, '1 个 agent'],
+    ['显存崩溃材质', '03:18', '03:30', 0, '1 个 agent'],
+    ['分三截终审 + 声音', '03:34', '03:43', 1, '4 个 agent，只查不改']
+  ], [['01:34', '睡前发了一条消息，限时 6 小时']]);
+
+  // ── 分工格子:一格 = 10 次 ──
+  document.querySelectorAll('.units').forEach(function (el) {
+    var n = Math.round(+el.dataset.n / 10), s = '';
+    for (var i = 0; i < n; i++) s += '<i style="background:' + el.dataset.c + '"></i>';
+    el.innerHTML = s;
+  });
+
+  // ── 循环片段:进入视口才播,减少动态时不自动播 ──
+  var vids = document.querySelectorAll('video');
+  if (!reduce && window.IntersectionObserver) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { rootMargin: '120px' });
+    vids.forEach(function (v) { io.observe(v); });
+  } else {
+    vids.forEach(function (v) { v.controls = true; });
+  }
+
+  // ── 悬停提示 ──
+  var tipEl = $('tip');
+  var show = function (el) {
+    tipEl.textContent = el.dataset.tip; tipEl.hidden = false;
+    var r = el.getBoundingClientRect(), w = tipEl.offsetWidth;
+    var x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+    var y = r.top - tipEl.offsetHeight - 8; if (y < 8) y = r.bottom + 8;
+    tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
+  };
+  var hide = function () { tipEl.hidden = true; };
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.tabIndex = 0;
+    el.addEventListener('pointerenter', function () { show(el); });
+    el.addEventListener('pointerleave', hide);
+    el.addEventListener('focus', function () { show(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // ── 导航条高亮当前段 ──
+  var links = document.querySelectorAll('.chapters a');
+  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
+  var mark = function () {
+    var y = window.scrollY + 120, cur = 0;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  };
+  window.addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+</body>
+</html>

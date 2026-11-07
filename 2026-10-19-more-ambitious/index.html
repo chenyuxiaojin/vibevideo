@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>《更有野心》幕后：71 小时从刷到原文到发出去，画面推倒重做了一遍 · 陈与小金</title>
+<meta name="description" content="《怎么更有野心：写给用模型的人的教程》13 分 03 秒，画面全部是 AI 在 Remotion 里写代码画的。第一版 34 个工人 2 个半小时做完；开头 3 个方向 × 3 个档位 9 版同时做；第 2–7 章各派一个 claude -p 重做，12 个质检官只看画面打分、返修两轮。我发了 144 条消息，Claude Code 动手 4,949 次，claude -p 另跑 12 次、$93.82。">
+<meta name="author" content="陈与小金">
+<link rel="author" href="https://xiaochens.com/">
+<link rel="canonical" href="https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/">
+<link rel="alternate" type="text/markdown" href="https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/README.md" title="文字版">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="陈与小金 · 视频幕后">
+<meta property="og:title" content="《更有野心》幕后：71 小时从刷到原文到发出去，画面推倒重做了一遍">
+<meta property="og:description" content="开头 9 版同时做，我挑了 AI 排在最后的那版；第 2–7 章各一个 claude -p 重做，12 个质检官只看画面猜意思、打分，返修两轮。附每一轮的画面对照。">
+<meta property="og:url" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/">
+<meta property="og:image" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/cover.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="article:published_time" content="2026-11-07">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="《更有野心》幕后：71 小时从刷到原文到发出去，画面推倒重做了一遍">
+<meta name="twitter:description" content="开头 9 版同时做；第 2–7 章各一个 claude -p 重做，12 个质检官只看画面打分、返修两轮。">
+<meta name="twitter:image" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/cover.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://xiaochens.com/#person", "name": "陈与小金", "alternateName": ["chenyuxiaojin", "CYXJ"], "jobTitle": "Forward Deployed Engineer（FDE）· AI 落地", "description": "非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。", "url": "https://xiaochens.com/", "knowsAbout": ["AI 内容生产", "AI 视频工作流", "Claude Code", "Codex", "Remotion", "Agent Skills", "MCP Server", "DaVinci Resolve", "剪映", "非技术背景 AI 实操"], "sameAs": ["https://blog.xiaochens.com/", "https://github.com/chenyuxiaojin", "https://www.youtube.com/@cyxj_ai", "https://space.bilibili.com/505358756", "https://v.douyin.com/A1qVQrOgPjY/", "https://x.com/cyxjya", "https://chenyuxiaojin.github.io/vibevideo/"]}, {"@type": "VideoObject", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/#video", "name": "怎么更有野心：写给用模型的人的教程", "description": "拆解 Anthropic 做 Claude 的工程负责人 Felix Rieseberg 的长文《How to be more ambitious》：野心分速度、高度、深度、广度四个方向，逐条拆完。", "thumbnailUrl": ["https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/cover.jpg"], "uploadDate": "2026-10-22", "duration": "PT13M3S", "inLanguage": "zh-CN", "creator": {"@id": "https://xiaochens.com/#person"}, "keywords": "更有野心, Felix Rieseberg, Claude Code, Remotion, claude -p, 盲看质检, 克隆配音"}, {"@type": "TechArticle", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/#article", "headline": "《更有野心》幕后：71 小时从刷到原文到发出去，画面推倒重做了一遍", "description": "《怎么更有野心：写给用模型的人的教程》13 分 03 秒。第一版全片 34 个工人 2 个半小时做完；开头 9 版同时做；第 2–7 章各一个 claude -p 重做，12 个质检官只看画面打分、返修两轮。我发了 144 条消息，Claude Code 动手 4,949 次，claude -p 另跑 12 次、$93.82。", "image": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/cover.jpg", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "inLanguage": "zh-CN", "author": {"@id": "https://xiaochens.com/#person"}, "publisher": {"@id": "https://xiaochens.com/#person"}, "mainEntityOfPage": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/", "about": [{"@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/#video"}, {"@type": "SoftwareApplication", "name": "Claude Code"}, {"@type": "SoftwareApplication", "name": "Remotion"}, {"@type": "SoftwareApplication", "name": "DaVinci Resolve"}]}, {"@type": "FAQPage", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/#faq", "mainEntity": [{"@type": "Question", "name": "这条视频的画面是谁做的？", "acceptedAnswer": {"@type": "Answer", "text": "全部是 AI 在 Remotion 里写代码画的。第一版由 Claude Code 派 34 个工人分 7 章做；之后开头 9 版由 3 个子代理和 6 个 claude -p 同时做；第 2–7 章由 6 个 claude -p 各重做一章，再按 12 个质检官的报告返修两轮。我负责看、挑、说哪里不对。"}}, {"@type": "Question", "name": "配音是真人吗？", "acceptedAnswer": {"@type": "Answer", "text": "不是现场录的。用我上一期自己录的约 3 分钟原声克隆，AI 比了四代模型，我挑声音、定语速至少每分钟 300 字，AI 先剪停顿再拉伸。"}}, {"@type": "Question", "name": "开头为什么重做？", "acceptedAnswer": {"@type": "Answer", "text": "第一版开头是一张小截图，前 5 秒几乎不动。AI 按 3 个方向 × 3 个档位同时做了 9 版，54 分钟全部交回。AI 推荐的前三名我都没要，挑了它排在最后的小克主演版。"}}, {"@type": "Question", "name": "一共花了多少钱？", "acceptedAnswer": {"@type": "Answer", "text": "12 次 claude -p 合计 $93.82（按 API 价格折算）：开头 6 版约 $19.3，第 2–7 章重做加返修约 $74.5。Claude Code 主会话和子代理的花费没有统计。"}}, {"@type": "Question", "name": "发布是 AI 点的吗？", "acceptedAnswer": {"@type": "Answer", "text": "不是。AI 会打开浏览器上传、填标题简介、传封面，发布键都是我手动点的。"}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "陈与小金 · 视频幕后", "item": "https://chenyuxiaojin.github.io/vibevideo/"}, {"@type": "ListItem", "position": 2, "name": "《更有野心》幕后", "item": "https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/"}]}]}</script>
+<style>
+/* 版式照上一期:浅灰底 + 白卡片,系统字体,蓝色只给链接和「AI」标记;成片是 16:9,配图一律 16:9 */
+:root {
+  --bg: #F2F2F4;
+  --panel: #FFFFFF;
+  --panel-2: #F0F1F4;
+  --line: #E2E2E6;
+  --ink: #1D1D1F;
+  --ink-2: #55555A;
+  --ink-3: #8A8A8F;
+  --accent: #0A66D6;
+  --p: #8FB8F2; /* claude -p */
+  --sub: #B9A7F0; /* 子代理 */
+  --zhu: #C0392B; /* 小克的朱红 */
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .05);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.3; font-weight: 700; }
+h3 { font-size: 20px; line-height: 1.4; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 13px; color: var(--ink-3); }
+.lead { color: var(--ink-2); max-width: 40em; }
+.muted { color: var(--ink-3); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 96px; }
+
+/* 顶部导航 */
+.chapters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.chapters .inner { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); display: flex; overflow-x: auto; scrollbar-width: none; }
+.chapters a { flex: 1 0 auto; color: var(--ink-3); font-size: 12px; padding: 10px 12px; border-bottom: 2px solid transparent; white-space: nowrap; text-align: center; }
+.chapters a:hover, .chapters a.on { color: var(--ink); border-bottom-color: var(--accent); text-decoration: none; }
+
+section { padding-top: 88px; scroll-margin-top: 48px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
+
+/* 开场 */
+.hero { padding-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 44px); line-height: 1.22; font-weight: 700; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 18px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.stat { background: var(--panel); padding: 14px 14px 12px; min-width: 0; }
+.stat b { display: block; font-size: 24px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat b small { font-size: 13px; font-weight: 400; color: var(--ink-2); margin-left: 3px; }
+.stat span { font-size: 12px; color: var(--ink-3); }
+.stats.in { margin: 0 0 28px; }
+
+/* 制作流程:点一步看那一刻的画面 */
+.pipe { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 14px; display: grid; gap: 12px; min-width: 0; }
+.pipe-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: #EEE9DF; }
+.pipe-cap { font-size: 13px; color: var(--ink-2); min-height: 4.8em; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+.steps button { width: 100%; height: 100%; font: 500 12px/1.35 var(--font); color: var(--ink-2); background: var(--panel-2); border: 1px solid transparent; border-radius: 8px; padding: 7px 4px 6px; cursor: pointer; display: grid; gap: 4px; justify-items: center; text-align: center; }
+.steps button:hover { color: var(--ink); }
+.steps button[aria-pressed="true"] { background: var(--panel); border-color: var(--accent); color: var(--ink); }
+.who { display: inline-grid; place-items: center; min-width: 22px; height: 18px; padding: 0 5px; border-radius: 999px; font: 600 10px/1 var(--font); }
+.who.me { background: var(--ink); color: var(--bg); }
+.who.ai { background: var(--accent); color: #fff; }
+.who.p { background: var(--p); color: #0A1A33; }
+
+/* 分工:一格 = 10 次 */
+.share { display: grid; gap: 22px; border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 22px clamp(14px, 2.6vw, 28px); }
+.sh-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: start; }
+.sh-lab { display: grid; gap: 2px; }
+.sh-lab .nm { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.sh-lab b { font-size: 30px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.sh-lab b small { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 4px; }
+.sh-lab span.d { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+.units { display: flex; flex-wrap: wrap; gap: 3px; padding-top: 6px; }
+.units i { width: 10px; height: 10px; border-radius: 2px; }
+.sh-break { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--ink-2); }
+.sh-break b { font-weight: 600; color: var(--ink); margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+/* 时间线 */
+.days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.day { background: var(--panel); border-radius: 14px; box-shadow: var(--shadow); padding: 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.day .dt { font-size: 13px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.day h3 { font-size: 16px; }
+.day ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.day img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+.day .n { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* 图表通用 */
+.chart { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
+.chart-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.chart-h h3 { font-size: 18px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 8px; border-radius: 2px; display: inline-block; }
+.bars { display: grid; gap: 14px; }
+.bar-g { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 14px; align-items: center; }
+.bar-g .lab { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+.bar-g .lab small { display: block; color: var(--ink-3); font-size: 11.5px; }
+.bar-stack { display: grid; gap: 4px; }
+.bar { position: relative; height: 18px; background: var(--bg); border-radius: 4px; }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; }
+.bar span { position: absolute; top: 0; line-height: 18px; font-size: 11.5px; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 6px; }
+
+figure { margin: 0; min-width: 0; }
+figure img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #EEE9DF; }
+figcaption { font-size: 13px; color: var(--ink-3); margin-top: 6px; line-height: 1.55; }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* 第一版:工人分工 */
+.crew { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 28px; }
+.crew > div { background: var(--panel); padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+.crew b { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.crew span { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+.crew .k { font-size: 13px; color: var(--ink); font-weight: 600; }
+
+/* 一段怎么变的 */
+.evo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 14px; }
+.evo figure { position: relative; }
+.evo .n { position: absolute; left: 6px; top: 6px; font: 600 11px/1 var(--font); padding: 4px 6px; border-radius: 4px; background: rgba(255, 255, 255, .92); color: var(--ink); }
+.evo .pick img { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* 开头 9 版矩阵 */
+.matrix { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; background: var(--panel); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.matrix th, .matrix td { padding: 10px 12px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+.matrix thead th { border-top: 0; background: var(--panel-2); font-size: 12px; color: var(--ink-3); font-weight: 500; }
+.matrix tbody th { font-weight: 600; width: 22%; }
+.matrix tbody th small { display: block; font-weight: 400; color: var(--ink-3); font-size: 12px; line-height: 1.5; margin-top: 2px; }
+.matrix td { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.matrix td.pick { box-shadow: inset 0 0 0 2px var(--accent); color: var(--ink); }
+.matrix td .r { display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 999px; background: var(--panel-2); color: var(--ink-2); margin-top: 3px; }
+.matrix td.pick .r { background: var(--accent); color: #fff; }
+.tbl-wrap { overflow-x: auto; border-radius: 14px; }
+.tbl-wrap .matrix { min-width: 560px; }
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.gal-h { margin: 44px 0 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.gal-h h3 { font-size: 18px; }
+
+/* 片段墙 */
+.segs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 14px; }
+.seg { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.seg .v { position: relative; }
+.seg .v video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #EEE9DF; }
+.seg .n { position: absolute; left: 6px; top: 6px; font: 600 11px/1 var(--font); padding: 4px 6px; border-radius: 4px; background: rgba(255, 255, 255, .92); color: var(--ink); font-variant-numeric: tabular-nums; }
+.seg h4 { margin: 0; font-size: 14px; line-height: 1.45; font-weight: 700; }
+.seg p { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+
+/* 质检三轮 */
+.rounds { display: grid; gap: 18px; }
+.round { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 18px; align-items: start; background: var(--panel); border-radius: 14px; box-shadow: var(--shadow); padding: 16px; }
+.round .lab { display: grid; gap: 6px; }
+.round .lab b { font-size: 15px; }
+.round .lab .sc { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.round .lab p { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.round img { display: block; width: 100%; border-radius: 6px; border: 1px solid var(--line); }
+.round blockquote { margin: 10px 0 0; font-size: 13px; color: var(--ink-2); border-left: 3px solid var(--line); padding: 2px 0 2px 12px; line-height: 1.65; }
+
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.principles > div { background: var(--panel); padding: 18px 20px; display: grid; gap: 6px; min-width: 0; align-content: start; }
+.principles b { font-size: 15px; font-weight: 600; }
+.principles p { font-size: 14px; color: var(--ink-2); }
+
+/* 声音与后期 */
+.post { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 18px; }
+.post > div { border-top: 2px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.post p { font-size: 14px; color: var(--ink-2); }
+.post .fig { font-size: 26px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.post .me { border-top-color: var(--ink); }
+.check { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.check td { padding: 7px 10px; border-bottom: 1px solid var(--line); }
+.check td:last-child { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+.check td:first-child { color: var(--ink-2); }
+
+.pits { margin-top: 40px; display: grid; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.pit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; padding: 14px 20px; background: var(--panel); border-top: 1px solid var(--line); font-size: 14px; }
+.pit:first-child { border-top: 0; }
+.pit .a { color: var(--ink-2); }
+.pit-h { background: var(--panel-2); font-size: 12px; color: var(--ink-3); padding-block: 10px; }
+
+.takeaways { display: grid; }
+.tk { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.tk:last-child { border-bottom: 1px solid var(--line); }
+.tk .n { font-weight: 700; font-size: 40px; line-height: 1; color: var(--ink-3); }
+.tk h3 { font-size: 22px; margin-bottom: 8px; }
+.tk p { color: var(--ink-2); max-width: 46em; }
+
+/* 原话时间线 */
+.said { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.said > div { display: grid; grid-template-columns: 92px minmax(0, 1fr) minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.said .t { color: var(--ink-3); font-size: 12.5px; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.said q { color: var(--ink); quotes: "「" "」"; }
+.said .a { color: var(--ink-2); }
+
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq > div { padding: 20px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.faq h3 { font-size: 18px; }
+.faq p { color: var(--ink-2); max-width: 46em; }
+footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(--ink-3); max-width: 60em; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crew { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .evo, .segs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .post { grid-template-columns: 1fr; }
+  .round { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sh-row { grid-template-columns: 1fr; gap: 8px; }
+  .units i { width: 8px; height: 8px; }
+  .days, .cards2, .principles { grid-template-columns: 1fr; }
+  .crew { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .evo, .segs { gap: 18px 10px; }
+  .bar-g { grid-template-columns: 1fr; gap: 4px; }
+  .pit { grid-template-columns: 1fr; gap: 4px; }
+  .pit-h { display: none; }
+  .tk { grid-template-columns: 1fr; gap: 8px; }
+  .said > div { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<nav class="chapters" aria-label="章节">
+  <div class="inner">
+    <a href="#top">开场</a>
+    <a href="#share">分工</a>
+    <a href="#days">时间线</a>
+    <a href="#first">第一版</a>
+    <a href="#evo">换画法</a>
+    <a href="#open9">开头 9 版</a>
+    <a href="#redo">6 章重做</a>
+    <a href="#qa">盲看质检</a>
+    <a href="#sound">声音和后期</a>
+    <a href="#said">我说过的话</a>
+    <a href="#faq">问答</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<header class="hero" id="top">
+  <div>
+    <div class="eyebrow"><a href="../" style="color:inherit">陈与小金 · 视频幕后</a> · 2026.10.19 – 10.28</div>
+    <h1>从刷到原文到发出去 71 小时，<em>画面推倒重做了一遍</em></h1>
+    <p class="lead">成片《怎么更有野心：写给用模型的人的教程》，13 分 03 秒，拆解 Anthropic 做 Claude 的工程负责人 Felix 的长文。一边是原文卷轴，一边是动画，主角是代表 AI 的红色小方块「小克」。画面全部是 AI 在 Remotion 里写代码画的；我没空录音，配音是用我上一期的真声克隆的。我做的是：刷到原文、改开头、听声音、挑版本、挑毛病、拍板，最后点发布。</p>
+    <div class="stats">
+      <div class="stat"><b>71<small>小时</small></b><span>刷到 → 首发</span></div>
+      <div class="stat"><b>144<small>条</small></b><span>我发的消息</span></div>
+      <div class="stat"><b>4,949<small>次</small></b><span>Claude Code 动手</span></div>
+      <div class="stat"><b>12<small>次</small></b><span>claude -p，$93.82</span></div>
+    </div>
+  </div>
+  <div class="pipe" id="pipe">
+    <div class="pipe-shot"><img id="pipe-img" src="img/blog.jpg" alt="" width="1200" height="675"></div>
+    <p class="pipe-cap" id="pipe-cap"></p>
+    <ol class="steps" id="steps" aria-label="这条片的制作步骤"></ol>
+  </div>
+</header>
+
+<section id="share">
+  <div class="sec-head">
+    <div class="eyebrow">分工</div>
+    <h2>我挑，AI 做</h2>
+    <p class="lead">按 10-19 立项到 10-28 发齐这段时间的对话记录数出来。我亲手做的只有：开头那段口播稿自己改了几轮、在达芬奇里把字幕放上时间线、换上自己的配乐、在封面编辑器里拖字，以及每个平台的发布键。</p>
+  </div>
+  <div class="share">
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who me">我</i>我</span><b>144<small>条消息</small></b><span class="d">刷到原文、改开头、定配音和语速、挑版本、说哪里不对、换配乐、改封面、点发布</span></div>
+      <div class="units" data-n="144" data-c="var(--ink)"></div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who ai">CC</i>Claude Code（含子代理）</span><b>4,949<small>次操作</small></b><span class="d">17 段对话的主线程 2,174 次，加上它派出去的 67 个子代理 2,775 次：素材包、写稿、克隆配音、第一版全片、样板、质检、字幕音效配乐、达芬奇、封面、上传</span></div>
+      <div>
+        <div class="units" data-n="4949" data-c="var(--accent)"></div>
+        <div class="sh-break"><span>跑命令<b>3,022</b></span><span>读文件<b>1,048</b></span><span>写和改文件<b>271</b></span><span>操作达芬奇<b>241</b></span><span>操作浏览器<b>218</b></span><span>派活和沟通<b>92</b></span><span>其他<b>57</b></span></div>
+      </div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who p">-p</i>claude -p（单独开的会话）</span><b>749<small>次操作</small></b><span class="d">12 次，$93.82：开头 6 版（medium、high 各 3 版）约 $19.3；第 2–7 章重做加两轮返修约 $74.5</span></div>
+      <div>
+        <div class="units" data-n="749" data-c="var(--p)"></div>
+      </div>
+    </div>
+    <p class="muted">一格 = 10 次。一次「操作」指 AI 用一次工具，比如跑一条命令、读一个文件、在达芬奇里执行一步。统计范围：工具参数里提到本期关键字 3 次以上的对话，剔除两段无关的（一段问 Remotion 文件夹里有什么，一段是发片后问原文内容），10-28 那段对话只算到同步完六个平台为止，之后改写成文章的部分不算；也不算做这个幕后页的对话。打开图片检查：Claude Code 977 次，claude -p 174 次。</p>
+  </div>
+</section>
+
+<section id="days">
+  <div class="sec-head">
+    <div class="eyebrow">时间线</div>
+    <h2>10-19 晚上刷到，10-22 晚上发出</h2>
+    <p class="lead">按对话记录和工程的提交记录排出来。真正干活是前四天；中间空着的几天是在等首发平台的独占期。</p>
+  </div>
+  <div class="days">
+    <article class="day">
+      <span class="dt">10-19 · 周一</span>
+      <h3>立项、写稿</h3>
+      <img src="img/blog.jpg" alt="Felix 博客原文的页头" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>21:00 我发了一张截图问「为啥没有人告诉我」</li>
+        <li>21:08 素材包建好：原文全文存档、1920×8563 整页长图、推文数据、16 条事实清单</li>
+        <li>AI 写了三版稿，23:52 我定第三版</li>
+      </ul>
+      <span class="n">我 8 条 · Claude Code 64 次</span>
+    </article>
+    <article class="day">
+      <span class="dt">10-20 · 周二</span>
+      <h3>先搭画面，再换声音</h3>
+      <img src="img/v1-umbrella.jpg" alt="第一版画面:墨线伞罩住 App 窗口" loading="lazy" width="800" height="446">
+      <ul>
+        <li>我没空录音，AI 先用克隆音占位，2 个半小时做完第一版全片</li>
+        <li>核出稿子里 9 处和原文对不上，改稿、改画面</li>
+        <li>我嫌声音不像，用上一期真声重新克隆、剪停顿</li>
+        <li>23:04 我说动画不够吸引人，AI 量完做 3 个样板</li>
+      </ul>
+      <span class="n">我 33 条 · Claude Code 1,674 次</span>
+    </article>
+    <article class="day">
+      <span class="dt">10-21 · 周三</span>
+      <h3>定小克，开头 9 版</h3>
+      <img src="img/evo-5.jpg" alt="样板 C:小克按前两集画法" loading="lazy" width="800" height="450">
+      <ul>
+        <li>样板 C 主角换小克，画法对齐前两集</li>
+        <li>我自己改了开头几轮；定克隆音直接当成片配音，每分钟至少 300 字</li>
+        <li>20:24 开头 26 秒重做，9 版同时跑</li>
+        <li>23:31 第 2–7 章各派一个 claude -p 重做</li>
+      </ul>
+      <span class="n">我 44 条 · Claude Code 584 次</span>
+    </article>
+    <article class="day">
+      <span class="dt">10-22 · 周四</span>
+      <h3>质检、声音、首发</h3>
+      <img src="img/f-0300.jpg" alt="成片第 4 章:小克戴礼帽扮专家" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>00:06–01:09 两轮盲看质检，两轮返修</li>
+        <li>01:33–03:31 字幕、音效、配乐、混音、4K 成片</li>
+        <li>白天我换掉配乐、在达芬奇里加字幕；AI 导出、体检、出封面</li>
+        <li>19:56 我点发布</li>
+      </ul>
+      <span class="n">我 49 条 · Claude Code 2,373 次</span>
+    </article>
+    <article class="day">
+      <span class="dt">10-27 – 10-28</span>
+      <h3>同步其余五个平台</h3>
+      <img src="img/cover-s.jpg" alt="封面:握拳底图,文章拆解 如何更有野心地用 AI" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>独占期满，AI 在浏览器里把成片传到其余五个平台、填标题简介、传封面</li>
+        <li>发布键都是我点的</li>
+      </ul>
+      <span class="n">我 10 条 · Claude Code 254 次</span>
+    </article>
+  </div>
+  <p class="muted" style="margin-top:12px">Claude Code 的次数按工具调用的时间算日期，不含 claude -p，所以 10-21 夜里跑到凌晨的质检算在 10-22。</p>
+</section>
+
+<section id="first">
+  <div class="sec-head">
+    <div class="eyebrow">第一版</div>
+    <h2>2 个半小时，34 个工人做完第一版全片</h2>
+    <p class="lead">10-20 11:20 我把工程交给 Claude Code，中途只说了一句「你直接做完就好了」。它先把克隆音每个字什么时候开口量出来，再把原文长图切成一块块锚点，然后分 7 章派工人同时做画面，做完一章审一章、审出问题就返修。13:52 整片 11 分 10 秒在 Studio 里打开给我看。</p>
+  </div>
+  <div class="crew">
+    <div><span class="k">做画面</span><b>10</b><span>7 章各一个；3 个中途断网掉线，派新工人接着做完</span></div>
+    <div><span class="k">审片</span><b>8</b><span>每章抽帧看，给出返修单</span></div>
+    <div><span class="k">返修</span><b>9</b><span>按返修单改，别处不动</span></div>
+    <div><span class="k">核对</span><b>6</b><span>查齐不齐、对原文核事实、核稿子和录音、核能不能编译，另 2 个复核锚点</span></div>
+    <div><span class="k">标定</span><b>1</b><span>把原文长图切成 54 块锚点，讲到哪段亮哪段</span></div>
+  </div>
+  <div class="principles">
+    <div><b>133 行，每个字的开口时间都量出来</b><p>画面要卡某个词，就写「第几句里的哪几个字」，帧号由程序查出来，组件里不写秒数。拿波形里量到的停顿核对：一半的字误差在 15 毫秒以内，九成在 81 毫秒以内，都不到 3 帧。后来换声音、剪停顿，画面都是重跑一遍对齐就跟上了。</p></div>
+    <div><b>核出 9 处和原文对不上</b><p>右边一直挂着原文，讲到哪段放大哪段，旁白说了原文没说的话，懂英文的观众一眼就能看出来。核对时挑出 9 处，比如米开朗基罗那句引语原文里没有、「医学界断言 4 分钟是极限」原文也没有。我说「改吧」，稿子、录音、画面一起改。</p></div>
+  </div>
+
+  <div class="gal-h"><h3>我说「动画不够吸引人」，AI 先量了一下</h3><span class="muted">10-20 23:15，每 2 秒抽一帧，和上一期比</span></div>
+  <div class="chart">
+    <div class="chart-h"><h3>第一版 vs 上一期《模型如何看视频》</h3><div class="legend"><span><i class="sw" style="background:var(--ink-3)"></i>这条第一版（全片）</span><span><i class="sw" style="background:var(--accent)"></i>上一期</span></div></div>
+    <div class="bars" id="measure"></div>
+    <p class="muted" style="margin-top:12px">最弱的「高度」一章：有东西的面积 6%、每 2 秒变化 4.5%、几乎不动 28%。动画区九成以上是空白宣纸，主体是小墨人、细线和小标签，画得太小、动得太少。</p>
+  </div>
+</section>
+
+<section id="evo">
+  <div class="sec-head">
+    <div class="eyebrow">换画法</div>
+    <h2>同一句「替它猜路径」，画了六遍</h2>
+    <p class="lead">量完之后，AI 拿「高度」一章开头的一分钟同时做三个方向的样板。我挑了 C，但说「太脏了，模型能不能用小克」；第二天又说「小克太大了，风格有些不一样，不能看之前 2 个工程作为参考吗」。下面是同一个时刻的六版画面，最后一张是成片。</p>
+  </div>
+  <div class="evo">
+    <figure><img src="img/evo-1.jpg" alt="第一版:黑墨团写着模型,被塞进窄管" loading="lazy" width="800" height="446"><span class="n">10-20 13:52</span><figcaption><b>第一版</b>　写着「模型」的黑墨团被塞进窄管，意思全靠旁边的字。</figcaption></figure>
+    <figure><img src="img/evo-2.jpg" alt="样板 A:大墨团占三分之二画面" loading="lazy" width="800" height="450"><span class="n">10-20 23:45</span><figcaption><b>样板 A · 大主体近景</b>　墨团放大到画面三分之二高，镜头贴近。</figcaption></figure>
+    <figure><img src="img/evo-3.jpg" alt="样板 B:墨团有表情,小人指挥它" loading="lazy" width="800" height="450"><span class="n">10-20 23:45</span><figcaption><b>样板 B · 角色主演</b>　墨团有了眉眼，被挤成「&gt; &lt;」脸，旁边一个小人指挥它。</figcaption></figure>
+    <figure><img src="img/evo-4.jpg" alt="样板 C 小克版:水墨山水加光效" loading="lazy" width="800" height="450"><span class="n">10-21 00:11</span><figcaption><b>样板 C · 换成小克</b>　水墨山水、光从管子裂口炸出来。我说小克太大、风格和前两集不一样。</figcaption></figure>
+    <figure><img src="img/evo-5.jpg" alt="样板 C 对齐前两集画法" loading="lazy" width="800" height="450"><span class="n">10-21 13:03</span><figcaption><b>对齐前两集</b>　AI 把前两集成片截图一张张对过：宣纸平涂、毛边墨线、宋体字，朱红只点两处，小克缩到一半。</figcaption></figure>
+    <figure class="pick"><img src="img/evo-6.jpg" alt="成片:一只手握笔替小克画路" loading="lazy" width="800" height="451"><span class="n">成片 1:44</span><figcaption><b>成片</b>　「你」的手握着笔替小克画好路，小克只能照着走。</figcaption></figure>
+  </div>
+</section>
+
+<section id="open9">
+  <div class="sec-head">
+    <div class="eyebrow">开头 9 版</div>
+    <h2>9 版开头同时做，我挑了 AI 排在最后的那版</h2>
+    <p class="lead">10-21 20:24 我说：「开头的 26S 需要完全的重做，现在看起来是 5S 完播 10% 的视频。」AI 先把旧开头前 26 秒每秒抽一帧看：第 0 帧是一张小截图，一动不动，前 5 秒基本没东西在动。它定了三个方向，各派一个 xhigh 档的子代理。我又说还可以单独再跑 medium 和 high，「是加，不是说换」，于是每个方向再加两个 claude -p，9 版同时做。</p>
+  </div>
+  <div class="stats in">
+    <div class="stat"><b>54<small>分钟</small></b><span>9 版全部交回</span></div>
+    <div class="stat"><b>9.8–46<small>分钟</small></b><span>每版用时</span></div>
+    <div class="stat"><b>$19.3</b><span>6 个 claude -p 合计</span></div>
+    <div class="stat"><b>9 / 9</b><span>AI 逐帧看过再推荐</span></div>
+  </div>
+  <div class="tbl-wrap">
+    <table class="matrix">
+      <thead><tr><th>方向</th><th>xhigh（子代理）</th><th>high（claude -p）</th><th>medium（claude -p）</th></tr></thead>
+      <tbody>
+        <tr><th>A 墨字「野心」<small>巨大的行楷「野心」砸在纸上，被吸进一行空的输入框</small></th><td>46 分钟<br><span class="r">AI 推荐第 1</span></td><td>24.3 分钟 · $3.55<br><span class="muted">中途断线一次，续跑</span></td><td>9.8 分钟 · $2.46</td></tr>
+        <tr><th>B 小克主演<small>小克站在顶天的大山「野心」脚下，手里只有一张小纸条</small></th><td class="pick">41 分钟<br><span class="r">我挑的</span></td><td>19.6 分钟 · $4.24</td><td>10.3 分钟 · $2.56</td></tr>
+        <tr><th>C 自己想比喻<small>瓶中船、大墨树、麻绳穿针眼……三个档位各想了一个</small></th><td>35 分钟</td><td>17.0 分钟 · $3.79<br><span class="r">AI 推荐第 2</span></td><td>12.8 分钟 · $2.74<br><span class="r">AI 推荐第 3</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:10px">xhigh 那三版是子代理做的，花费没有单独记录。用时按各自记录的起止时间算。</p>
+
+  <div class="cards2" style="margin-top:28px">
+    <figure><img src="img/open-old.jpg" alt="旧开头:左边原文页头,右边推文截图" loading="lazy" width="800" height="450"><figcaption><b>旧开头</b>　原文页头加一张推文截图，前 5 秒几乎不动。</figcaption></figure>
+    <figure><video src="clips/s1.mp4" poster="clips/s1.jpg" muted loop playsinline preload="none" aria-label="新开头:从山顶摇到山脚下的小克" width="640" height="360" style="display:block;width:100%;aspect-ratio:16/9;border-radius:6px;border:1px solid var(--line);background:#EEE9DF"></video><figcaption><b>成片开头（B 版）</b>　第 0 帧就是整座「野心」大山，山脚一个很小的小克。</figcaption></figure>
+  </div>
+  <div class="principles" style="margin-top:28px">
+    <div><b>AI 的排法错在哪</b><p>AI 把 B 排在最后，理由是线条少、画面不够「满」。我说：「首先 A 的肯定是不行的，C 也是不行的……用那个 Open-B。」AI 回头承认：C 是让做的人自己想比喻，想出来的瓶中船、大墨树和口播对不上；拿「满不满」排好坏是错的，以后挑版先对我认可过的画法。其余 8 版挪进废纸篓的一个文件夹，没有彻底删。</p></div>
+    <div><b>「10 秒钟大概有 11 次镜头抖动」</b><p>这是我随手数的。AI 按帧算了镜头位置：前 10 秒正好起停 11 次，因为开头是一段段拼起来的，每段都「起步、走一小段、停住」，告示牌落地还加了一次真震屏。改完整个开头 26 秒的镜头起停从二十来次减到 7 次，震屏删掉，再抽 18 帧确认主角都还在画面里。</p></div>
+  </div>
+</section>
+
+<section id="redo">
+  <div class="sec-head">
+    <div class="eyebrow">6 章重做</div>
+    <h2>第 2–7 章：6 个 claude -p，24 分钟交齐</h2>
+    <p class="lead">开头定下来后我说：「每一个画面都有点不明所以……所有的模型都换成小克，火柴人也可以换成小克。」AI 先把 46 拍每拍抽一帧看了一遍，画面大多是星图、十字、写着「模型」的墨团这类抽象符号。23:31 起 6 章各派一个 high 档的 claude -p 同时重做，要求是口播说到什么，画面里就有人正在做这件事，不读名牌也能猜个八九不离十。动手前把 6 章的代码全备份了。</p>
+  </div>
+  <div class="tbl-wrap">
+    <table class="matrix">
+      <thead><tr><th>章</th><th>首轮重做（high）</th><th>加两轮返修后（xhigh）</th><th>盲看分 第一轮 → 第二轮</th></tr></thead>
+      <tbody id="redotbl"></tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:10px">用时和花费取每个 claude -p 自己记录的累计值；返修是接着原来那个会话做，记得住自己写过的代码。满分 3 分。第三轮返修后没有再派人复审。</p>
+
+  <div class="gal-h"><h3>成片里的样子</h3><span class="muted">每段 4 秒，从成片截取</span></div>
+  <div class="segs" id="segwall"></div>
+</section>
+
+<section id="qa">
+  <div class="sec-head">
+    <div class="eyebrow">盲看质检</div>
+    <h2>12 个质检官只看画面，猜这一拍在讲什么</h2>
+    <p class="lead">6 章交回后我说：「派一个质检官，去对画面的意向意图识别进行检查……你要做的不只是一个普通的动画，是要比之前做过的所有视频都要优秀的动画。」AI 派了 6 个质检官，一章一个；返修完再派 6 个新的复审，两轮换人、抽的帧也不同。</p>
+  </div>
+  <div class="principles" style="margin-bottom:28px">
+    <div><b>第一步：盲看</b><p>每拍只给 4–10 张连续画面，不给口播文字。质检官先写下「看到了什么、猜这段在讲什么、哪里看不懂」，写完不许改，才能打开文稿。</p></div>
+    <div><b>第二步：对答案、挑毛病</b><p>盲猜对照真实口播打 0–3 分，3 分是一猜就中。再挑毛病：删掉这个画面观众损失什么、焦点是不是正在讲的词、有没有像 PPT 一样一页页蹦、数字有没有编。每条标到第几秒。</p></div>
+  </div>
+  <div class="chart">
+    <div class="chart-h"><h3>6 章的盲看分（满分 3）</h3><div class="legend"><span><i class="sw" style="background:#C9CED6"></i>第一轮</span><span><i class="sw" style="background:var(--accent)"></i>第二轮复审</span></div></div>
+    <div class="bars" id="qabars"></div>
+    <p class="muted" style="margin-top:12px">第 4 章第二轮反而低了 0.16：第一轮的硬伤（编出来的数字、画面替原文下「推翻!」的结论）都修好了，但换了质检官和抽帧，单拍差 1 分有一部分是采样带来的。</p>
+  </div>
+
+  <div class="gal-h"><h3>一拍改三遍：米开朗基罗「不想画画」</h3><span class="muted">第 6 章 b43，10:17–10:23，每轮质检官看到的 4 帧</span></div>
+  <div class="rounds">
+    <div class="round">
+      <div class="lab"><b>第一轮</b><span class="sc">1 分</span><p>口播说米开朗基罗是雕塑家、不想画西斯廷天顶，画面上小克却戴着贝雷帽在画布上画，画反了。</p></div>
+      <div><img src="img/qa-b43-1.jpg" alt="第一轮:小克戴贝雷帽在画布上画人像" loading="lazy" width="1520" height="345"><blockquote>盲猜：「他接下了超出自己身份认知的任务，做成了。说明天花板可以被拱高。」看不懂：「帧 2 小克已经在画人像了，帧 4 才出『画家 / 雕塑家』名牌——顺序反了。」</blockquote></div>
+    </div>
+    <div class="round">
+      <div class="lab"><b>第二轮</b><span class="sc">2 分</span><p>改成大理石加凿子、推开递来的画笔。但天花板拱成了穹顶，整章的天花板代表「限制」，拱起来会读成上限被抬高了。</p></div>
+      <div><img src="img/qa-b43-2.jpg" alt="第二轮:小克凿石头,天花板拱成穹顶" loading="lazy" width="1520" height="345"></div>
+    </div>
+    <div class="round">
+      <div class="lab"><b>成片</b><span class="sc">第三轮返修</span><p>天花板不再拱起，梁下挂一排空画框；递来的画笔被小克推开，它只顾着凿石头。</p></div>
+      <div><img src="img/qa-b43-3.jpg" alt="成片:平梁下挂空画框,小克凿石头" loading="lazy" width="1520" height="345"></div>
+    </div>
+  </div>
+
+  <div class="principles" style="margin-top:28px">
+    <div><b>返修常常改过头</b><p>第二轮复审发现，照着质检的改法做，反而把原来好的地方改坏了：删掉名牌后三个图标被拆散读不出意思，给翅膀加的捆绳糊成一团墨线，给「代价」配的钱袋把意思带歪了。第三轮 AI 在每章要求里写明：复审确认好的地方一律别动，只修没到满分的拍。</p></div>
+    <div><b>顺手查出的事实问题</b><p>第 4 章终端里「书面词 23 处 / 长句 9 处」是编的，换成素材包里的真实扫描数据；第 7 章转发卡补上了实看过的英文原句；画面上原文里没有的词撤掉。还有两句口播和原文意思有出入，AI 按规矩只报告、不改稿，由我定。</p></div>
+  </div>
+</section>
+
+<section id="sound">
+  <div class="sec-head">
+    <div class="eyebrow">声音和后期</div>
+    <h2>我给了 7 小时，AI 2 小时做完声音，配乐我换掉了</h2>
+    <p class="lead">10-22 01:32 我说：加字幕、加音效、加 BGM，「每一个变化都有对应的音效」，混音让人声更舒服，可以自己派 -p 或子代理，「我给你完整的 7 个小时」。03:31 它交了 4K 成片，没用满 7 小时：后面几轮 AI 试听的意见开始互相矛盾，它停手交给我的耳朵。</p>
+  </div>
+  <div class="post">
+    <div>
+      <span class="fig">300 字/分</span><h3>克隆配音</h3>
+      <p>默认声音还是 8 月一期的旧克隆，我问「怎么还在用 kimi 啊」。AI 改用上一期我真人念的约 3 分钟原声重新克隆，避开了那期里机器补的 18 句；比了四代模型，换上最新的那一代、加一句「像跟朋友聊天」的口吻指令。</p>
+      <p>我嫌慢：「300 字 1 分钟吧，起码都得……别生成的时候加速，不然很机械。」AI 做了 A–D 四版，我选先多剪停顿、再整体拉伸那版。</p>
+    </div>
+    <div>
+      <span class="fig">1,576 个</span><h3>音效点</h3>
+      <p>7 个代理各读一章的动画代码，用画面同一份时间表算出 1,576 个「画面在变」的时间点，每个点配一声。另一个代理备了 101 个 CC0 音效，31 类，真实的纸、笔、木、石录音加乐器采样。</p>
+      <p>铺音效时顺手查出 3 处小克或「你」的手一帧瞬移，改成走过去，抽帧确认。</p>
+    </div>
+    <div>
+      <span class="fig">450 条</span><h3>字幕</h3>
+      <p>每行不超过 16 个字，按词断行，不把「到底」「真心」这种词劈开。我决定字幕自己在达芬奇里加，用的就是这份；AI 查出整条晚了 1 帧，我在界面里挪回来。字幕位置它截预览画面量过，卡在两栏下面，不压内容。</p>
+    </div>
+    <div class="me">
+      <span class="fig">64 秒 → 13:03</span><h3>配乐：我换成自己的</h3>
+      <p>AI 按 7 章情绪各生成一段、统一调性拼成整条。我听完说「BGM 不咋样」，换成我 6 月做的一首 64 秒的曲子。AI 把它拼成和片子一样长：前 24 秒照原曲放，之后每到第 24 秒跳回第 8 秒，接口落在句首重拍上，片尾接原曲结尾。</p>
+    </div>
+    <div class="me">
+      <span class="fig">2 帧</span><h3>真人开头：做了又撤</h3>
+      <p>我录了一段真人开头。AI 量出声音比嘴早 2 帧，把录制软件的麦克风补偿设成 67 毫秒；再在达芬奇里用 Fusion 做了「说几句甩到右下角」的效果。我听完问是不是加了混响，AI 量给我看：没加，是房间回声，真声和克隆音的空间感对不上。我说「都撤销吧」。</p>
+    </div>
+    <div>
+      <span class="fig">✅ 可发</span><h3>导出后体检</h3>
+      <table class="check">
+        <tr><td>规格</td><td>4K · 30 帧 · H.265，带字幕和不带字幕两版</td></tr>
+        <tr><td>长度</td><td>23,505 帧，片尾无黑屏</td></tr>
+        <tr><td>响度 / 峰值</td><td>-14.1 LUFS / -1.1 dB</td></tr>
+        <tr><td>配乐比人声低</td><td>7.1 dB</td></tr>
+        <tr><td>和母带比画质</td><td>三处取样相似度约 0.996</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="pits">
+    <div class="pit pit-h"><span>遇到的问题</span><span>怎么处理的</span></div>
+    <div class="pit"><span>开头加跑 medium、high 时，派活方式被全局设置盖成了 xhigh，6 个其实都按 xhigh 在跑</span><span class="a">发现后立刻停掉（还没写代码），改成单独开 claude -p、显式写明档位，再逐个查运行记录确认生效。</span></div>
+    <div class="pit"><span>我说「开头第一句话都被切没了」</span><span class="a">AI 先把旁白前 6 秒重新转写，一个字没少；原因是 Studio 预览被设了一个停在第 11 帧的入点，不影响成片。</span></div>
+    <div class="pit"><span>第 6 章返修时，脚本出错把一个还没提交的文件清空了</span><span class="a">从上一轮的打包文件里原样找回，之后把整个代码和分镜表各打了带时间的备份包。</span></div>
+    <div class="pit"><span>重渲 4K ProRes 母带（52 GB，38 分钟）时发现硬件编码偏橙，小克的红从 181,73,59 变成 200,92,55</span><span class="a">全片改软件编码重渲，渲染脚本一起改掉。</span></div>
+    <div class="pit"><span>体检脚本报「码率 27 Mb/s 偏低，不可发」</span><span class="a">AI 判断是误报：门槛按 H.264 定的，没区分 H.265。拿导出片和母带逐帧比，相似度约 0.996，照样发。</span></div>
+    <div class="pit"><span>封面两次没等我选就导出了；我还得下载一个 json 才能存布局</span><span class="a">撤回重来。之后只把编辑器打开交给我，我说了才导出；编辑器加了「保存」按钮。</span></div>
+  </div>
+</section>
+
+<section id="said">
+  <div class="sec-head">
+    <div class="eyebrow">我说过的话</div>
+    <h2>改变了片子的那几句</h2>
+    <p class="lead">144 条消息里，很多是「打开我看看」「继续」「commit 一下」。真正改变了片子的是下面这些。</p>
+  </div>
+  <div class="said">
+    <div><span class="t">10-19 21:00</span><q>这个文章，和我之前出的 Fable5指南和扫盲，都是很重要的，为啥没有人告诉我</q><span class="a">立项。AI 查出原因：选题发现只扫视频网站，没人盯 Anthropic 员工发的长文。</span></div>
+    <div><span class="t">10-20 10:53</span><q>能不能先搭画面骨架，我现在没空录制声音。或者用克隆音，后面我录制。</q><span class="a">先用克隆音占位，画面按每个字的时间对齐，换声音只重跑对齐。</span></div>
+    <div><span class="t">10-20 19:50</span><q>怎么还在用 kimi 啊，用我上一条视频的声音不行吗？</q><span class="a">用上一期真声重新克隆。</span></div>
+    <div><span class="t">10-20 23:04</span><q>我觉得动画不够吸引人。</q><span class="a">AI 先量出原因，再做三个方向的样板。</span></div>
+    <div><span class="t">10-20 23:48</span><q>C 的变化是可以的，但是太脏了，模型能不能用小克</q><span class="a">主角换成小克。</span></div>
+    <div><span class="t">10-21 12:32</span><q>小克太大了，然后风格有些不一样，不能看之前2个 工程作为参考吗。</q><span class="a">照前两集成片重画：宣纸平涂、毛边墨线、宋体字。</span></div>
+    <div><span class="t">10-21 13:49</span><q>原文就是4个，他是在第一个里面说的速度去掉，我为什么要在开头去掉？</q><span class="a">开头按原文说「四个方向」，正文再讲速度为什么跳过。</span></div>
+    <div><span class="t">10-21 14:22</span><q>想直接拿克隆音当成片配音，我听声音还挺好的，就是气口不对劲。</q><span class="a">克隆音从占位变成成片配音。</span></div>
+    <div><span class="t">10-21 20:24</span><q>开头的26S 需要完全的重做，现在看起来是5S 完播10%的视频。</q><span class="a">9 版开头同时做。</span></div>
+    <div><span class="t">10-21 21:43</span><q>首先 A 的肯定是不行的，C 也是不行的……用那个 open B</q><span class="a">换上 B，AI 改了挑版规矩。</span></div>
+    <div><span class="t">10-21 23:16</span><q>我刚刚随便数了一下，到 10 秒钟大概有 11 次镜头抖动</q><span class="a">开头镜头起停从二十来次减到 7 次。</span></div>
+    <div><span class="t">10-21 23:27</span><q>每一个画面都有点不明所以，也就是画面和内容的关联性不知道在哪里。</q><span class="a">第 2–7 章重做，主角都换成小克。</span></div>
+    <div><span class="t">10-21 23:58</span><q>派一个质检官，去对画面的意向意图识别进行检查</q><span class="a">12 个质检官盲看打分，返修两轮。</span></div>
+    <div><span class="t">10-22 10:46</span><q>BGM 不咋样，我自己在达芬奇做吧，然后音效可以保留。</q><span class="a">配乐换成我自己的曲子，字幕我在达芬奇里加。</span></div>
+    <div><span class="t">10-22 18:48</span><q>这个封面你是需要重新用生图模型去生成的呀，你不能一直去复用之前的呀</q><span class="a">重新生成 6 张底图，我挑握拳那张。</span></div>
+    <div><span class="t">10-22 19:03</span><q>然后我都没有选择要哪一个，你凭什么就给我放进去了呀？</q><span class="a">撤回；之后我说了才导出。</span></div>
+  </div>
+</section>
+
+<section id="lesson">
+  <div class="sec-head">
+    <div class="eyebrow">收获</div>
+    <h2>做完这条，我记住了三件事</h2>
+  </div>
+  <div class="takeaways">
+    <div class="tk"><div class="n">1</div><div><h3>多跑几版，但挑的人是我</h3><p>9 版开头 54 分钟就交回来了，多跑几版几乎不花时间。可 AI 推荐的前三名我都没要，它按「画面满不满」排，我看的是像不像我们这个系列。跑多少版都行，最后那一下得我来挑。</p></div></div>
+    <div class="tk"><div class="n">2</div><div><h3>「不明所以」可以变成分数</h3><p>我只说得出「不明所以」。让另一个 AI 不看文稿、只看画面猜意思，猜不中就是没演出来，具体到哪一拍、第几秒。第 7 章从 1.75 分修到 2.25 分，米开朗基罗那一拍改了三遍才对。</p></div></div>
+    <div class="tk"><div class="n">3</div><div><h3>声音的最后一关留给耳朵</h3><p>我给了 7 小时，AI 2 小时就停了，因为它自己几轮试听的意见开始打架。配乐我最后换成了自己的曲子；真人开头它量出了 2 帧偏差、做好了效果，我一听空间感不对，还是撤了。</p></div></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="sec-head">
+    <div class="eyebrow">问答</div>
+    <h2>常见问题</h2>
+  </div>
+  <div class="faq">
+    <div><h3>这条视频的画面是谁做的？</h3><p>全部是 AI 在 Remotion 里写代码画的。第一版由 Claude Code 派 34 个工人分 7 章做；之后开头 9 版由 3 个子代理和 6 个 claude -p 同时做；第 2–7 章由 6 个 claude -p 各重做一章，再按 12 个质检官的报告返修两轮。我负责看、挑、说哪里不对。</p></div>
+    <div><h3>人做了什么，AI 做了什么？</h3><p>我刷到原文、自己改了开头几轮、定配音和语速、挑开头、挑毛病、换配乐、在达芬奇里加字幕、在编辑器里改封面、点发布，一共 144 条消息。其余都是 AI：Claude Code 在 17 段对话里动手 4,949 次（含 67 个子代理）；claude -p 另跑 12 次、操作 749 次。</p></div>
+    <div><h3>配音是真人吗？</h3><p>不是现场录的。用我上一期自己录的约 3 分钟原声克隆，AI 比了四代模型，我挑声音、定语速每分钟至少 300 字，AI 先剪停顿再整体拉伸。</p></div>
+    <div><h3>小克是谁？</h3><p>片子里代表 AI 的红色小方块。同一个画面里如果既有 AI 又有「你」，AI 是小克，「你」是一只从画框边伸进来的手，免得两个小克分不清。</p></div>
+    <div><h3>开头为什么重做？</h3><p>第一版开头是一张小截图，前 5 秒几乎不动。AI 按 3 个方向 × 3 个档位同时做了 9 版，54 分钟全部交回。AI 推荐的前三名我都没要，挑了它排在最后的小克主演版。</p></div>
+    <div><h3>一共花了多少钱？</h3><p>12 次 claude -p 合计 $93.82（按 API 价格折算）：开头 6 版约 $19.3，第 2–7 章重做加返修约 $74.5。Claude Code 主会话和子代理的花费没有统计。</p></div>
+    <div><h3>发布是 AI 点的吗？</h3><p>不是。AI 会打开浏览器上传、填标题简介、传封面，发布键都是我手动点的。</p></div>
+  </div>
+
+  <footer>
+    <p>消息条数和操作次数来自 10-19 到 10-28 的 17 段对话记录（含 67 个子代理）和 12 次 claude -p 的记录，统计脚本按工具参数命中本期关键字 3 次以上筛选。claude -p 的用时和花费取每次运行自己记录的累计值，按 API 价格折算。「量一下」「盲看分」「体检」的数字都是 AI 当时实测、写在对话或质检报告里的。「换画法」前五张是当时抽帧检查留下的画面，第一版那张取自 AI 自己的逐章检查图。「我说过的话」摘自对话记录原文。循环片段和成片画面从不带字幕版成片截取。</p>
+    <p>陈与小金 · 用 Claude Code、Remotion、DaVinci Resolve 制作 · <a href="https://github.com/chenyuxiaojin/vibevideo/tree/main/2026-10-19-more-ambitious">文字版</a> · <a href="https://github.com/chenyuxiaojin/vibevideo">GitHub 仓库</a> · <a href="../">全部幕后</a></p>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── 制作步骤 ──
+  var STEPS = [
+    ['立项', 'me', 'blog', '10-19 21:00 我刷到 Felix 的长文截图。8 分钟后素材包建好：原文全文存档、整页长图、推文数据、16 条事实清单。'],
+    ['第一版', 'ai', 'v1-umbrella', '10-20 我没空录音。AI 先用克隆音占位，2 个半小时里派 34 个工人分 7 章做完第一版全片，11 分 10 秒。'],
+    ['换画法', 'ai', 'evo-5', '我说动画不够吸引人。AI 先量出原因，再拿一分钟做 3 个方向的样板；我挑 C，主角换成小克。'],
+    ['开头 9 版', 'ai', 'f-0003', '开头 26 秒重做：3 个方向 × 3 个档位，9 版同时做，54 分钟全部交回。我挑了 AI 排在最后的那版。'],
+    ['6 章重做', 'p', 'f-0300', '第 2–7 章各派一个 claude -p 重做，主角都换成小克，24 分钟交齐。'],
+    ['盲看质检', 'ai', 'f-0497', '12 个质检官只看画面、不看文稿，猜这一拍在讲什么、打分；做画面的 -p 按报告返修两轮。'],
+    ['声音', 'ai', 'f-0775', '2 小时：450 条字幕、1,576 个音效点、按章生成的配乐、4K 成片。配乐我后来换成了自己的曲子。'],
+    ['封面和发布', 'me', 'cover-s', 'AI 重新生成 6 张底图，我挑握拳那张、在编辑器里改字。10-22 19:56 我点发布。']
+  ];
+  var steps = $('steps'), pimg = $('pipe-img'), pcap = $('pipe-cap');
+  var TAG = { me: '我', ai: 'AI', p: '-p' };
+  steps.innerHTML = STEPS.map(function (s, i) {
+    return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><i class="who ' + s[1] + '">' + TAG[s[1]] + '</i>' + s[0] + '</button></li>';
+  }).join('');
+  var pick = function (i) {
+    var s = STEPS[i];
+    pimg.src = 'img/' + s[2] + '.jpg'; pimg.alt = s[0];
+    pcap.textContent = (i + 1) + '. ' + s[0] + '：' + s[3];
+    steps.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === i)); });
+  };
+  steps.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(0);
+  STEPS.forEach(function (s) { var im = new Image(); im.src = 'img/' + s[2] + '.jpg'; });
+
+  // ── 量一下:第一版 vs 上一期 ──
+  var M = [['画面里有东西的面积', '越大越满', 7, 30], ['每 2 秒画面变化的部分', '越大越有看头', 7, 45], ['几乎不动的时间', '越小越好', 22, 3]];
+  $('measure').innerHTML = M.map(function (m) {
+    var row = function (v, c) { return '<div class="bar"><i style="width:' + (v * 2) + '%;background:' + c + '"></i><span style="left:' + (v * 2) + '%">' + v + '%</span></div>'; };
+    return '<div class="bar-g"><div class="lab">' + m[0] + '<small>' + m[1] + '</small></div><div class="bar-stack">' + row(m[2], 'var(--ink-3)') + row(m[3], 'var(--accent)') + '</div></div>';
+  }).join('');
+
+  // ── 6 章:[章, 首轮分钟, 首轮$, 累计分钟, 累计$, 第一轮分, 第二轮分, 片段说明] ──
+  var CH = [
+    ['2 第一层认知', 14.6, 4.50, 36.3, 10.65, 2.33, 2.5],
+    ['3 高度', 19.2, 5.38, 42.9, 14.09, 2.6, 2.82],
+    ['4 深度', 20.9, 5.50, 46.0, 13.61, 2.58, 2.42],
+    ['5 广度', 14.5, 4.27, 38.0, 10.25, 2.6, 2.6],
+    ['6 心法', 21.1, 5.98, 42.9, 14.34, '2.0', 2.4],
+    ['7 结尾', 18.9, 5.01, 39.5, 11.53, 1.75, 2.25]
+  ];
+  $('redotbl').innerHTML = CH.map(function (c) {
+    return '<tr><th>' + c[0] + '</th><td>' + c[1] + ' 分钟 · $' + c[2].toFixed(2) + '</td><td>' + c[3] + ' 分钟 · $' + c[4].toFixed(2) + '</td><td>' + c[5] + ' → ' + c[6] + '</td></tr>';
+  }).join('');
+  $('qabars').innerHTML = CH.map(function (c) {
+    var row = function (v, col) { var w = parseFloat(v) / 3 * 100; return '<div class="bar"><i style="width:' + w + '%;background:' + col + '"></i><span style="left:' + Math.min(w, 88) + '%">' + v + '</span></div>'; };
+    return '<div class="bar-g"><div class="lab">第 ' + c[0] + '</div><div class="bar-stack">' + row(c[5], '#C9CED6') + row(c[6], 'var(--accent)') + '</div></div>';
+  }).join('');
+
+  // ── 片段墙:[文件, 成片时间, 标题, 说明] ──
+  var SEG = [
+    ['s1', '0:00', '开头 · 野心这座山', '第 0 帧整座大山压满画面，山脚一个很小的小克，手里只有一张空纸条。'],
+    ['s2', '0:10', '开头 · Felix 的文章', '帖子像告示牌一样落下，小克揭起标题条。'],
+    ['s3', '1:10', '有人在飞，更多人翅膀还没张开', '高处有人在飞，谷底一群人收着翅膀。'],
+    ['s4', '1:44', '高度 · 替它猜路径', '「你」的手握笔画好路，小克只能照着走。'],
+    ['s5', '2:20', '高度 · 修报错是任务', '一张张创可贴补窗口裂缝，后面撑开伞：保证不崩才是结果。'],
+    ['s6', '4:58', '深度 · 扮专家没用', '小克戴上礼帽装资深投资人，甩出来的还是两张小表。'],
+    ['s7', '8:14', '广度 · 劫匪片凑班子', '胶片框拉开，劫匪片前 30 分钟都在凑人。'],
+    ['s8', '9:05', '广度 · 凑班子', '「你」的手把盖了「定」字的方案拎到长桌上，接着凑一桌班子来挑刺。'],
+    ['s9', '10:30', '心法 · 明确的高难度目标', '小克顺着梯子往梁上爬，旗插在更高的地方。'],
+    ['s10', '12:24', '结尾 · 先很烂，再改好', '想做的网站先出来一版歪七扭八的，再一块块改好，盖章「创作」。'],
+    ['s11', '12:50', '三篇连起来', '提问技巧、上下文工程、心智的野心，三幅卷轴一级级往上。']
+  ];
+  $('segwall').innerHTML = SEG.map(function (s) {
+    return '<figure class="seg"><div class="v"><video src="clips/' + s[0] + '.mp4" poster="clips/' + s[0] + '.jpg" muted loop playsinline preload="none" aria-label="' + s[2] + '" width="640" height="360"></video><span class="n">' + s[1] + '</span></div><h4>' + s[2] + '</h4><p>' + s[3] + '</p></figure>';
+  }).join('');
+
+  // ── 分工格子:一格 = 10 次 ──
+  document.querySelectorAll('.units').forEach(function (el) {
+    var n = Math.round(+el.dataset.n / 10), s = '';
+    for (var i = 0; i < n; i++) s += '<i style="background:' + el.dataset.c + '"></i>';
+    el.innerHTML = s;
+  });
+
+  // ── 循环片段:进入视口才播,减少动态时不自动播 ──
+  var vids = document.querySelectorAll('video');
+  if (!reduce && window.IntersectionObserver) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { rootMargin: '120px' });
+    vids.forEach(function (v) { io.observe(v); });
+  } else {
+    vids.forEach(function (v) { v.controls = true; });
+  }
+
+  // ── 导航条高亮当前段 ──
+  var links = document.querySelectorAll('.chapters a');
+  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
+  var mark = function () {
+    var y = window.scrollY + 120, cur = 0;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  };
+  window.addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+</body>
+</html>

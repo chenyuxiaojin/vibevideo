@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Claude Code Mods 幕后：画面里的 mod，都是 AI 当场做的 · 陈与小金</title>
+<meta name="description" content="《给 Claude 页面换一个皮肤》11 分 13 秒。片子里演示的 mod，是 AI 在后台开干净的 Claude Code 当场做、自己录下来的；19 段画面由 9 个子 agent 同时做，第一版 5 小时交出。25 天里我发了 335 条消息，Claude Code 动手 12,759 次。附视频里的提示词和 8 个 mod 下载。">
+<meta name="author" content="陈与小金">
+<link rel="author" href="https://xiaochens.com/">
+<link rel="canonical" href="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/">
+<link rel="alternate" type="text/markdown" href="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/README.md" title="mod 下载说明">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="陈与小金 · 视频幕后">
+<meta property="og:title" content="Claude Code Mods 幕后：画面里的 mod，都是 AI 当场做的">
+<meta property="og:description" content="《给 Claude 页面换一个皮肤》的幕后：AI 在后台开干净的 Claude Code 当场做 mod 并自己录屏；19 段画面 9 个子 agent 同时做，5 小时交出第一版；我看片挑毛病，它开沙盒并行改。附视频里的提示词和 8 个 mod。">
+<meta property="og:url" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/">
+<meta property="og:image" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/cover.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="article:published_time" content="2026-11-07">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code Mods 幕后：画面里的 mod，都是 AI 当场做的">
+<meta name="twitter:description" content="AI 当场做 mod 并自己录屏；19 段画面 9 个子 agent 同时做，5 小时交出第一版。附视频里的提示词和 8 个 mod。">
+<meta name="twitter:image" content="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/cover.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://xiaochens.com/#person", "name": "陈与小金", "alternateName": ["chenyuxiaojin", "CYXJ"], "jobTitle": "Forward Deployed Engineer（FDE）· AI 落地", "description": "非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。", "url": "https://xiaochens.com/", "knowsAbout": ["AI 内容生产", "AI 视频工作流", "Claude Code", "Claude Code mods", "Remotion", "Agent Skills", "DaVinci Resolve", "非技术背景 AI 实操"], "sameAs": ["https://blog.xiaochens.com/", "https://github.com/chenyuxiaojin", "https://www.youtube.com/@cyxj_ai", "https://space.bilibili.com/505358756", "https://v.douyin.com/A1qVQrOgPjY/", "https://x.com/cyxjya", "https://chenyuxiaojin.github.io/vibevideo/"]}, {"@type": "VideoObject", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/#video", "name": "给 Claude 页面换一个皮肤", "description": "Claude Code 出了 mod：代码跑在 Claude Code 里面，能画面板、改界面、拦工具调用。我拿它做了状态栏、文件树、提示词优化、刘海屏、端口面板，片子里现场演示怎么一句话让 Claude Code 自己写出 mod。", "thumbnailUrl": ["https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/cover.jpg"], "uploadDate": "2026-11-06", "duration": "PT11M13S", "inLanguage": "zh-CN", "creator": {"@id": "https://xiaochens.com/#person"}, "keywords": "Claude Code, Claude Code mods, mod, plugin-authoring, 状态栏, 文件树, 提示词优化, 刘海屏, Remotion"}, {"@type": "TechArticle", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/#article", "headline": "Claude Code Mods 幕后：画面里的 mod，都是 AI 当场做的", "description": "《给 Claude 页面换一个皮肤》11 分 13 秒。演示用的 mod 是 AI 在后台开干净的 Claude Code 当场做、自己录下来的；19 段画面由 9 个子 agent 同时做，第一版 5 小时交出。25 天里我发了 335 条消息，Claude Code 动手 12,759 次。", "image": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/cover.jpg", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "inLanguage": "zh-CN", "author": {"@id": "https://xiaochens.com/#person"}, "publisher": {"@id": "https://xiaochens.com/#person"}, "mainEntityOfPage": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/", "about": [{"@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/#video"}, {"@type": "SoftwareApplication", "name": "Claude Code"}, {"@type": "SoftwareApplication", "name": "Remotion"}, {"@type": "SoftwareApplication", "name": "DaVinci Resolve"}]}, {"@type": "FAQPage", "@id": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/#faq", "mainEntity": [{"@type": "Question", "name": "这条视频里，人做了什么，AI 做了什么？", "acceptedAnswer": {"@type": "Answer", "text": "人（陈与小金）定选题和切口、挑演示哪几个 mod、改稿定稿、录口播、听剪辑定取舍、选调色、看片挑毛病拍板，最后在达芬奇里收尾、裁掉几帧，25 天里发了 335 条消息。其余是 AI：Claude Code 在 32 段对话和它们派出的 102 个子 agent 里动手 12,759 次；另有 20 个干净的 Claude Code 对话是 AI 在后台开的，用来当场做 mod、录演示。"}}, {"@type": "Question", "name": "片子里演示的 mod 是提前做好的吗？", "acceptedAnswer": {"@type": "Answer", "text": "不是。AI 在后台开一个干净的 Claude Code（关掉我自己的 mod），往里打一句「做一个 mod：……」，Claude Code 自己加载内置的 plugin-authoring、写代码、跑测试、当场装上，全程录下来。文件树那个 2 分 26 秒做好，提示词优化那个 9 分 06 秒。"}}, {"@type": "Question", "name": "片子里的画面是怎么做的？", "acceptedAnswer": {"@type": "Answer", "text": "口播剪好后进 Remotion，用代码做包装。19 段画面分给 9 个子 agent 同时做，11-04 凌晨 02:39 开工、07:43 交出第一版；之后我看片挑毛病，AI 每批开 3 到 9 个沙盒并行改，前后存档 54 个沙盒，11-05 22:49 出 4K。"}}, {"@type": "Question", "name": "视频里的 mod 在哪下载？", "acceptedAnswer": {"@type": "Answer", "text": "8 个 mod 都在 GitHub 仓库 chenyuxiaojin/vibevideo 的 2026-10-13-claude-code-mods/mods 目录里，MIT 许可。装之前先看源码：mod 不在沙箱里，和你的终端权限一样大。需要 Claude Code v2.1.287 及以上。"}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "陈与小金 · 视频幕后", "item": "https://chenyuxiaojin.github.io/vibevideo/"}, {"@type": "ListItem", "position": 2, "name": "Claude Code Mods 幕后", "item": "https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/"}]}]}</script>
+<style>
+/* 版式照《流程全公开》幕后页:浅灰底 + 白卡片,系统字体,蓝色只给链接、主按钮和「AI」标记;这条成片是 16:9,配图一律 16:9 */
+:root {
+  --bg: #F2F2F4;
+  --panel: #FFFFFF;
+  --panel-2: #F0F1F4;
+  --line: #E2E2E6;
+  --ink: #1D1D1F;
+  --ink-2: #55555A;
+  --ink-3: #8A8A8F;
+  --accent: #0A66D6;
+  --demo: #8FB8F2; /* 演示里的 Claude Code */
+  --p: #B9A8F0;    /* claude -p */
+  --track: #C9CED6;
+  --card: #6D5BD0; /* 章节卡 */
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .05);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.3; font-weight: 700; }
+h3 { font-size: 20px; line-height: 1.4; font-weight: 700; }
+p { margin: 0; }
+code { font-family: var(--mono); font-size: .9em; background: var(--panel-2); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.num { font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 13px; color: var(--ink-3); }
+.lead { color: var(--ink-2); max-width: 38em; }
+.muted { color: var(--ink-3); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 96px; }
+
+/* 顶部导航 */
+.chapters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.chapters .inner { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); display: flex; overflow-x: auto; scrollbar-width: none; }
+.chapters a { flex: 1 0 auto; color: var(--ink-3); font-size: 12px; padding: 10px 12px; border-bottom: 2px solid transparent; white-space: nowrap; text-align: center; }
+.chapters a:hover, .chapters a.on { color: var(--ink); border-bottom-color: var(--accent); text-decoration: none; }
+
+section { padding-top: 88px; scroll-margin-top: 48px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
+
+/* 开场 */
+.hero { padding-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 44px); line-height: 1.22; font-weight: 700; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 18px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.stat { background: var(--panel); padding: 14px 14px 12px; min-width: 0; }
+.stat b { display: block; font-size: 24px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat b small { font-size: 13px; font-weight: 400; color: var(--ink-2); margin-left: 3px; }
+.stat span { font-size: 12px; color: var(--ink-3); }
+.stats.in { margin: 0 0 28px; }
+.hero .stat b { font-size: clamp(18px, 1.9vw, 24px); white-space: nowrap; }
+.hero .stat b small { margin-left: 2px; }
+
+/* 开场小互动:点一步看那一刻的画面 */
+.pipe { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 14px; display: grid; gap: 12px; }
+.pipe-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: #0B1220; }
+.pipe-shot img.contain { object-fit: contain; }
+.pipe-cap { font-size: 13px; color: var(--ink-2); min-height: 4.8em; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+.steps button { width: 100%; height: 100%; font: 500 12px/1.35 var(--font); color: var(--ink-2); background: var(--panel-2); border: 1px solid transparent; border-radius: 8px; padding: 7px 4px 6px; cursor: pointer; display: grid; gap: 4px; justify-items: center; text-align: center; }
+.steps button:hover { color: var(--ink); }
+.steps button[aria-pressed="true"] { background: var(--panel); border-color: var(--accent); color: var(--ink); }
+.who { display: inline-grid; place-items: center; min-width: 22px; height: 18px; padding: 0 5px; border-radius: 999px; font: 600 10px/1 var(--font); }
+.who.me { background: var(--ink); color: var(--bg); }
+.who.ai { background: var(--accent); color: #fff; }
+.who.demo { background: var(--demo); color: #0A1A33; }
+.who.p { background: var(--p); color: #1E1240; }
+
+/* 分工:一格 = 20 次 */
+.share { display: grid; gap: 22px; border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 22px clamp(14px, 2.6vw, 28px); }
+.sh-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: start; }
+.sh-lab { display: grid; gap: 2px; }
+.sh-lab .nm { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.sh-lab b { font-size: 30px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.sh-lab b small { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 4px; }
+.sh-lab span.d { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+.units { display: flex; flex-wrap: wrap; gap: 3px; padding-top: 6px; }
+.units i { width: 10px; height: 10px; border-radius: 2px; }
+.sh-break { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--ink-2); }
+.sh-break b { font-weight: 600; color: var(--ink); margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+/* 每天动手次数 */
+.daybar { margin-top: 26px; }
+.db { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 4px; align-items: end; height: 150px; }
+.db div { position: relative; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 2px; }
+.db div.me { background: var(--ink); }
+.db-x { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 4px; font-size: 10.5px; color: var(--ink-3); text-align: center; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.db-n { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); font-size: 10.5px; color: var(--ink-2); white-space: nowrap; padding-bottom: 2px; font-variant-numeric: tabular-nums; }
+
+/* 时间线卡 */
+.days { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.day { background: var(--panel); border-radius: 14px; box-shadow: var(--shadow); padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.day .dt { font-size: 13px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.day .dt i { font-style: normal; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; margin-right: 6px; }
+.day h3 { font-size: 17px; }
+.day ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.day img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #111; }
+.day img.contain { object-fit: contain; }
+
+/* 图表通用 */
+.chart { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
+.chart-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.chart-h h3 { font-size: 18px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 8px; border-radius: 2px; display: inline-block; }
+
+/* 成片时间线 */
+.tl-scroll { overflow-x: auto; }
+.tl { min-width: 820px; display: grid; grid-template-columns: 104px minmax(0, 1fr); row-gap: 8px; column-gap: 12px; }
+.tl-lab { font-size: 12.5px; color: var(--ink-2); align-self: center; line-height: 1.35; }
+.tl-lab small { display: block; color: var(--ink-3); font-size: 11px; }
+.tl-track { position: relative; height: 30px; background: var(--bg); border-radius: 4px; }
+.tl-track.ch { height: 26px; background: none; }
+.tl-b { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; overflow: hidden; font-size: 11px; line-height: 24px; padding: 0 6px; white-space: nowrap; cursor: default; }
+.tl-b.c { top: 0; bottom: 0; line-height: 26px; background: var(--panel-2); color: var(--ink-2); border-right: 2px solid var(--bg); border-radius: 0; text-align: center; padding: 0 2px; }
+.tl-b.c:nth-child(even) { background: var(--panel); }
+.tl-b.s { background: var(--demo); color: #0A1A33; text-align: center; padding: 0; font-weight: 600; border-right: 1px solid var(--panel); border-radius: 0; }
+.tl-b.s.car { background: var(--accent); color: #fff; }
+.tl-b.k { background: var(--card); }
+.tl-b.k.o { background: transparent; box-shadow: inset 0 0 0 2px var(--card); }
+.tl-axis { position: relative; height: 18px; }
+.tl-axis span { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tl-axis span:first-child { transform: none; }
+
+figure { margin: 0; min-width: 0; }
+figure img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+figcaption { font-size: 13px; color: var(--ink-3); margin-top: 6px; line-height: 1.55; }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* 循环片段墙 */
+.segs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 14px; }
+.segs.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.seg { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.seg .v { position: relative; }
+.seg .v video, .seg .v img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+.seg .n { position: absolute; left: 6px; top: 6px; font: 600 11px/1 var(--font); padding: 4px 6px; border-radius: 4px; background: rgba(255, 255, 255, .92); color: var(--ink); }
+.seg h4 { margin: 0; font-size: 14px; line-height: 1.45; font-weight: 700; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.seg h4 span { font-size: 11.5px; font-weight: 400; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.seg p { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+.seg q { font-size: 12.5px; color: var(--ink); quotes: "「" "」"; background: var(--panel-2); border-radius: 6px; padding: 6px 8px; line-height: 1.55; display: block; }
+.seg .m { font-size: 11.5px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.principles > div { background: var(--panel); padding: 18px 20px; display: grid; gap: 6px; min-width: 0; align-content: start; }
+.principles b { font-size: 15px; font-weight: 600; }
+.principles p { font-size: 14px; color: var(--ink-2); }
+.principles .fig { font-size: 26px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--ink); }
+.gal-h { margin: 44px 0 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.gal-h h3 { font-size: 18px; }
+
+.cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cards3 .pick img { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.pits { margin-top: 40px; display: grid; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.pit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; padding: 14px 20px; background: var(--panel); border-top: 1px solid var(--line); font-size: 14px; }
+.pit:first-child { border-top: 0; }
+.pit .a { color: var(--ink-2); }
+.pit-h { background: var(--panel-2); font-size: 12px; color: var(--ink-3); padding-block: 10px; }
+
+/* 原话时间线 */
+.said { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.said > div { display: grid; grid-template-columns: 92px minmax(0, 1fr) minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.said .t { color: var(--ink-3); font-size: 12.5px; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.said q { color: var(--ink); quotes: "「" "」"; }
+.said .a { color: var(--ink-2); }
+
+/* 提示词 + mod 下载 */
+.prompts { display: grid; gap: 12px; }
+.pq { background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); padding: 14px 18px; display: grid; gap: 6px; min-width: 0; }
+.pq .h { font-size: 13px; color: var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+.pq .h b { color: var(--ink); font-size: 15px; }
+.pq blockquote { margin: 0; border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; font-size: 14.5px; color: var(--ink); line-height: 1.75; overflow-wrap: anywhere; }
+.pq p { font-size: 13px; color: var(--ink-2); }
+.mods { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+.mod { background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; border: 1px solid transparent; }
+.mod:hover { border-color: var(--accent); text-decoration: none; }
+.mod b { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+.mod span { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.mod small { font-size: 11.5px; color: var(--ink-3); }
+.warn { margin-top: 18px; background: #FFF7E6; border: 1px solid #F3D9A4; border-radius: 12px; padding: 12px 16px; font-size: 13.5px; color: #6B4A00; }
+
+.takeaways { display: grid; }
+.tk { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.tk:last-child { border-bottom: 1px solid var(--line); }
+.tk .n { font-weight: 700; font-size: 40px; line-height: 1; color: var(--ink-3); }
+.tk h3 { font-size: 22px; margin-bottom: 8px; }
+.tk p { color: var(--ink-2); max-width: 46em; }
+
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq > div { padding: 20px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.faq h3 { font-size: 18px; }
+.faq p { color: var(--ink-2); max-width: 46em; }
+footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(--ink-3); max-width: 60em; }
+
+#tip { position: fixed; z-index: 20; pointer-events: none; background: #1D1D1F; color: #fff; font-size: 12.5px; line-height: 1.5; padding: 7px 10px; border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); max-width: 280px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .days, .segs.three, .cards3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .segs, .mods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sh-row { grid-template-columns: 1fr; gap: 8px; }
+  .units i { width: 8px; height: 8px; }
+  .days, .principles, .segs.three, .cards3, .mods { grid-template-columns: 1fr; }
+  .segs { gap: 18px 10px; }
+  .pit { grid-template-columns: 1fr; gap: 4px; }
+  .pit-h { display: none; }
+  .said > div { grid-template-columns: 1fr; gap: 4px; }
+  .tk { grid-template-columns: 1fr; gap: 8px; }
+  .db-n { display: none; }
+  .db-x span:nth-child(even) { visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<nav class="chapters" aria-label="章节">
+  <div class="inner">
+    <a href="#top">开场</a>
+    <a href="#share">分工</a>
+    <a href="#days">时间线</a>
+    <a href="#live">当场做 mod</a>
+    <a href="#pack">19 段画面</a>
+    <a href="#film">成片拆开看</a>
+    <a href="#said">我挑的毛病</a>
+    <a href="#mods">提示词和下载</a>
+    <a href="#lesson">收获</a>
+    <a href="#faq">问答</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<header class="hero" id="top">
+  <div>
+    <div class="eyebrow"><a href="../" style="color:inherit">陈与小金 · 视频幕后</a> · 2026.10.13 – 11.06</div>
+    <h1>这条片讲 mod，<em>画面里的 mod 都是 AI 当场做的</em></h1>
+    <p class="lead">成片《给 Claude 页面换一个皮肤》，11 分 13 秒，16:9。片子里演示的每个 mod，都是 AI 在后台开一个干净的 Claude Code、打一句需求、让它当场写出来，再自己录下来的。19 段包装画面交给 9 个子 agent 同时做，我 7 个小时没发一条消息，第一版已经交了。</p>
+    <div class="stats">
+      <div class="stat"><b>25<small>天</small></b><span>立项到发布</span></div>
+      <div class="stat"><b>335<small>条</small></b><span>我发的消息</span></div>
+      <div class="stat"><b>12,759<small>次</small></b><span>Claude Code 动手</span></div>
+      <div class="stat"><b>102<small>个</small></b><span>派出去的子 agent</span></div>
+    </div>
+  </div>
+  <div class="pipe" id="pipe">
+    <div class="pipe-shot"><img id="pipe-img" src="img/skill.jpg" alt="" width="1200" height="675"></div>
+    <p class="pipe-cap" id="pipe-cap"></p>
+    <ol class="steps" id="steps" aria-label="这条片的六步"></ol>
+  </div>
+</header>
+
+<section id="share">
+  <div class="sec-head">
+    <div class="eyebrow">分工</div>
+    <h2>我说要什么，AI 去做、去录、去查</h2>
+    <p class="lead">我亲手做的：录口播、给出镜段加磨皮美颜、最后在达芬奇里裁掉几帧。其余按这 25 天的对话记录数出来，都是 AI 动的手。</p>
+  </div>
+  <div class="share">
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who me">我</i>我</span><b>335<small>条消息</small></b><span class="d">定切口、挑演示哪几个 mod、改稿定稿、录口播、听剪辑定取舍、选调色、看片挑毛病、拍板</span></div>
+      <div class="units" data-n="335" data-c="var(--ink)"></div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who ai">CC</i>Claude Code（32 段对话 + 102 个子 agent）</span><b>12,759<small>次操作</small></b><span class="d">查官方文档、粗剪细剪、调色、19 段包装、审片、改版、OCR 扫隐私、导出</span></div>
+      <div>
+        <div class="units" data-n="12759" data-c="var(--accent)"></div>
+        <div class="sh-break"><span>跑命令<b>7,896</b></span><span>读文件<b>3,257</b></span><span>写和改文件<b>604</b></span><span>操作浏览器<b>108</b></span><span>操作达芬奇<b>102</b></span><span>派子 agent<b>60</b></span><span>其他<b>732</b></span></div>
+      </div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who demo">演示</i>演示里的 Claude Code</span><b>367<small>次操作</small></b><span class="d">AI 在后台开的 20 个干净对话：当场写 mod、跑测试、演示怎么用，全程被录下来</span></div>
+      <div class="units" data-n="367" data-c="var(--demo)"></div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who p">-p</i>claude -p</span><b>219<small>次操作</small></b><span class="d">6 次：核查命令名撞车、开头真终端、缓存那几秒三档各一版等</span></div>
+      <div class="units" data-n="219" data-c="var(--p)"></div>
+    </div>
+    <div class="daybar" aria-label="每天 Claude Code 动手次数">
+      <div class="chart-h" style="margin-bottom:22px"><h3 style="font-size:15px">每天动手多少次</h3><span class="muted">没列出的日子没有做这条片的记录</span></div>
+      <div class="db" id="db"></div>
+      <div class="db-x" id="dbx"></div>
+    </div>
+    <p class="muted">一格 = 20 次。统计范围：10-13 到 11-06，工具参数里提到这期文件夹不少于 3 次的 32 段对话（连同它们派出去的子 agent，含工作流里的），只算这段日期里的操作；整段对话算进来，可能混进少量别的活。不含：做 mod 和刘海台本身（10-09）、做录屏工具 rec 本身、发布后的收尾，以及做这个幕后页的对话。「读文件」含搜索文件。一次「操作」指 AI 用一次工具，比如跑一条命令、读一个文件、在达芬奇里执行一步。</p>
+  </div>
+</section>
+
+<section id="days">
+  <div class="sec-head">
+    <div class="eyebrow">时间线</div>
+    <h2>10-13 立项，11-06 发出</h2>
+    <p class="lead">按对话记录、工程进度表和提交记录排出来。11-04 那天 AI 动手 8,288 次，是前面所有日子加起来的 4 倍多。</p>
+  </div>
+  <div class="days">
+    <article class="day">
+      <span class="dt"><i>0</i>10-09 · 前情</span>
+      <h3>先有 mod，才有这条片</h3>
+      <img src="img/notch-app.jpg" alt="刘海台展开后的面板:额度、对话、正在推进的内容、发片节奏" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>刘海台是一个晚上做出来的：19:05 第一版是黑底上排几行字，23:15 定稿，中间改了几轮</li>
+        <li>给它供数据的 5 个 mod，10-13 实跑测试 52 个全过</li>
+        <li>这部分不算进上面的统计</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt"><i>1</i>10-13 – 11-02</span>
+      <h3>立项、查官方原文、写稿</h3>
+      <img src="img/docs.jpg" alt="官方 mods 文档页,讲到的句子被划亮" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>选题库里同题视频累计 40 条，AI 挑 14 条按播放量列成参考表；官方文档原文先抓下来，事实以它为准</li>
+        <li>10-29 我说稿子缺实操：AI 抓了 15 条国外博主的 mod 视频字幕，加官方 3 个样例，汇总出约 100 个 mod 点子，我挑了 3 个，外加一个「作业」</li>
+        <li>11-01 我发现 /upgrade 撞了官方升级套餐的命令，换名 /polish 重录</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt"><i>2</i>10-29 – 11-05</span>
+      <h3>AI 自己开 Claude Code、自己录</h3>
+      <img src="img/skill.jpg" alt="干净的 Claude Code 里,plugin-authoring 自动加载成功" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>后台开一个干净的 Claude Code（关掉我的 mod），自己打字、按键、录屏，不碰我的键盘鼠标</li>
+        <li>11-04 我改了状态栏排版，旧录屏全不能用，AI 凌晨重录 8 段</li>
+        <li>11-05「换一个皮肤」又重录了 3 遍，最后一遍照片子主窗的比例录</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt"><i>3</i>11-03</span>
+      <h3>录口播，AI 当晚粗剪</h3>
+      <img src="img/face.jpg" alt="口播出镜画面" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>录了两遍，再补拍一轮。麦克风和相机的钟差了 5 分 48 秒，AI 按声音对齐，误差不到 20 毫秒</li>
+        <li>粗剪每句取最后说完整的那一遍，46 段画面和麦克风最大差 28 毫秒，不到 1 帧</li>
+        <li>拿不准的 15 处染成黄色，留给我听</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt"><i>4</i>11-04 凌晨</span>
+      <h3>细剪、调色，然后交给 AI 包装</h3>
+      <img class="contain" src="img/grade.jpg" alt="调色三方对比:我的调色、C 暗调质感、C2" loading="lazy" width="1800" height="367">
+      <ul>
+        <li>13 处「呃」我定全留；一个念错的功能名，AI 整句克隆后只截那一个词换上，37 帧</li>
+        <li>调色我挑了「C 暗调质感」，AI 再对齐我自己那版的黑位和肤色，合成一个 LUT，套到 68 个出镜片段上；磨皮和脸型是我自己在调色页加的</li>
+        <li>02:39 包装开工，07:43 交出第一版。这 7 个小时里我一条消息都没发</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt"><i>5</i>11-04 上午 – 11-06</span>
+      <h3>我挑毛病，它开沙盒并行改</h3>
+      <img src="img/repo.jpg" alt="结尾换成真实的 GitHub 仓库页" loading="lazy" width="1200" height="675">
+      <ul>
+        <li>每批意见拆成几个包，每包一个沙盒、一个子 agent，改完合回主工程；前后存档的沙盒 54 个</li>
+        <li>11-05 22:49 出 4K。我要了一版无字幕、声音分开的母带</li>
+        <li>11-06 凌晨在达芬奇里收尾：字幕、人声混音，我又裁掉几帧，当晚 19:02 发出</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="live">
+  <div class="sec-head">
+    <div class="eyebrow">当场做 mod</div>
+    <h2>片子里的 mod，是镜头前一句话做出来的</h2>
+    <p class="lead">每个演示都是同一个套路：AI 在干净的 Claude Code 里打一句「做一个 mod：……」，Claude Code 自己加载内置的 plugin-authoring、写代码、跑测试，问一句要不要打开，选「打开」就当场生效，不用重启。下面是成片里这些演示的一小截。</p>
+  </div>
+  <div class="stats in">
+    <div class="stat"><b>20<small>个</small></b><span>AI 开的干净对话</span></div>
+    <div class="stat"><b>367<small>次</small></b><span>演示里的 Claude Code 动手</span></div>
+    <div class="stat"><b>2:26</b><span>文件树从一句话到做好</span></div>
+    <div class="stat"><b>3<small>回</small></b><span>同一个文件树做过几回</span></div>
+  </div>
+  <div class="segs three" id="livewall"></div>
+  <p class="muted" style="margin-top:14px">文件树前后做了 3 回：10-29 第一版 3 分 33 秒；接着说「这个文件树有点太丑了，能不能做成 vscode 那样的」，4 分 59 秒改成 VS Code 样式；11-04 按新状态栏重录，2 分 26 秒。终端画面是录屏工具 rec 录的：录下字和时间，导出时照 Terminal.app 的规则重画，和真终端逐像素比，正文平均误差 0.18/255。</p>
+</section>
+
+<section id="pack">
+  <div class="sec-head">
+    <div class="eyebrow">19 段画面</div>
+    <h2>9 个子 agent 同时做，我一条消息没发，第一版交了</h2>
+    <p class="lead">11-04 凌晨，主线的 Claude Code 先取证：哪几段有人像、声画差几帧、每个字的时间、录屏盘点、找音效配乐；再把全片切成 19 段、分成 9 个包，每包一个子 agent、一个独立沙盒。主线逐包看接触表回意见、合龙、修接缝，之后一轮轮「独立审片 → 原作者返修 → 合龙复查」，每轮都和上一版逐帧比，确认只有计划内的段落变了。</p>
+  </div>
+  <div class="stats in">
+    <div class="stat"><b>5:04</b><span>02:39 开工到 07:43 交付</span></div>
+    <div class="stat"><b>9<small>个</small></b><span>子 agent 同时做 19 段</span></div>
+    <div class="stat"><b>7<small>轮</small></b><span>审片 → 返修 → 合龙</span></div>
+    <div class="stat"><b>144<small>次</small></b><span>渲染，合计 73 分 36 秒</span></div>
+  </div>
+  <div class="segs" id="packwall"></div>
+
+  <div class="gal-h"><h3>改装车：三个方向各做一版</h3><span class="muted">1:34–2:24，全片最大的动作</span></div>
+  <div class="cards3">
+    <figure><img src="img/car-a.jpg" alt="方向 A:影棚绕车,三维小克当司机" loading="lazy" width="1200" height="675"><figcaption><b>A</b>　影棚绕车，三维小克坐在驾驶座当「大语言模型」。</figcaption></figure>
+    <figure><img src="img/car-b.jpg" alt="方向 B:夜路红车,驾驶座第一人称" loading="lazy" width="1200" height="675"><figcaption><b>B</b>　夜路红车，驾驶座第一人称，导航和地图挂在眼前。</figcaption></figure>
+    <figure class="pick"><img src="img/car-c.jpg" alt="方向 C:维修间真车,蓝色透视改装" loading="lazy" width="1200" height="675"><figcaption><b>C · 用了这个</b>　维修间里一台真车，说到「mod 就是直接改这台车」，车身变成蓝色透视，发动机、仪表、线束一件件真的换。</figcaption></figure>
+  </div>
+  <p class="muted" style="margin-top:10px">第一版的改装车我看了说「一个看不出是车的车交给我」。AI 把前三分钟拆成 6 个包重做，其中改装车 3 个方向各一个子 agent，09:59 同时开工、10:32 全部交回。三张图是同一时刻的三版。</p>
+
+  <div class="gal-h"><h3>画面要真的</h3></div>
+  <div class="principles">
+    <div><span class="fig">65 页</span><b>2:20–5:54 的终端和文件夹页面逐页对照</b><p>我说这段的终端页面「都要真实的是一样的」。AI 把这段盘了一遍：36 页换成 4K 真像素，6 页按真终端 1:1 复刻（和真帧逐像素校准），19 页本来就是真的，剩 4 页要补录。缺的画面它自己在后台补录了 7 段录屏和截图。</p></div>
+    <div><span class="fig">7 张</span><b>讲到官方说法的地方，放官方真页面</b><p>从官方文档截了 7 张真页面（带官网页头和地址栏），说到哪句划亮哪句。开头「这个功能叫做 mod」那一下，整屏切到官方发布文章。</p></div>
+    <div><span class="fig">0 命中</span><b>用系统 OCR 扫全片找隐私</b><p>每秒 3 帧扫全片，搜用户名、路径、私人文件名、没公开的项目：第一版交付时 0 命中。后来我说不用打码，磨砂撤掉了几处；带私人路径的那一行，按我说的又盖了回去。</p></div>
+    <div><span class="fig">三档</span><b>开头缓存那几秒，三个档位各做一版</b><p>我觉得「缓存被清掉」那几秒不够好，说「你可以 -p 不同档位都做一下我看看」。medium、high、xhigh 三个 claude -p 同时开，4、6、10 分钟各交一版，我挑了 xhigh 再改位置。</p></div>
+  </div>
+
+  <div class="pits">
+    <div class="pit pit-h"><span>AI 自己查出来的问题</span><span>根因和处理</span></div>
+    <div class="pit"><span>3:45 章节卡出来前闪了一张图（我截图问的）</span><span class="a">上一段最后 20 帧在把窗口拉回全屏，中间插了章节卡，整扇窗只露 0.6 秒就被切掉。改成段尾停在特写，不拉回。</span></div>
+    <div class="pit"><span>7:21–7:31 左边一道黑拖影</span><span class="a">推近端口面板时，左缘一条 330 像素的黑渐变遮罩压在白窗上。窗里的字另有办法藏，遮罩撤掉。</span></div>
+    <div class="pit"><span>11:07 之后结尾全没了</span><span class="a">全片时长被写死成 20009 帧，比成片短 197 帧。改回按章节卡自动算的总长。</span></div>
+    <div class="pit"><span>说是「无字幕」的母带，其实带着字幕</span><span class="a">导出脚本里字幕开关的名字写错了，也没传进分块渲染。修好重出，覆盖掉错的那版。</span></div>
+    <div class="pit"><span>10-29 第一次录演示：用系统按键放大字号，按键发到了我正在用的别的窗口</span><span class="a">改成在后台独立终端里录，不发系统按键、不动窗口；之后做成录屏工具 rec，这期的演示全靠它。</span></div>
+  </div>
+</section>
+
+<section id="film">
+  <div class="sec-head">
+    <div class="eyebrow">成片拆开看</div>
+    <h2>11 章、19 段</h2>
+    <p class="lead">顶部那条章节进度条，下面是 19 段画面各占多长。章节卡有两种放法：两张在换气的静音里把片子切开插进去，九张直接盖在每章报幕的那句话上。</p>
+  </div>
+  <div class="chart">
+    <div class="chart-h"><h3>AI 交的 4K 成片 11:13.5</h3><div class="legend" id="tl-legend"></div></div>
+    <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+    <p class="muted" style="margin-top:10px">色块里的数字是第几段，悬停或聚焦可以看名字和时间。按 AI 交的 4K 成片算；我在达芬奇里又裁掉了几帧，发出去的版本是 11:13.0。</p>
+  </div>
+</section>
+
+<section id="said">
+  <div class="eyebrow">我挑的毛病</div>
+  <div class="sec-head" style="margin-top:12px">
+    <h2>真正改变了片子的那几句</h2>
+    <p class="lead">第一版交了以后，我在预览里一段段看，说哪里不对。下面都是对话记录里的原话。</p>
+  </div>
+  <div class="said">
+    <div><span class="t">11-04 09:34</span><q>改装车的那个片段你做这么烂，你怎么会觉得做得好呀？就是一个看不出是车的车交给我，一个看不出是人的人发给我。</q><span class="a">前三分钟拆成 6 个包重做，改装车三个方向同时做，33 分钟后三版都交回，最后用了维修间真车那版。</span></div>
+    <div><span class="t">11-04 12:26</span><q>切到小窗之后，我人要比较小。我觉得我的小窗可以再小一些，大窗口再大一些。</q><span class="a">人物小窗从 588×720 缩到 360×450 挪到右下，内容窗放宽；同时开头 3 秒改成只有真人，讲到官方说法的地方换成真页面。6 个沙盒并行，30 分钟合回。</span></div>
+    <div><span class="t">11-04 14:01</span><q>我需要它做一个胶囊形变，能够平滑延展出去。</q><span class="a">全片窗口变大小都改成胶囊形变：从原来的形状平滑长过去，不再上一帧一个大小、下一帧突然另一个大小。</span></div>
+    <div><span class="t">11-04 15:12</span><q>在2:20-5:50自己的全部终端页面和文件夹页面，我都要真实的是一样的。</q><span class="a">65 页逐页对照，换真像素或 1:1 复刻，见上面「画面要真的」。</span></div>
+    <div><span class="t">11-05 13:44</span><q>这一次的安全区我觉得有点太大了。</q><span class="a">改回我以前定的两层安全区：外框 2% 放窗口，重点 5% 放正在讲的东西，字幕带里不放重点。这条片和设计规范一起改。</span></div>
+    <div><span class="t">11-05 15:25</span><q>11分之后的结尾的片段，那种蓝色的胶囊全部不要，仓库用真实的截图。</q><span class="a">结尾的发光玻璃盒、光柱、光尘全删，换成真实的 GitHub 仓库页，划亮 README 标题和仓库名。</span></div>
+    <div><span class="t">11-05 16:03</span><q>4.29-4.56，这些画面别放大，都看不到内容了。</q><span class="a">文件树那段镜头不再推近，一直是整个终端。</span></div>
+    <div><span class="t">11-05 16:18</span><q>放大镜 换成聚焦放大，不要这个放大镜，用矩形线也行。</q><span class="a">改成矩形线框圈住正在讲的几行，旁边弹出放大框，框的颜色跟着状态走：读是蓝、改是橙、改完是绿。开头和换皮肤后来也用这个。</span></div>
+    <div><span class="t">11-05 16:34</span><q>这条视频怎么那么多莫名其妙的运镜啊。</q><span class="a">4:07、6:16 等几处的推近、拉回、逐块直推全撤，镜头停在整块画面上，只用框和鼠标指重点。</span></div>
+    <div><span class="t">11-05 21:11</span><q>开头的那个终端，没有展示我的效果，开头不吸引人。</q><span class="a">开头换成装好 mod 的真终端：先框住它正在干的活，说到「停下来太久」放大缓存倒数，说到 token，缓存那格原地溶解成「本对话 ≈$1.20」。</span></div>
+  </div>
+</section>
+
+<section id="mods">
+  <div class="sec-head">
+    <div class="eyebrow">视频里的提示词 + 8 个 mod</div>
+    <h2>照着说，就能做出同款</h2>
+    <p class="lead">下面是视频里当众说的原话。每次做出来的样子不会完全一样；想要和我一模一样的，直接拿下面的 mod。</p>
+  </div>
+  <div class="prompts">
+    <div class="pq"><div class="h"><b>文件树</b><span>对应 file-tree</span></div><blockquote>做一个 mod：在我的右边开一个文件树面板，列出我当前文件夹所有的文件，参考 VS Code 那样子的文件树，给我做好。</blockquote></div>
+    <div class="pq"><div class="h"><b>提示词优化</b><span>对应 polish</span></div><blockquote>我在发送提示词的时候，经常觉得自己的目标定义得不是很清楚。你给我做一个能帮我优化提示词的 mod。</blockquote><p>这句比较宽，每次做出来的样子不一样（片子里那一回做出来的是一个「理清目标」按钮）。想做出和 mods/polish 一样「先问 3 个问题、左边原话右边提示词」的版本，用这句：</p><blockquote>做一个 mod：加一个 /polish 命令。我在后面写一句很简单的需求，它先弹出一个面板问我 3 个问题，我答完以后，左边显示我的原话，右边显示帮我写好的详细提示词，下面放「复制」和「直接运行」两个按钮。</blockquote></div>
+    <div class="pq"><div class="h"><b>刘海屏</b><span>另一个原生 App，见 <a href="https://github.com/chenyuxiaojin/cyxj-notch">cyxj-notch</a></span></div><blockquote>把我的这些进度、缓存、额度帮我显示在我的刘海屏上面，做一个集合。</blockquote></div>
+    <div class="pq"><div class="h"><b>后台面板</b><span>对应 version-board</span></div><blockquote>我想要在制作视频的时候，把能开的所有后台端口，比如 3000、3001，全部展示到这里，我能点击去查看对应的视频片段。</blockquote></div>
+    <div class="pq"><div class="h"><b>找到适合你的 mod</b><span>发给你项目文件夹里的 Claude Code</span></div><blockquote>看看我平时是怎么用 Claude Code 的：读我最近的 20 次对话，找出三样东西——第一，我老是让你做的事情；第二，我常用的命令；第三，我怎么检查你的产出。然后推荐 5 个能帮我省事儿的 mod。先给我看点子，我没选之前什么都别做。</blockquote><p>20 次可以改成 30 次、50 次，次数越多越花时间和 token。我自己跑的时候，它数出我 10-15 以来敲了大约 95 次 /clear，推荐了「清空后接上」，handoff 就是照这个点子做的。</p></div>
+  </div>
+  <div class="mods" id="modlist"></div>
+  <div class="warn"><b>装之前先看源码。</b>mod 不在沙箱里，它和你的终端权限一样大，能读写文件、联网、跑别的程序，还能替你按「同意」。需要 Claude Code v2.1.287 及以上；装之前可以先跑 <code>claude plugin validate &lt;mod 文件夹&gt;</code>。斜杠命令名别用中文，注册会失败，报错是 <code>name is letters, digits, _ or -</code>。完整安装步骤见 <a href="https://github.com/chenyuxiaojin/vibevideo/tree/main/2026-10-13-claude-code-mods">仓库 README</a>。</div>
+</section>
+
+<section id="lesson">
+  <div class="sec-head">
+    <div class="eyebrow">收获</div>
+    <h2>做完这条，我记住了三件事</h2>
+  </div>
+  <div class="takeaways">
+    <div class="tk"><div class="n">1</div><div><h3>大活拆开，交给并行的子 agent</h3><p>19 段画面 9 个子 agent 同时做，5 个小时交出第一版，那段时间我一条消息都没发。后面每批意见也是这样：拆成几个包、每包一个沙盒，半小时左右合回来。</p></div></div>
+    <div class="tk"><div class="n">2</div><div><h3>画面要真的</h3><p>示意图、图标比喻做得再精致，也不如真终端、真官方页、真仓库页。我一次次把它拉回真实界面，最后 2:20–5:54 每一页都和真实画面对过。</p></div></div>
+    <div class="tk"><div class="n">3</div><div><h3>镜头少动，用框指重点</h3><p>推近、拉回、甩来甩去，看着热闹，观众反而看不清内容。镜头停住，用矩形框圈住正在讲的那几行，再弹一个放大框，清楚得多。</p></div></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="sec-head">
+    <div class="eyebrow">问答</div>
+    <h2>常见问题</h2>
+  </div>
+  <div class="faq">
+    <div><h3>这条视频里，人做了什么，AI 做了什么？</h3><p>我定选题和切口、挑演示哪几个 mod、改稿定稿、录口播、听剪辑定取舍、选调色、看片挑毛病拍板，最后在达芬奇里收尾、裁掉几帧，25 天里发了 335 条消息。其余是 AI：Claude Code 在 32 段对话和它们派出的 102 个子 agent 里动手 12,759 次；另有 20 个干净的 Claude Code 对话是 AI 在后台开的，用来当场做 mod、录演示。</p></div>
+    <div><h3>片子里演示的 mod 是提前做好的吗？</h3><p>不是。AI 在后台开一个干净的 Claude Code（关掉我自己的 mod），往里打一句「做一个 mod：……」，Claude Code 自己加载内置的 plugin-authoring、写代码、跑测试、当场装上，全程录下来。文件树那个 2 分 26 秒做好，提示词优化那个 9 分 06 秒。<a href="#live">看演示片段 ↑</a></p></div>
+    <div><h3>片子里的终端是真录屏吗？</h3><p>演示段的终端是录屏工具 rec 录的：它录下字和时间，导出时照 Terminal.app 的规则重画，和真终端逐像素比误差很小，肉眼看不出。刘海屏那段是真屏幕录的。2:20–5:54 的终端和文件夹页面，每一页都和真实画面对过。</p></div>
+    <div><h3>包装画面是怎么做的？</h3><p>口播剪好后进 Remotion，用代码做包装。19 段画面分给 9 个子 agent 同时做，11-04 凌晨 02:39 开工、07:43 交出第一版；之后我看片挑毛病，AI 每批开 3 到 9 个沙盒并行改，前后存档 54 个沙盒，11-05 22:49 出 4K。</p></div>
+    <div><h3>视频里的 mod 在哪下载？</h3><p>8 个 mod 都在 <a href="https://github.com/chenyuxiaojin/vibevideo/tree/main/2026-10-13-claude-code-mods/mods">GitHub 仓库的 mods 目录</a>里，MIT 许可。装之前先看源码：mod 不在沙箱里，和你的终端权限一样大。<a href="#mods">看提示词和清单 ↑</a></p></div>
+  </div>
+
+  <footer>
+    <p>消息条数和操作次数来自 10-13 到 11-06 的 32 段对话记录（含 102 个子 agent）、20 个演示对话和 6 次 claude -p 的记录；统计脚本和中间数据留在本地。5 小时交付、9 个子 agent、7 轮审片、144 次渲染 73 分 36 秒取自 Remotion 工程的进度表和渲染账；65 页对照、7 张官方页、OCR 0 命中取自工程交付说明；沙盒数按工程里的沙盒存档数；录制、对齐、剪辑的数字取自项目入口文档当天的记录。「我挑的毛病」摘自对话记录原文。改装车三张图是用工程代码在同一帧重新渲的；其余配图和循环片段从成片截取。</p>
+    <p>陈与小金 · 用 Claude Code、Remotion、DaVinci Resolve 制作 · <a href="https://github.com/chenyuxiaojin/vibevideo/tree/main/2026-10-13-claude-code-mods">mod 下载说明</a> · <a href="https://github.com/chenyuxiaojin/vibevideo">GitHub 仓库</a> · <a href="../">全部幕后</a></p>
+  </footer>
+</section>
+
+</main>
+<div id="tip" hidden></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = 20206 / 30;
+  var fmtT = function (s) { var m = Math.floor(s / 60), r = Math.floor(s - m * 60); return m + ':' + (r < 10 ? '0' : '') + r; };
+  var GH = 'https://github.com/chenyuxiaojin/vibevideo/tree/main/2026-10-13-claude-code-mods/mods/';
+
+  // ── 开场六步 ──
+  var STEPS = [
+    ['当场做 mod', 'ai', 'skill', 0, '「做一个 mod：……」AI 在后台开干净的 Claude Code 打进去，它自己加载 plugin-authoring、写代码、跑测试，全程录下来。'],
+    ['录口播', 'me', 'face', 0, '11-03 晚录了两遍，再补拍一轮。这一步只能我来。'],
+    ['剪辑 + 调色', 'ai', 'grade', 1, 'AI 对齐两台设备的声音、粗剪细剪、出调色候选；13 处「呃」留不留、用哪种调色，我听完看完定。'],
+    ['19 段包装', 'ai', 'car-c', 0, '9 个子 agent 在各自沙盒里同时做 19 段画面，02:39 开工、07:43 交出第一版。'],
+    ['挑毛病', 'me', 'repo', 0, '我在预览里一段段看，说哪里不对；AI 拆包开沙盒并行改。比如结尾的蓝色胶囊全删，换成真实的仓库页。'],
+    ['收尾 + 发布', 'me', 'cards', 0, '无字幕母带进达芬奇收尾：字幕、人声混音，我又裁掉几帧，11-06 19:02 发出。']
+  ];
+  var steps = $('steps'), pimg = $('pipe-img'), pcap = $('pipe-cap');
+  steps.innerHTML = STEPS.map(function (s, i) {
+    return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><i class="who ' + s[1] + '">' + (s[1] === 'me' ? '我' : 'AI') + '</i>' + s[0] + '</button></li>';
+  }).join('');
+  var pick = function (i) {
+    var s = STEPS[i];
+    pimg.src = 'img/' + s[2] + '.jpg'; pimg.alt = s[0]; pimg.className = s[3] ? 'contain' : '';
+    pcap.textContent = (i + 1) + '. ' + s[0] + '：' + s[4];
+    steps.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === i)); });
+  };
+  steps.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(0);
+  STEPS.forEach(function (s) { var im = new Image(); im.src = 'img/' + s[2] + '.jpg'; });
+
+  // ── 每天动手次数(主会话 + 子 agent)和我的消息 ──
+  var DAYS = [['10-13', 40, 7], ['10-15', 48, 14], ['10-16', 197, 26], ['10-17', 48, 3], ['10-18', 71, 8], ['10-28', 88, 8], ['10-29', 255, 16], ['11-01', 236, 17], ['11-02', 501, 14], ['11-03', 520, 46], ['11-04', 8288, 60], ['11-05', 2388, 105], ['11-06', 79, 11]];
+  var max = 8288;
+  $('db').innerHTML = DAYS.map(function (d) {
+    var h = Math.max(1.5, Math.sqrt(d[1] / max) * 100);
+    return '<div style="height:' + h + '%" data-tip="' + d[0] + '：Claude Code 动手 ' + d[1].toLocaleString() + ' 次，我发了 ' + d[2] + ' 条消息"><span class="db-n">' + d[1].toLocaleString() + '</span></div>';
+  }).join('');
+  $('dbx').innerHTML = DAYS.map(function (d) { return '<span>' + d[0] + '</span>'; }).join('');
+
+  // ── 当场做 mod:[片段, 名字, 成片时间, 说明, 原话, 数字] ──
+  var LIVE = [
+    ['l1', '文件树', 269, 'Claude Code 写面板、跑测试，右上角的秒表走到 2:26 就做好了。做好以后它读哪个文件那行变蓝，改的时候闪黄，改完变绿打勾。', '做一个 mod：在我的右边开一个文件树面板，列出我当前文件夹所有的文件，参考 VS Code 那样子的文件树，给我做好。', '2 分 26 秒做好'],
+    ['l2', '提示词优化 · 做出来', 362, '写完自己跑测试、自己修，最后一行「This mod is now loaded」，不用重启。这一回做出来的是一个「理清目标」按钮版。', '我在发送提示词的时候，经常觉得自己的目标定义得不是很清楚。你给我做一个能帮我优化提示词的 mod。', '9 分 06 秒做好'],
+    ['l3', '提示词优化 · 在用', 319, '我自己装的 /polish：一句话需求进去，先一题一题问 3 个问题，再左边原话、右边分页的详细提示词。', '', '每次问的问题是现想的'],
+    ['l4', '换一个皮肤', 42.6, '同一扇终端，状态栏、看板、文件树一样样装上去。真跑的过程在片子里压成 3 秒。', '给我的 Claude Code 换个皮肤', '11-05 重录 3 遍'],
+    ['l5', '清空后接上', 603, '/clear 以后，输入框上方出一行「刚才在做……」，回一个「接」就接着聊。点子来自让它读我最近 20 次对话。', '', '我两周敲了约 95 次 /clear'],
+    ['l6', '一个小坑', 655, '命令名用中文「/待办」注册失败，报错原文贴在旁边；改成拼音 /daiban 就进去了。', '做一个 mod：加一个 /待办 命令，敲一下就列出 文案 文件夹里的稿子。命令名就叫 /待办，用中文。', '只认英文字母、数字、_ 和 -']
+  ];
+  $('livewall').innerHTML = LIVE.map(function (s) {
+    return '<figure class="seg"><div class="v"><video src="clips/' + s[0] + '.mp4" poster="clips/' + s[0] + '.jpg" muted loop playsinline preload="none" aria-label="' + s[1] + '" width="640" height="360"></video></div>' +
+      '<h4>' + s[1] + '<span>成片 ' + fmtT(s[2]) + '</span></h4>' + (s[4] ? '<q>' + s[4] + '</q>' : '') + '<p>' + s[3] + '</p><span class="m">' + s[5] + '</span></figure>';
+  }).join('');
+
+  // ── 19 段里挑 8 段 ──
+  var PACK = [
+    ['p1', 'S01 开头', 4, '装好 mod 的真终端，矩形框聚焦，放大缓存倒数。'],
+    ['p2', 'S02 官方定义', 24, '官方文档真页面，说到哪句划亮哪句。'],
+    ['p3', 'S06 改装车', 120, '维修间真车变蓝色透视，发动机、仪表一件件换。'],
+    ['p4', 'S11 文件树', 277, '矩形线框圈住正在变的那几行，旁边弹放大框。'],
+    ['p5', 'S12 提示词优化', 326, '计划模式厚厚一摞，对比 /polish 一句一张卡。'],
+    ['p6', 'S13 刘海屏', 399, '点刘海里的对话，连线跳到对应的终端。'],
+    ['p7', 'S14 端口面板', 436, '点一个端口，弹出那一版的预览窗。'],
+    ['p8', 'S17 拿自己试', 589, '两周日历条，每天一摞 /clear 记号。']
+  ];
+  $('packwall').innerHTML = PACK.map(function (s, i) {
+    return '<figure class="seg"><div class="v"><video src="clips/' + s[0] + '.mp4" poster="clips/' + s[0] + '.jpg" muted loop playsinline preload="none" aria-label="' + s[1] + '" width="640" height="360"></video><span class="n">' + s[1].split(' ')[0] + '</span></div>' +
+      '<h4>' + s[1].split(' ')[1] + '<span>成片 ' + fmtT(s[2]) + '</span></h4><p>' + s[3] + '</p></figure>';
+  }).join('');
+
+  // ── 8 个 mod ──
+  var MODS = [
+    ['file-tree', '右边开一个 VS Code 样式的文件树：能点开收起、点文件预览；正在读的闪蓝、正在改的闪黄，改完变绿打勾', '不用配置'],
+    ['polish', '/polish 一句话需求：先问 3 个问题，再左边原话、右边详细提示词，能复制也能直接运行', '不用配置'],
+    ['handoff', '/clear 之后，输入框上方显示「刚才在做……」，回「接」就接着聊；/handoff 另写一份交接稿', '不用配置'],
+    ['quota-status', '状态栏显示 5 小时 / 本周额度、本对话花了多少、缓存还热几分钟；快用完、快凉了弹提醒', '额度要 Pro 或 Max 订阅'],
+    ['task-progress', '给 Claude 加一个报进度的工具，多步任务每做完一步，输入框上方的进度条走一格', '不用配置'],
+    ['todo-pane', '/daiban 打开侧边面板，列出待办文件里「正在推进」和「待收尾」的事', '要设 NOTCH_TODO_LOG'],
+    ['publish-pulse', '状态栏显示离上次发片几天（红黄绿灯）和下一次定时发布', '要设 NOTCH_PUBLISH_ROOT'],
+    ['version-board', '/banben 侧边面板：列出后台开着的 Remotion 预览和端口，点端口号就打开', '不用配置']
+  ];
+  $('modlist').innerHTML = MODS.map(function (m) {
+    return '<a class="mod" href="' + GH + m[0] + '/"><b>' + m[0] + '</b><span>' + m[1] + '</span><small>' + m[2] + '</small></a>';
+  }).join('');
+
+  // ── 成片时间线 ──
+  var SEGN = ['开头：缓存被清掉', '官方定义的三件事', '换一个皮肤', '跑在里面能做什么', '和 Skill / MCP / Hook 的区别', '改装车', '换算到使用场景', '和终端一样的权限', '窗口一多就乱', '第一个：状态栏', '第二个：文件树', '第三个：提示词优化', '第四个：刘海屏', '第五个：端口面板', '内置的 plugin-authoring', '一句现成的提示词', '拿自己试：清空后接上', '小坑：中文命名', '都放在仓库了'];
+  var SEG = [[0.0, 18.97], [18.97, 29.0], [29.0, 48.4], [48.4, 71.2], [71.2, 93.57], [93.57, 144.03], [144.03, 157.1], [157.1, 187.77], [187.77, 215.47], [215.47, 226.23], [226.23, 286.63], [286.63, 366.1], [366.1, 428.47], [428.47, 487.37], [487.37, 520.5], [520.5, 576.67], [576.67, 642.87], [642.87, 660.1], [660.1, T]];
+  var CH = [[0, 'mod 是什么'], [70.13, '和 Skill 的区别'], [153.6, '安全'], [186.7, '状态栏'], [225.17, '文件树'], [285.57, '提示词优化'], [365.03, '刘海屏'], [427.4, '端口面板'], [486.3, '现成提示词'], [575.6, '我怎么用'], [641.8, '结尾']];
+  var CARDS = [[15.93, 3.0, '片头「陈与小金」（切）', 0], [70.13, 3.5, '② 它和 Skill 有什么不一样（盖）', 1], [153.6, 3.5, '③ 安全提醒 · 它和你权限一样大（切）', 0], [186.7, 3.5, '④ 我的 mod · 状态栏（盖）', 1], [225.17, 3.5, '⑤ 我的 mod · 文件树（盖）', 1], [285.57, 3.5, '⑥ 我的 mod · 提示词优化（盖）', 1], [365.03, 3.5, '⑦ 我的 mod · 刘海屏（盖）', 1], [427.4, 3.5, '⑧ 我的 mod · 端口面板（盖）', 1], [486.3, 3.5, '⑨ 怎么做 · 一句现成提示词（盖）', 1], [575.6, 3.5, '⑩ 我拿自己试了一下（盖）', 1], [641.8, 3.5, '⑪ 最后 · 一个小坑（盖）', 1]];
+  var pos = function (a, b) { return 'left:' + (a / T * 100) + '%;width:' + ((b - a) / T * 100) + '%'; };
+  var t = '<div class="tl-lab">章节<small>片子顶部那条</small></div><div class="tl-track ch">' + CH.map(function (c, i) {
+    var e = i + 1 < CH.length ? CH[i + 1][0] : T;
+    return '<div class="tl-b c fit" style="' + pos(c[0], e) + '" data-tip="' + c[1] + '：' + fmtT(c[0]) + ' – ' + fmtT(e) + '">' + c[1] + '</div>';
+  }).join('') + '</div>';
+  t += '<div class="tl-lab">19 段画面<small>9 个子 agent 分做</small></div><div class="tl-track">';
+  SEG.forEach(function (r, i) { t += '<div class="tl-b s fit' + (i === 5 ? ' car' : '') + '" style="' + pos(r[0], r[1]) + '" data-tip="S' + (i < 9 ? '0' : '') + (i + 1) + ' ' + SEGN[i] + '：' + fmtT(r[0]) + ' – ' + fmtT(r[1]) + '">' + (i + 1) + '</div>'; });
+  t += '</div><div class="tl-lab">章节卡<small>切开 / 盖上</small></div><div class="tl-track">' + CARDS.map(function (c) {
+    return '<div class="tl-b k' + (c[3] ? ' o' : '') + '" style="' + pos(c[0], c[0] + c[1]) + '" data-tip="' + c[2] + '：' + fmtT(c[0]) + '"></div>';
+  }).join('') + '</div><div></div><div class="tl-axis">';
+  for (var m = 0; m <= 11; m++) t += '<span style="left:' + (m * 60 / T * 100) + '%">' + m + ':00</span>';
+  $('tl').innerHTML = t + '</div>';
+  $('tl-legend').innerHTML = '<span><i class="sw" style="background:var(--demo)"></i>一段画面</span><span><i class="sw" style="background:var(--accent)"></i>改装车（三版里挑一）</span><span><i class="sw" style="background:var(--card)"></i>切开插卡</span><span><i class="sw" style="box-shadow:inset 0 0 0 1.5px var(--card)"></i>盖在画面上</span>';
+  var fit = function () {
+    document.querySelectorAll('.tl-b.fit').forEach(function (el) { el.style.color = ''; if (el.scrollWidth > el.clientWidth + 1) el.style.color = 'transparent'; });
+  };
+  window.addEventListener('load', fit); window.addEventListener('resize', fit); fit();
+
+  // ── 分工格子:一格 = 20 次 ──
+  document.querySelectorAll('.units').forEach(function (el) {
+    var n = Math.round(+el.dataset.n / 20), s = '';
+    for (var i = 0; i < n; i++) s += '<i style="background:' + el.dataset.c + '"></i>';
+    el.innerHTML = s;
+  });
+
+  // ── 循环片段:进入视口才播,减少动态时不自动播 ──
+  var vids = document.querySelectorAll('video');
+  if (!reduce && window.IntersectionObserver) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { rootMargin: '120px' });
+    vids.forEach(function (v) { io.observe(v); });
+  } else {
+    vids.forEach(function (v) { v.controls = true; });
+  }
+
+  // ── 悬停提示 ──
+  var tipEl = $('tip');
+  var show = function (el) {
+    tipEl.textContent = el.dataset.tip; tipEl.hidden = false;
+    var r = el.getBoundingClientRect(), w = tipEl.offsetWidth;
+    var x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+    var y = r.top - tipEl.offsetHeight - 8; if (y < 8) y = r.bottom + 8;
+    tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
+  };
+  var hide = function () { tipEl.hidden = true; };
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.tabIndex = 0;
+    el.addEventListener('pointerenter', function () { show(el); });
+    el.addEventListener('pointerleave', hide);
+    el.addEventListener('focus', function () { show(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // ── 导航条高亮当前段 ──
+  var links = document.querySelectorAll('.chapters a');
+  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
+  var mark = function () {
+    var y = window.scrollY + 120, cur = 0;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  };
+  window.addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+</body>
+</html>

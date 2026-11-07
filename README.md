@@ -7,10 +7,74 @@
 <!-- 新一期:在最上面加一个 <tr>,把「最新一期」挪给它 -->
 <table>
 <tr>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/"><img src="2026-10-13-claude-code-mods/cover.jpg" alt="给 Claude 页面换一个皮肤：Claude Code Mods封面"></a></td>
+<td>
+
+**最新一期** · 2026-11-06
+
+### [给 Claude 页面换一个皮肤：Claude Code Mods](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/)
+
+片子里演示的 mod，是 AI 在后台开一个干净的 Claude Code、一句话当场做出来再自己录下来的；19 段画面交给 9 个子 agent 同时做，第一版就交了。附视频里的提示词和 8 个 mod 下载。
+
+25 天做完：我发了 335 条消息，Claude Code 动手 12,759 次。
+
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-claude-code-mods/) · [文字版](2026-10-13-claude-code-mods/) · [mod 下载](2026-10-13-claude-code-mods/mods/)
+
+</td>
+</tr>
+<tr>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-18-36-frames/"><img src="2026-10-18-36-frames/cover.jpg" alt="智驾是如何看视频的封面"></a></td>
+<td>
+
+2026-10-28
+
+### [智驾是如何看视频的](https://chenyuxiaojin.github.io/vibevideo/2026-10-18-36-frames/)
+
+画面全是代码写的 3D：夜路、红车、塑料袋。一个晚上 Claude Code 派 12 个 agent 并行各搭一段，另有 agent 做音效、配乐、精修，交付前自己查出并修好 39 秒定格、空音效轨和一百多帧闪烁。
+
+我发了 102 条消息，AI 操作 4,736 次；包装那一晚 37 个 agent、3,216 次操作，我一条消息没发。
+
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-18-36-frames/) · [文字版](2026-10-18-36-frames/)
+
+</td>
+</tr>
+<tr>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/"><img src="2026-10-19-more-ambitious/cover.jpg" alt="怎么更有野心：写给用模型的人的教程封面"></a></td>
+<td>
+
+2026-10-22
+
+### [怎么更有野心：写给用模型的人的教程](https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/)
+
+画面推倒重做了一遍：开头 3 个方向 × 3 个档位 9 版同时跑，我挑了 AI 排在最后的那版；第 2–7 章各一个 claude -p 重做，12 个质检官只看画面猜意思、打分，返修两轮。
+
+从刷到原文到发出去 71 小时：我发了 144 条消息，Claude Code 动手 4,949 次，claude -p 另跑 12 次、$93.82。
+
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-19-more-ambitious/) · [文字版](2026-10-19-more-ambitious/)
+
+</td>
+</tr>
+<tr>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/"><img src="2026-10-11-model-watch-video/cover.jpg" alt="模型是如何看视频的？你发的视频 AI 默认 1 秒只看一帧封面"></a></td>
+<td>
+
+2026-10-15
+
+### [模型是如何看视频的？你发的视频 AI 默认 1 秒只看一帧](https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/)
+
+一条没有人脸的片，画面全是 AI 自己写的 3D 渲染器逐帧画出来的。开头被否三轮后，AI 一夜同时做 5 个方向；10 段画面 11 个 agent 并行开做；我睡前发一条消息，它质检到天亮。
+
+5 天做完：我发了 114 条消息，AI 动手 9,792 次，claude -p 另跑 23 次、$88.77。
+
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/vibevideo/2026-10-11-model-watch-video/) · [文字版](2026-10-11-model-watch-video/)
+
+</td>
+</tr>
+<tr>
 <td width="46%"><a href="https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/"><img src="2026-10-13-workflow/cover.jpg" alt="视频制作流程全公开封面"></a></td>
 <td>
 
-**最新一期** · 2026-10-13
+2026-10-13
 
 ### [这是我用 AI 做了5个月的视频制作流程](https://chenyuxiaojin.github.io/vibevideo/2026-10-13-workflow/)
 
